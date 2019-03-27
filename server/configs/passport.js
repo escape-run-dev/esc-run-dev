@@ -1,40 +1,40 @@
-const User          = require('../models/User');
+const Team         = require('../models/Team');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt        = require('bcryptjs'); // !!!
 const passport      = require('passport');
 
-passport.serializeUser((loggedInUser, cb) => {
-  cb(null, loggedInUser._id);
+passport.serializeUser((loggedInTeam, cb) => {
+  cb(null, loggedInTeam._id);
 });
 
-passport.deserializeUser((userIdFromSession, cb) => {
-  User.findById(userIdFromSession, (err, userDocument) => {
+passport.deserializeUser((teamIdFromSession, cb) => {
+  Team.findById(teamIdFromSession, (err, teamDocument) => {
     if (err) {
       cb(err);
       return;
     }
-    cb(null, userDocument);
+    cb(null, teamDocument);
   });
 });
 
-passport.use(new LocalStrategy((username, password, next) => {
-  User.findOne({ username }, (err, foundUser) => {
+passport.use(new LocalStrategy((name, password, next) => {
+  Team.findOne({ name }, (err, foundTeam) => {
     if (err) {
       next(err);
       return;
     }
 
-    if (!foundUser) {
-      next(null, false, { message: 'Incorrect username.' });
+    if (!foundTeam) {
+      next(null, false, { message: 'No se ha encontrado ningún equipo' });
       return;
     }
 
-    if (!bcrypt.compareSync(password, foundUser.password)) {
-      next(null, false, { message: 'Incorrect password.' });
+    if (!bcrypt.compareSync(password, foundTeam.password)) {
+      next(null, false, { message: 'Contraseña fallida chato.' });
       return;
     }
 
-    next(null, foundUser);
+    next(null, foundTeam);
   });
 }));
 

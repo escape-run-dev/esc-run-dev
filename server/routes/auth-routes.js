@@ -4,50 +4,48 @@ const router     = express.Router();
 const passport   = require('passport');
 const bcrypt     = require('bcryptjs')
 
-const User       = require('../models/User')
+const Team       = require('../models/Team')
 
 router.post('/signup', (req, res, next) => {
 
-    const username = req.body.username
-    const password = req.body.password
-    const campus = req.body.campus
-    const course = req.body.course
-    const image = req.body.imageUrl
+    const {name, password, email} = req.body
   
-    if (!username || !password) {
-      res.status(400).json({ message: 'Provide username and password' })
+    if (!name || !password) {
+      res.status(400).json({ message: '¡Tu equipo tiene que tener un nombre y una contraseña!' })
       return
     }
 
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+        res.status(400).json({message: "¿Ese email de dónde lo has sacado? Venga, escribe el bueno..."})
+    }
+
     if(password.length < 7){
-        res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' })
+        res.status(400).json({ message: 'Tu contraseña tiene que tener un mínimo de 8 caracteres' })
         return
     }
   
-    User.findOne({ username }, (err, foundUser) => {
+    Team.findOne({ name }, (err, foundTeam) => {
 
         if(err){
-            res.status(500).json({message: "Username check went bad."})
+            res.status(500).json({message: "Algo ha fallado al comprobar el equipo"})
             return
         }
 
-        if (foundUser) {
-            res.status(400).json({ message: 'Username taken. Choose another one.' })
+        if (foundTeam) {
+            res.status(400).json({ message: 'Ese nombre de equipo ya existe. Vas a tener que elegir otro' })
             return
         }
   
         const salt     = bcrypt.genSaltSync(10)
         const hashPass = bcrypt.hashSync(password, salt)
   
-        const aNewUser = new User({
-            username:username,
+        const aNewTeam = new Team ({
+            name:name,
             password: hashPass,
-            campus: campus,
-            course: course,
-            image: image
+            email: email
         })
   
-        aNewUser.save(err => {
+        aNewTeam.save(err => {
             if (err) {
                 res.status(400).json({ message: 'Saving user to database went wrong.' })
                 return
@@ -55,29 +53,29 @@ router.post('/signup', (req, res, next) => {
             
             // Automatically log in user after sign up
             // .login() here is actually predefined passport method
-            req.login(aNewUser, (err) => {
+            req.login(aNewTeam, (err) => {
 
                 if (err) {
-                    res.status(500).json({ message: 'Login after signup went bad.' })
+                    res.status(500).json({ message: 'No hemos podido iniciar sesión después del registro' })
                     return
                 }
             
                 // Send the user's information to the frontend
                 // We can use also: res.status(200).json(req.user);
-                res.status(200).json(aNewUser)
+                res.status(200).json(aNewTeam)
             })
         })
     })
 })
 
 router.post('/login', (req, res, next) => {
-    passport.authenticate('local', (err, theUser, failureDetails) => {
+    passport.authenticate('local', (err, theTeam, failureDetails) => {
         if (err) {
-            res.status(500).json({ message: 'Something went wrong authenticating user' });
+            res.status(500).json({ message: 'Algo ha ido mal en la autenticación' });
             return;
         }
     
-        if (!theUser) {
+        if (!theTeam) {
             // "failureDetails" contains the error messages
             // from our logic in "LocalStrategy" { message: '...' }.
             res.status(401).json(failureDetails);
@@ -85,14 +83,14 @@ router.post('/login', (req, res, next) => {
         }
 
         // save user in session
-        req.login(theUser, (err) => {
+        req.login(theTeam, (err) => {
             if (err) {
-                res.status(500).json({ message: 'Session save went bad.' });
+                res.status(500).json({ message: 'No hemos podido guardar sesión' });
                 return;
             }
 
             // We are now logged in (that's why we can also send req.user)
-            res.status(200).json(theUser);
+            res.status(200).json(theTeam);
         });
     })(req, res, next);
 });
@@ -100,8 +98,8 @@ router.post('/login', (req, res, next) => {
 router.post('/logout', (req, res, next) => {
     // req.logout() is defined by passport
     req.logout();
-    res.status(200).json({ message: 'Log out success!' });
-});
+    res.status(200).json({ message: '¡Ya estás fuera!' })
+})
 
 
 router.get('/loggedin', (req, res, next) => {
@@ -110,7 +108,7 @@ router.get('/loggedin', (req, res, next) => {
         res.status(200).json(req.user);
         return;
     }
-    res.status(403).json({ message: 'Unauthorized' });
+    res.status(403).json({ message: '¡No puedes pasar!' });
 });
 
 

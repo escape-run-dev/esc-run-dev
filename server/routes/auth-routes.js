@@ -8,9 +8,9 @@ const Team       = require('../models/Team')
 
 router.post('/signup', (req, res, next) => {
 
-    const {name, password, email} = req.body
+    const {username, password, email} = req.body
   
-    if (!name || !password) {
+    if (!username || !password) {
       res.status(400).json({ message: '¡Tu equipo tiene que tener un nombre y una contraseña!' })
       return
     }
@@ -24,14 +24,14 @@ router.post('/signup', (req, res, next) => {
         return
     }
   
-    Team.findOne({ name }, (err, foundTeam) => {
+    Team.findOne({ username }, (err, foundUser) => {
 
         if(err){
             res.status(500).json({message: "Algo ha fallado al comprobar el equipo"})
             return
         }
 
-        if (foundTeam) {
+        if (foundUser) {
             res.status(400).json({ message: 'Ese nombre de equipo ya existe. Vas a tener que elegir otro' })
             return
         }
@@ -40,14 +40,14 @@ router.post('/signup', (req, res, next) => {
         const hashPass = bcrypt.hashSync(password, salt)
   
         const aNewTeam = new Team ({
-            name:name,
+            username:username,
             password: hashPass,
             email: email
         })
   
         aNewTeam.save(err => {
             if (err) {
-                res.status(400).json({ message: 'Saving user to database went wrong.' })
+                res.status(400).json({ message: 'No hemos podido guardar el usuario en la base de datos' })
                 return
             }
             
@@ -69,13 +69,13 @@ router.post('/signup', (req, res, next) => {
 })
 
 router.post('/login', (req, res, next) => {
-    passport.authenticate('local', (err, theTeam, failureDetails) => {
+    passport.authenticate('local', (err, theUser, failureDetails) => {
         if (err) {
             res.status(500).json({ message: 'Algo ha ido mal en la autenticación' });
             return;
         }
     
-        if (!theTeam) {
+        if (!theUser) {
             // "failureDetails" contains the error messages
             // from our logic in "LocalStrategy" { message: '...' }.
             res.status(401).json(failureDetails);
@@ -83,14 +83,14 @@ router.post('/login', (req, res, next) => {
         }
 
         // save user in session
-        req.login(theTeam, (err) => {
+        req.login(theUser, (err) => {
             if (err) {
                 res.status(500).json({ message: 'No hemos podido guardar sesión' });
                 return;
             }
 
             // We are now logged in (that's why we can also send req.user)
-            res.status(200).json(theTeam);
+            res.status(200).json(theUser);
         });
     })(req, res, next);
 });

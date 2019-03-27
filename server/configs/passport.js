@@ -3,38 +3,39 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt        = require('bcryptjs'); // !!!
 const passport      = require('passport');
 
-passport.serializeUser((loggedInTeam, cb) => {
-  cb(null, loggedInTeam._id);
+passport.serializeUser((loggedInUser, cb) => {
+  cb(null, loggedInUser._id);
 });
 
-passport.deserializeUser((teamIdFromSession, cb) => {
-  Team.findById(teamIdFromSession, (err, teamDocument) => {
+passport.deserializeUser((userIdFromSession, cb) => {
+  Team.findById(userIdFromSession, (err, userDocument) => {
     if (err) {
       cb(err);
       return;
     }
-    cb(null, teamDocument);
+    cb(null, userDocument);
   });
 });
 
-passport.use(new LocalStrategy((name, password, next) => {
-  Team.findOne({ name }, (err, foundTeam) => {
+passport.use(new LocalStrategy((username, password, next) => {
+
+  Team.findOne({ username }, (err, foundUser) => {
     if (err) {
       next(err);
       return;
     }
 
-    if (!foundTeam) {
+    if (!foundUser) {
       next(null, false, { message: 'No se ha encontrado ningún equipo' });
       return;
     }
 
-    if (!bcrypt.compareSync(password, foundTeam.password)) {
-      next(null, false, { message: 'Contraseña fallida chato.' });
+    if (!bcrypt.compareSync(password, foundUser.password)) {
+      next(null, false, { message: 'Contraseña fallida, chat@' });
       return;
     }
 
-    next(null, foundTeam);
+    next(null, foundUser);
   });
 }));
 

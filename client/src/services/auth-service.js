@@ -9,11 +9,21 @@ class AuthService {
     this.service = service;
   }
 
-  signup = (username, password, campus, course, imageURL) => {
-    return this.service.post('/signup', {username, password, campus, course, imageURL})
+  signup = (username, password, email) => {
+    return this.service.post('/signup', {username, password, email})
+    .then(response => {console.log(response.data); return response.data})
+  } 
+
+  login = (username, password) => {
+    return this.service.post('/login', {username, password})
     .then(response => response.data)
-  }  
+  } 
+
+  loggedIn = () => {
+    return this.service.get('/loggedin')
+        .then(response => response.data)
+}
 
 }
 
-export default AuthService;
+export default AuthService

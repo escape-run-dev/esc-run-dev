@@ -2,30 +2,27 @@ import React, { Component } from 'react';
 import AuthService from '../services/auth-service';
 import { Link } from 'react-router-dom';
 
-class Signup extends Component {
+class Login extends Component {
   constructor(props){
     super(props);
     this.state = {  username: "", 
-                    password: "",
-                    email: "", 
-                  }         
-    this.service = new AuthService();
+                    password: ""
+                }
+    this.service = new AuthService()
   }
 
   handleFormSubmit = (e) => {
     e.preventDefault()
     const username = this.state.username
     const password = this.state.password
-    const email = this.state.email
-    
-    this.service.signup(username, password, email)
+  
+    this.service.login(username, password)
     .then( response => {
         this.setState({
             username: "", 
-            password: "", 
-            email: ""
-        });
-        console.log(this.props.getUser(response))
+            password: ""
+        })
+        // this.props.getUser(response)
     })
     .catch( error => console.log(error) )
   }
@@ -45,14 +42,11 @@ class Signup extends Component {
           <label>Contraseña:</label>
           <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
           <br/><br/>
-          <label>Email:</label>
-          <input type="email" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
-          <br/><br/>
-          <input type="submit" value="Signup" />
+          <input type="submit" value="Login" />
         </form>
   
-        <p>¿Ya tienes una cuenta? Entra
-            <Link to={"/login"}> Login</Link>
+        <p>¿No tienes una cuenta? 
+            <Link to={"/signup"}> Signup</Link>
         </p>
   
       </div>
@@ -60,4 +54,4 @@ class Signup extends Component {
   }  
 }
 
-export default Signup;
+export default Login;

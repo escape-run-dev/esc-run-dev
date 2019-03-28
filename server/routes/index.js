@@ -57,8 +57,10 @@ router.post("/writeFile", (req,res,next) => {
   console.log(id)
   
   fs.writeFile(`spec/jasmine_examples/${id}Spec.js`, content, function (err) {
-    if (err) console.log(err)
+    if (err) {console.log(err)
+    res.status(500).json({msg:err})}
     console.log('File is created successfully.')
+    res.json({msg:"ok"})
   },)
 
 })

@@ -60,7 +60,7 @@ class App extends Component {
           <Switch>
               <Route exact path="/qreader" component={Qreader}/>
               <Route exact path="/vid" component={Video} />
-              <Route exact path="/game-1" component={Game1} />
+              <Route exact path="/game-1" render={() => <Game1 user={this.state.loggedInUser} />} />
               <Route exact path="/game-2" component={Game2} />
               <Route exact path="/game-3" component={Game3} />
               <Route exact path="/game-4" component={Game4} />

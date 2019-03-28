@@ -72,12 +72,13 @@ router.post("/runJasmine", (req,res,next) => {
   console.log("Hola")
   console.log(id)
 
-  jasmine.execute([`./spec/jasmine_examples/${id}Spec.js`])
-
+  
   jasmine.onComplete(passed => {
     console.log(globalMessage)
     res.json(globalMessage)
   })
+
+  jasmine.execute([`./spec/jasmine_examples/PlayerSpec.js`])
 
 })
 

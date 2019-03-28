@@ -16,7 +16,11 @@ class TestingService {
 
   runJasmine = (id) => {
     return this.service.post('/runJasmine', {id})
-    .then(response => response.data)
+    .then(res => {
+        console.log("He llegado un poco más abajo")
+        console.log(res.data)
+        return res.data
+      })
   } 
 
 }

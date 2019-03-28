@@ -8,6 +8,7 @@ class Game1 extends Component {
     this.state = {
       id: this.props.user._id,
       content: initialCode,
+      output: ""
     }
 
     this.services = new TestingService()
@@ -18,9 +19,7 @@ class Game1 extends Component {
     const { value } = e.target
 
     this.setState({
-        id: this.props.user._id,
-        content: initialCode,
-        output: ""
+        content: value,
     })
   }
 
@@ -36,9 +35,9 @@ class Game1 extends Component {
           return this.services.runJasmine(this.state.id)
         })
         .then(res => {
-          console.log("He llegado un poco más abajo")
           this.setState({output: res})
         })
+        
         .catch(console.log)
 
     this.setState({
@@ -55,7 +54,15 @@ class Game1 extends Component {
               <button type="submit">Enviar</button>
             </form>
           </section>
-          <section className="game1 output">{this.state.output}</section>
+          <section className="game1 output">
+          {
+            (this.state.output &&
+            this.state.output.map((spec,idx) => {
+              return <div key={idx}><p>{spec.description}</p><p>{spec.status}</p></div>
+            })
+            )
+          }
+          </section>
         </main>
     )
   }

@@ -8,7 +8,8 @@ class Game1 extends Component {
     this.state = {
       id: this.props.user._id,
       content: initialCode,
-      output: ""
+      output: "",
+      checking: false
     }
 
     this.services = new TestingService()
@@ -25,8 +26,8 @@ class Game1 extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-
-    console.log("Enviando")
+    
+    this.setState({checking: true})
 
     this.services.writeFile(this.state.id, this.state.content)
         .then(x => {
@@ -35,7 +36,7 @@ class Game1 extends Component {
           return this.services.runJasmine(this.state.id)
         })
         .then(res => {
-          this.setState({output: res})
+          this.setState({output: res, checking:false})
         })
         
         .catch(console.log)
@@ -56,11 +57,15 @@ class Game1 extends Component {
           </section>
           <section className="game1 output">
           {
-            (this.state.output &&
+            this.state.checking ?
+            <p>Comprobando...</p>
+            :
+            this.state.output ?
             this.state.output.map((spec,idx) => {
               return <div key={idx}><p>{spec.description}</p><p>{spec.status}</p></div>
             })
-            )
+            :
+            <p>Introduce tu respuesta y pulsa enviar</p>
           }
           </section>
         </main>

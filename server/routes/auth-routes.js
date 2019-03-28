@@ -7,7 +7,6 @@ const bcrypt     = require('bcryptjs')
 const Team       = require('../models/Team')
 
 router.post('/signup', (req, res, next) => {
-
     const {username, password, email} = req.body
   
     if (!username || !password) {

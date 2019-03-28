@@ -11,25 +11,42 @@ import Game2 from "./components/Game2"
 import Game3 from "./components/Game3"
 import Game4 from "./components/Game4"
 import Game5 from "./components/Game5"
+import Video from './components/VideoTest'
+import Qreader from './components/Qreader'
 
 class App extends Component {
 
   constructor () {
     super()
     this.state = {
-      loggedInUser: true,
+      loggedInUser: false,
     }
+    this.service = new Auth()
   }  
 
+  fetchUser() {
+    if (this.state.loggedInUser === null) {
+      this.service.loggedIn()
+        .then(response => this.setState({ loggedInUser: response }))
+        .catch(x => this.setState({ loggedInUser: false }))
+    }
+  }
+
+  setTheUser = (userObj) => {
+    this.setState({ loggedInUser: userObj })
+  }
 
   render() {
+
+    this.fetchUser()
 
     if (!this.state.loggedInUser){
       return (
         <div className="login-page">
           <Switch>
-              <Route exact path="/" component={Signup} />
-              <Route exact path="/login" component={Login} />
+            <Route exact path='/' render={() => <Signup setUser={this.setTheUser} />} />            
+            <Route exact path='/signup' render={() => <Signup setUser={this.setTheUser} />} />
+            <Route exact path='/login' render={() => <Login setUser={this.setTheUser} />} />
           </Switch>
         </div>
       )
@@ -41,6 +58,8 @@ class App extends Component {
         
         <main className="main-container">
           <Switch>
+              <Route exact path="/qreader" component={Qreader}/>
+              <Route exact path="/vid" component={Video} />
               <Route exact path="/game-1" component={Game1} />
               <Route exact path="/game-2" component={Game2} />
               <Route exact path="/game-3" component={Game3} />

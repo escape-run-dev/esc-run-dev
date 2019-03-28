@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
 import AuthService from '../services/auth-service';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props){
     super(props);
     this.state = {  username: "", 
-                    password: ""
+                    password: "",
+                    redirect: false
                 }
     this.service = new AuthService()
   }
 
   handleFormSubmit = (e) => {
     e.preventDefault()
-    const username = this.state.username
-    const password = this.state.password
-  
+    
+    const {username, password} = this.state
+      
     this.service.login(username, password)
     .then( response => {
         this.setState({
             username: "", 
-            password: ""
+            password: "",
+            redirect: true
+            
         })
-        // this.props.getUser(response)
+        this.props.setUser(response)
+        
+    
     })
     .catch( error => console.log(error) )
   }
@@ -31,10 +36,12 @@ class Login extends Component {
     const {name, value} = e.target;
     this.setState({[name]: value});
   }
+
       
   render(){
     return(
       <div>
+        {this.state.redirect ? <Redirect to="/vid"/> : null}
         <form onSubmit={this.handleFormSubmit}>
           <label>Nombre del grupo:</label>
           <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>

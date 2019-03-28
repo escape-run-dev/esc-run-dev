@@ -11,6 +11,7 @@ class Menu extends Component {
     return(
         <nav className="menu">
             <ul>
+                <Link className="menu-link" to="/bcrypt">Bcrypt</Link>
                 <Link className="menu-link" to="/qreader">QReader</Link>
                 <Link className="menu-link" to="/game-1">PRUEBA 1</Link>
                 <Link className="menu-link" to="/game-2">PRUEBA 2</Link>

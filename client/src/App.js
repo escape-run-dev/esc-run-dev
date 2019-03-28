@@ -13,6 +13,7 @@ import Game4 from "./components/Game4"
 import Game5 from "./components/Game5"
 import Video from './components/VideoTest'
 import Qreader from './components/Qreader'
+import Bcrypt from './components/Bcrypt'
 
 class App extends Component {
 
@@ -58,6 +59,7 @@ class App extends Component {
         
         <main className="main-container">
           <Switch>
+              <Route exact path="/bcrypt" component={Bcrypt}/>
               <Route exact path="/qreader" component={Qreader}/>
               <Route exact path="/vid" component={Video} />
               <Route exact path="/game-1" component={Game1} />

@@ -14,8 +14,8 @@ class Crypt extends Component {
   salt = Bcrypt.genSaltSync(10)
   
   cryptoMethod = () => {
-    
     Bcrypt.hashSync(this.state.input, this.salt)
+    
   }
 }
 

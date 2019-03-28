@@ -15,9 +15,8 @@ class Crypt extends Component {
   
   cryptoMethod = (e) => {
     e.preventDefault()
-    const turulo = Bcrypt.hashSync(this.state.input, this.salt).split("").filter(elm => elm !== "/" && elm !== ".").join("")
-    this.setState({output: turulo})
-    console.log('Hola puto')
+    const cripted = Bcrypt.hashSync(this.state.input, this.salt).split("").filter(elm => elm !== "/" && elm !== ".").join("")
+    this.setState({output: cripted})
   }
 
   handlerChange = (e) => {

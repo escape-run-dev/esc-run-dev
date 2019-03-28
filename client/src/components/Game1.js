@@ -40,9 +40,9 @@ class Game1 extends Component {
         
         .catch(console.log)
 
-    this.setState({
-        content: initialCode,
-    })
+    // this.setState({
+    //     content: initialCode,
+    // })
 }
 
   render(){

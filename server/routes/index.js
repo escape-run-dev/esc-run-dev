@@ -55,11 +55,26 @@ router.post("/writeFile", (req,res,next) => {
 
   console.log("Hola")
   console.log(id)
+
+  // fs.writeFile(`lib/games/${id}.js`, content, function (err) {
+  //   if (err) console.log(err)
+  //   console.log('Lib is created successfully.')
+  // })
+
+  let spec = content + `; describe("A ver si funcionase esto...", () => {
+
+    it("debería funcionar", () => {
+      expect(suma(2,4)).toEqual(6)
+    })
+    it("no debería funcionar", () => {
+        expect(suma(3,2)).toEqual(4)
+    })
+  })` 
   
-  fs.writeFile(`spec/jasmine_examples/${id}Spec.js`, content, function (err) {
+  fs.writeFile(`spec/games/${id}Spec.js`, spec, function (err) {
     if (err) {console.log(err)
     res.status(500).json({msg:err})}
-    console.log('File is created successfully.')
+    console.log('Spec is created successfully.')
     res.json({msg:"ok"})
   },)
 
@@ -78,7 +93,7 @@ router.post("/runJasmine", (req,res,next) => {
     res.json(globalMessage)
   })
 
-  jasmine.execute([`./spec/jasmine_examples/PlayerSpec.js`])
+  jasmine.execute([`./spec/games/${id}Spec.js`])
 
 })
 

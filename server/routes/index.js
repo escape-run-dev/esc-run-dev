@@ -81,7 +81,7 @@ router.post("/writeFile", (req,res,next) => {
 })
 
 router.post("/runJasmine", (req,res,next) => {
-
+  console.log('en runjasmine')
   let {id} = req.body 
 
   console.log("Hola")

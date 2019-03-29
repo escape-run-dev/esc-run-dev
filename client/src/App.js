@@ -20,7 +20,7 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      loggedInUser: false,
+      loggedInUser: false, // OJOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!!! Esto hay que cambiarlo a false
     }
     this.service = new Auth()
   }  

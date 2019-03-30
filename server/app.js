@@ -83,6 +83,8 @@ const index = require('./routes/index')
 app.use('/', index)
 const authRoutes = require('./routes/auth-routes')
 app.use('/api', authRoutes)
+const fakeApi = require('./routes/fakeapiRoute')
+app.use('fakeapi', fakeApi)
 
 
 module.exports = app;

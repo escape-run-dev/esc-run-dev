@@ -14,7 +14,6 @@ router.post('/addModel', (req,res, next) => {
     foodQuality: 1,
     foodDescription: model
   })
-
   NewRealFood.save()
 
     .then(response => res.json({response}))

@@ -11,14 +11,18 @@ class TestingService {
 
   writeFile = (id, content) => {
     return this.service.post('/writeFile', {id,content})
-   
+    .then(res => res)
   } 
 
-  runJasmine = (id) => {
-    return this.service.post('/runJasmine', {id})
-    .then(response => response.data)
-  } 
-
+  // runJasmine = (id) => {
+  //   return this.service.post('/runJasmine', {id})
+  //   .then(res => {
+  //       console.log("He llegado un poco más abajo")
+  //       console.log(res.data)
+  //       return res.data
+  //     })
+  // } 
+  
 }
 
 export default TestingService

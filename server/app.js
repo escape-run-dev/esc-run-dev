@@ -30,10 +30,18 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 const app = express();
 
 
-app.use(cors({
-  credentials: true,
-  origin: ['http://localhost:4000'] // <== this will be the URL of our React app (it will be running on port 3000)
-}));
+// configuración CORS
+const whiteList = ["http://localhost:4000"]
+const corsOptions = {
+  origin: (origin, cb) => {
+    const originIsWhitelisted = whiteList.includes(origin);
+    cb(null, originIsWhitelisted)
+  },
+  credentials: true
+}
+
+app.use(cors(corsOptions));
+
 
 app.use(passport.initialize());
 app.use(passport.session());

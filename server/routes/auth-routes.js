@@ -50,8 +50,6 @@ router.post('/signup', (req, res, next) => {
                 return
             }
             
-            // Automatically log in user after sign up
-            // .login() here is actually predefined passport method
             req.login(aNewTeam, (err) => {
 
                 if (err) {
@@ -95,7 +93,6 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/logout', (req, res, next) => {
-    // req.logout() is defined by passport
     req.logout();
     res.status(200).json({ message: '¡Ya estás fuera!' })
 })

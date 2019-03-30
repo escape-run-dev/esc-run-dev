@@ -7,9 +7,9 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
-const session       = require('express-session');
-const passport      = require('passport');
-const cors = require('cors');
+const session      = require('express-session');
+const passport     = require('passport');
+const cors         = require('cors');
 
 
 require('./configs/passport');
@@ -67,7 +67,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Express';
 
 
 
@@ -75,6 +75,8 @@ const index = require('./routes/index')
 app.use('/', index)
 const authRoutes = require('./routes/auth-routes')
 app.use('/api', authRoutes)
+const fakeapi = require('./routes/fakeapiRoute')
+app.use('/api', fakeapi)
 
 
-module.exports = app;
+module.exports = app

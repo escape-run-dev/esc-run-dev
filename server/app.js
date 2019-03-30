@@ -29,6 +29,7 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
+
 // configuración CORS
 const whiteList = ["http://localhost:4000"]
 const corsOptions = {
@@ -38,6 +39,7 @@ const corsOptions = {
   },
   credentials: true
 }
+
 app.use(cors(corsOptions));
 
 

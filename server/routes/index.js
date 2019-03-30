@@ -2,48 +2,52 @@ const express = require('express');
 const router  = express.Router();
 
 var Jasmine = require('jasmine');
-var jasmine = new Jasmine()
 
 var fs = require('fs');
 
-jasmine.loadConfigFile("../server/spec/support/jasmine.json")
 
 var globalMessage = []
+// var finished = false
 
 //Custom reporter:
 var myReporter = {
 
-  message: [],
+  // timer: new jasmine.jasmine.Timer(),
+  // The `print` function passed the reporter will be called to print its results.
+  print: function() {
+      process.stdout.write(arguments);
+  },
 
   specDone: function(result) {
 
-    this.message.push({description: result.description, status: result.status})
-      
-    console.log('Spec: ' + result.description + ' was ' + result.status);
+    globalMessage.push({description: result.description, status: result.status})
+    console.log(result.description,result.status)
+    // console.log('Spec: ' + result.description + ' was ' + result.status);
     
-    for(var i = 0; i < result.failedExpectations.length; i++) {            
-            console.log('Failure: ' + result.failedExpectations[i].message)
-            console.log(result.failedExpectations[i].stack)
-    }
-    console.log(result.passedExpectations.length)
+  //   for(var i = 0; i < result.failedExpectations.length; i++) {            
+  //           console.log('Failure: ' + result.failedExpectations[i].message)
+  //           console.log(result.failedExpectations[i].stack)
+  //   }
+  //   console.log(result.passedExpectations.length)
   },
 
-  suiteDone: function(result) {
+  // suiteDone: function(result) {
 
-    console.log('Suite: ' + result.description + ' was ' + result.status);
-    for(var i = 0; i < result.failedExpectations.length; i++) {
-        console.log('AfterAll ' + result.failedExpectations[i].message);
-        console.log(result.failedExpectations[i].stack);
-      }
-    },
+  //   console.log('Suite: ' + result.description + ' was ' + result.status);
+  //   for(var i = 0; i < result.failedExpectations.length; i++) {
+  //       console.log('AfterAll ' + result.failedExpectations[i].message);
+  //       console.log(result.failedExpectations[i].stack);
+  //     }
+  //   },
   
   jasmineDone: function() {
-    globalMessage = this.message
+    // finished = true
     console.log('Finished suite');
   }        
 }
 
-jasmine.addReporter(myReporter)
+
+
 
 router.get('/', (req, res, next) => {
   res.render('index')
@@ -52,9 +56,6 @@ router.get('/', (req, res, next) => {
 router.post("/writeFile", (req,res,next) => {
   
   let {content, id} = req.body
-
-  console.log("Hola")
-  console.log(id)
 
   // fs.writeFile(`lib/games/${id}.js`, content, function (err) {
   //   if (err) console.log(err)
@@ -70,31 +71,52 @@ router.post("/writeFile", (req,res,next) => {
         expect(suma(3,2)).toEqual(4)
     })
   })` 
+
+  runJasmine = id => {
+    console.log("Ejecutando Jasmine")
+
+    // jasmine.onComplete(passed => {
+    //   console.log("Mensaje: " + globalMessage)
+    //   res.json(globalMessage)
+    // })
+
+    var jasmine = new Jasmine()
+    jasmine.loadConfigFile("../server/spec/support/jasmine.json")
+    jasmine.addReporter(myReporter)
+
+
+    jasmine.execute([`./spec/games/${id}Spec.js`])
+
+    // while (!finished) {
+    //   console.log("Bucle")
+    // }
+
+    // res.json(globalMessage)
+
+    jasmine.onComplete(passed => {
+      console.log(globalMessage)
+      res.json({globalMessage})
+    })
+  }
   
-  fs.writeFile(`spec/games/${id}Spec.js`, spec, function (err) {
-    if (err) {console.log(err)
-    res.status(500).json({msg:err})}
-    console.log('Spec is created successfully.')
-    res.json({msg:"ok"})
+  fs.writeFile(`spec/games/${id}Spec.js`, spec, () => {
+    console.log("File created")
+    runJasmine(id)
   },)
 
 })
 
-router.post("/runJasmine", (req,res,next) => {
-  console.log('en runjasmine')
-  let {id} = req.body 
+// router.post("/runJasmine", (req,res,next) => {
 
-  console.log("Hola")
-  console.log(id)
+//   let {id} = req.body 
+
+//   console.log("Hola")
+//   console.log(id)
 
   
-  jasmine.onComplete(passed => {
-    console.log(globalMessage)
-    res.json(globalMessage)
-  })
 
-  jasmine.execute([`./spec/games/${id}Spec.js`])
 
-})
+
+// })
 
 module.exports = router;

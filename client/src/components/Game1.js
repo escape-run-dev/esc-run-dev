@@ -28,26 +28,20 @@ class Game1 extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
-    if (!this.state.checking) {
-      console.log(this.state.content)
-      console.log('sip')
       this.setState({checking: true}, () => {
         this.services.writeFile(this.state.id, this.state.content)
-            .then(x => {
-              console.log("He llegado")
-              console.log(this.state.id)
-              return this.services.runJasmine(this.state.id)
-            })
+            // .then(x => {
+            //   console.log("He llegado")
+            //   console.log(this.state.id)
+            //   return this.services.runJasmine(this.state.id)
+            // })
             .then(res => {
-              this.setState({output: res, checking:false})
+              console.log(res)
+              this.setState({output: res.data.globalMessage, checking:false})
             })
             .catch(console.log)
   
       })
-
-    } else {
-      console.log('nope')
-    }
     
 
 

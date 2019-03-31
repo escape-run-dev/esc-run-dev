@@ -11,8 +11,8 @@ class FakeApi {
   }
 
   getModel = code => {
-    return this.service.post("getModel", )
-      .then(response => console.log(response))
+    return this.service.get(`getModel/${code}`)
+      .then(response => response.data)
     }
     
   getRandom = () => {
@@ -20,10 +20,10 @@ class FakeApi {
       .then(response => response.data.finalResponse)
   }
   
-  insertModel = model =>{
-
-    return this.service.post("addModel", model)
-      .then(response => console.log(response))
+  insertModel = code =>{
+    console.log(code)
+    return this.service.post("addModel", {code})
+      .then(response => console.log(response.data.response))
   }
 
 }

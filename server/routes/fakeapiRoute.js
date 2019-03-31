@@ -5,14 +5,15 @@ const fakeApiRF = require('../models/RealFood')
 
 
 router.post('/addModel', (req,res, next) => {
-  const { model } = req.body
+  const { code } = req.body
   
+
   const NewRealFood = new fakeApiRF({
-    foodName: model,
-    imageUrl: model,
-    foodOwner: model,
-    foodQuality: 1,
-    foodDescription: model
+    [code.input1] : code.input1value,
+    [code.input2] : code.input2value,
+    [code.input3] : code.input3value,
+    [code.input4] : code.input4value,
+    [code.input5] : code.input5value
   })
   NewRealFood.save()
 
@@ -33,7 +34,7 @@ router.get('/random', (req,res,next) => {
 router.get('/getModel/:id', (req,res,next) => {
 
   const {id} = req.params
-  
+
   fakeApiF.findOne({code: id})
     
   .then(response => {

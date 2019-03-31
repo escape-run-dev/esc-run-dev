@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TestingService from '../services/testing-service'
 import initialCode from "../games/games1"
 import './Game1.css'
+import Movies from "./movies.js"
 
 class Game1 extends Component {
   constructor(props){
@@ -28,32 +29,23 @@ class Game1 extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
-      this.setState({checking: true}, () => {
-        this.services.writeFile(this.state.id, this.state.content)
-            // .then(x => {
-            //   console.log("He llegado")
-            //   console.log(this.state.id)
-            //   return this.services.runJasmine(this.state.id)
-            // })
-            .then(res => {
-              console.log(res)
-              this.setState({output: res.data.globalMessage, checking:false})
-            })
-            .catch(console.log)
-  
+      this.setState({checking: true, output: ""}, () => {
+        this.services.writeFile(this.state.id, this.state.content, 1)
+            .then(res => this.setState({output: res.data.globalMessage, checking:false}))
+            .catch(err => this.setState({output: err, checking:false}))
       })
-    
-
-
-    // this.setState({
-    //     content: initialCode,
-    // })
 }
 
   render(){
-    return(
 
+    return(
+      <main className="game1">
+      <header>
+        <h1>¿Sobreviviréis a un segundo Jueves Negro?</h1>
+        <p>Las horas pasan lentamente, una tras otra, hasta que perdéis la cuenta. ¿Cuánto tiempo habrá pasado? Mientras se acumulan los minutos del interminable array de movies, solo podéis pensar en reducir la agonía. ¡Por el amor de Dios! ¿Cuánto duran estas movies? ¡Deberían durar diez veces menos!</p>
+      </header>
     <div className="editor">
+      
       <div className="editor-pane">
         <div className="input-header">
           <div className="file-name">movies.js</div> Code Editor
@@ -69,55 +61,51 @@ class Game1 extends Component {
         </div>
       </div>
 
-      <div className="editor-pane html-view">
-        <div className="input-header">
-          <div className="file-name">Jasmine</div>
-          Resultado
-        </div>
-        <div className="file-window">
-        {
-            this.state.checking ?
-            <p>Comprobando...</p>
-            :
-            this.state.output ?
-            this.state.output.map((spec,idx) => {
-              return <div key={idx}><p>{spec.description}</p><p>{spec.status}</p></div>
-            })
-            :
-            <p>Introduce tu respuesta y pulsa enviar</p>
-          }
-          <div className="markup"></div>
-        </div>
-      </div>
+        <section className="movies-output">
+            <div className="movies">
+            <p>var movies = [</p>
+            <br/>
+            {
+              Movies.map((movie,idx) => {
+                return <article key={idx}>
+                <p>{`{`}</p>
+                <p>title: {movie.title}</p>
+                <p>year: {movie.year}</p>
+                <p>director: {movie.director}</p>
+                <p>duration: {movie.duration}</p>
+                <p>genre: {movie.genre}</p>
+                <p>rate: {movie.rate}</p>
+                <p>{`}`}</p>
+                <br/>
+                </article>
+              })
+            }
+            </div>
+
+            <div className="tall html-view">
+              <div className="input-header">
+                <div className="file-name">Jasmine</div>
+                Resultado
+              </div>
+              <div className="file-window">
+              {
+                  this.state.checking ?
+                  <p>Comprobando...</p>
+                  :
+                  this.state.output ?
+                  this.state.output.map((spec,idx) => {
+                    return <div key={idx}><p className={spec.status}>{spec.description}</p></div>
+                  })
+                  :
+                  <p>Introduce tu respuesta y pulsa enviar</p>
+                }
+                <div className="markup"></div>
+              </div>
+            </div>
+        </section>
+        
     </div>
-
-
-
-
-
-
-
-        // <main classNameName="game">
-        //   <section classNameName="game1 input">
-        //     <form onSubmit={this.handleSubmit}>
-        //       <textarea name="content" value={this.state.content} onChange={(e) => this.handleState(e)}></textarea>
-        //       <button type="submit">Enviar</button>
-        //     </form>
-        //   </section>
-        //   <section classNameName="game1 output">
-        //   {
-        //     this.state.checking ?
-        //     <p>Comprobando...</p>
-        //     :
-        //     this.state.output ?
-        //     this.state.output.map((spec,idx) => {
-        //       return <div key={idx}><p>{spec.description}</p><p>{spec.status}</p></div>
-        //     })
-        //     :
-        //     <p>Introduce tu respuesta y pulsa enviar</p>
-        //   }
-        //   </section>
-        // </main>
+    </main>
     )
   }
 }

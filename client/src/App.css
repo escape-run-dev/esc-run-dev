@@ -73,8 +73,43 @@ h1 {
 }
 
 .game1 {
+  width: 100%;
+}
+
+.game1 header {
+  margin: 30px;
+}
+
+.game1 header h1 {
+  font-size: 2em;
+}
+
+.game1 header p {
+  padding: 10px;
+}
+
+.movies-output{
   width: 50%;
-  margin: 10px;
+  max-height: 100vh;
+  display:flex;
+  flex-direction: column;
+}
+
+.movies {
+  padding: 20px !important;
+  overflow-y: scroll;
+}
+
+.tall {
+  min-height: 60%;
+}
+
+.passed {
+  color: #4cd137;
+}
+
+.failed {
+  color: #e84118;
 }
 
 /* MENU */

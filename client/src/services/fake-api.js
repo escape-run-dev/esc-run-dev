@@ -11,22 +11,19 @@ class FakeApi {
   }
 
   getModel = code => {
-    return this.service.get("getModel")
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+    return this.service.post("getModel", )
+      .then(response => console.log(response))
     }
     
   getRandom = () => {
     return this.service.get("random")
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+      .then(response => response.data.finalResponse)
   }
   
   insertModel = model =>{
 
     return this.service.post("addModel", model)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+      .then(response => console.log(response))
   }
 
 }

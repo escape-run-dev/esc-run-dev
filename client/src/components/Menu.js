@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+
 class Menu extends Component {
   constructor(props){
     super(props)
@@ -13,6 +14,7 @@ class Menu extends Component {
             <ul>
                 <Link className="menu-link" to="/bcrypt">Bcrypt</Link>
                 <Link className="menu-link" to="/qreader">QReader</Link>
+                <Link className="menu-link" to="/fakeapi">Api Calls</Link>
                 <Link className="menu-link" to="/game-1">PRUEBA 1</Link>
                 <Link className="menu-link" to="/game-2">PRUEBA 2</Link>
                 <Link className="menu-link" to="/game-3">PRUEBA 3</Link>

@@ -14,6 +14,7 @@ import Game5 from "./components/Game5"
 import Video from './components/VideoTest'
 import Qreader from './components/Qreader'
 import Bcrypt from './components/Bcrypt'
+import Fakeapi from './components/FakeApi'
 
 class App extends Component {
 
@@ -62,6 +63,7 @@ class App extends Component {
               <Route exact path="/bcrypt" component={Bcrypt}/>
               <Route exact path="/qreader" component={Qreader}/>
               <Route exact path="/vid" component={Video} />
+              <Route exact path="/fakeapi" component={Fakeapi} />
               <Route exact path="/game-1" render={() => <Game1 user={this.state.loggedInUser} />} />
               <Route exact path="/game-2" component={Game2} />
               <Route exact path="/game-3" component={Game3} />

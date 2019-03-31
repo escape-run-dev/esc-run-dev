@@ -22,26 +22,32 @@ router.post('/addModel', (req,res, next) => {
   })
 
 router.get('/random', (req,res,next) => {
-  
-
   fakeApiF.find()
     .then(response => {
-
       let finalResponse = response[Math.floor(Math.random()*response.length)]  
-      res.json({ finalResponse })
-    
+      res.json({finalResponse})
     })
     .catch(err => console.log(err))   
 })
 
 router.get('/getModel/:id', (req,res,next) => {
 
-  const {code} = req.params.id
-
-  fakeApiF.findOne({code}, code)
-    .then(response => res.json(response))
-    .catch()
-
+  const {id} = req.params
+  
+  fakeApiF.findOne({code: id})
+    
+  .then(response => {
+    
+    if(response) res.json(response);
+    else {
+      fakeApiF.findOne({foodName: "Salmón con verduras"}) 
+      .then(data => {
+        res.json(data)
+      })
+      .catch(err => console.log(err))
+    }
+  })
+  .catch(err => console.log(err)) 
 })
  
 

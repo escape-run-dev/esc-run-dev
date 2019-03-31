@@ -18,7 +18,7 @@ router.post('/addModel', (req,res, next) => {
   NewRealFood.save()
 
     .then(response => res.json({response}))
-    .catch(err => res.json({message: "Nanai de la China"}))
+    .catch(err => res.json({Img: "https://cdnb.20m.es/cronicaverde/files/2012/02/basura.jpg", Description: "Posiblemente, es lo que no estás buscando...", Name: "Comida en la basura"}))
 
   })
 

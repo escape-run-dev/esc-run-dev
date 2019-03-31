@@ -21,9 +21,8 @@ class FakeApi {
   }
   
   insertModel = code =>{
-    console.log(code)
     return this.service.post("addModel", {code})
-      .then(response => console.log(response.data.response))
+      .then(response => response.data)
   }
 
 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import FakeApi from '../services/fake-api'
+import CardComponent from './CardComponent'
 
 
 class CallingDB extends Component {
@@ -21,8 +22,8 @@ class CallingDB extends Component {
                         input5: "",
                         input5value: ""
                       },
-        receivedRandomModel: "",
-        receivedModel: {}
+        receivedModel: "",
+        failModel: ""
         
       }
   
@@ -53,10 +54,9 @@ class CallingDB extends Component {
 
       this.fakeApi.getRandom()
         .then( data => {
-          console.log(data)
         this.setState({          
           ...this.state,
-          randomModel: data
+          receivedModel: data
         })
     })
     .catch( error => console.log(error) )
@@ -67,7 +67,6 @@ class CallingDB extends Component {
 
       this.fakeApi.getModel(this.state.sendingCode)
         .then( data => {
-          console.log(data)
         this.setState({          
           ...this.state,
           receivedModel: data
@@ -81,25 +80,54 @@ class CallingDB extends Component {
 
       this.fakeApi.insertModel(this.state.sendingModel)
         .then( data => {
-          console.log(data)
+          if(data.Description) {
+            this.setState({
+              ...this.state,
+              receivedModel: "",
+              failModel: data 
+            })
+          }
+          else {
+            let route = {
+              img: "Inserta imagen de las gradas",
+              Start: "RFLFL",
+              r1: "Ruta 1",
+              r2: "Ruta 2",
+              r3: "Ruta 3",
+              r4: "Ruta 4",
+              msg: "Mensaje de ayuda"
+            }
+            this.setState({
+              ...this.state,
+              failModel: "",
+              receivedModel: route
+            })
+          }
         })
         .catch(error => console.log(error))
 
     }
 
     render() {
+      let cardComponent;
+      if(this.state.receivedModel) cardComponent = <CardComponent containerCard={this.state.receivedModel}/> 
+            else if(this.state.failModel) cardComponent = <CardComponent containerCard={this.state.failModel}/>
+            else cardComponent = <p>Waiting</p>
     return (
       <main>
         <section>
+          <h3>Llamada a la Api</h3>
           <form onSubmit={this.handleSubmitCode}>
             <label>Llama a la api</label><br/>
             <input type="text" name="sendingCode" value={this.state.sendingCode} onChange={this.handleChange} placeholder="Tu llamada post"/>
-            <button type="submit">Call</button>
+            <button type="submit">Llamar</button>
           </form>
+          <h3>Random Call</h3>
           <form onSubmit={this.handleSubmitRandom}>
             <label>Obtén una respuesta aleatoria</label><br/>
-            <button type="submit">Call</button>
+            <button type="submit">Llamar</button>
           </form>
+          <h3>Postea una nueva receta</h3>
           <form onSubmit={this.handleSubmitModel}>
             <label>Opción 1</label>
             <input type="text" name="input1" onChange={this.handleChangeSendingModel} value={this.state.sendingModel.input1}/>
@@ -116,15 +144,14 @@ class CallingDB extends Component {
             <label>Opción 5</label>
             <input type="text" name="input5" onChange={this.handleChangeSendingModel} value={this.state.sendingModel.input5}/>          
             <input type="text" name="input5value" onChange={this.handleChangeSendingModel} value={this.state.sendingModel.input5value} placeholder="Inserta valor"/>
-            <button type="submit">TO THE MOON</button>
+            <button type="submit">Añadir a la DB</button>
           </form>
         </section>
         <section>
-          {this.state.randomModel ? <p>Hola Puto</p> : null }
           <br/>
           <br/>
           <br/>
-          <h1>Obreros calientes trabajando en ello</h1>
+          {cardComponent}
         </section>
       </main>
     )

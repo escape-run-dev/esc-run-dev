@@ -67,7 +67,7 @@ componentDidMount() {
 
   render(){
     
-    this.drink()
+    // this.drink()
 
     return(
       <main className={`game1 ${this.state.drunkLevel}`}>

@@ -73,7 +73,18 @@ router.post("/writeFile", (req,res,next) => {
     //   console.log("Mensaje: " + globalMessage)
     //   res.json(globalMessage)
     // })
-    jasmine.execute([`spec/games/${id}${randomizer}Spec.js`])
+    try {
+      jasmine.execute([`spec/games/${id}${randomizer}Spec.js`])
+    }
+    catch (err) {
+      fs.unlink(`spec/games/${id}${randomizer}Spec.js`, (err) => {
+        if (err) throw err;
+        console.log('File deleted')
+      });
+      globalMessage.push({description: "Hay algún error gordo en tu código que hace que ni siquiera podamos testearlo (mira a ver esos paréntesis, llaves, etc.)", status: "failed"})
+      res.status(200).json({globalMessage})
+      globalMessage = []
+    }
 
     // while (!finished) {
     //   console.log("Bucle")

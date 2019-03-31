@@ -21,7 +21,7 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      loggedInUser: false,
+      loggedInUser: false, //Volver a poner false
     }
     this.service = new Auth()
   }  
@@ -65,10 +65,10 @@ class App extends Component {
               <Route exact path="/vid" component={Video} />
               <Route exact path="/fakeapi" component={Fakeapi} />
               <Route exact path="/game-1" render={() => <Game1 user={this.state.loggedInUser} />} />
-              <Route exact path="/game-2" component={Game2} />
-              <Route exact path="/game-3" component={Game3} />
-              <Route exact path="/game-4" component={Game4} />
-              <Route exact path="/game-5" component={Game5} />
+              <Route exact path="/game-2" render={() => <Game2 user={this.state.loggedInUser} />} />
+              <Route exact path="/game-3" render={() => <Game3 user={this.state.loggedInUser} />} />
+              <Route exact path="/game-4" render={() => <Game4 user={this.state.loggedInUser} />} />
+              <Route exact path="/game-5" render={() => <Game5 user={this.state.loggedInUser} />} />
           </Switch>
           <Menu></Menu>
         </main>

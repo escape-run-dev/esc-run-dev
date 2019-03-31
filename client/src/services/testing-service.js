@@ -9,9 +9,9 @@ class TestingService {
     this.service = service
   }
 
-  writeFile = (id, content) => {
-    return this.service.post('/writeFile', {id,content})
-    .then(res => res)
+  writeFile = (id, content, prueba) => {
+    return this.service.post('/writeFile', {id,content,prueba})
+    // .then(res => res)
   } 
 
   // runJasmine = (id) => {

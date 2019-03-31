@@ -61,10 +61,7 @@ class Game5 extends Component {
 
       this.setState({checking: true, output: ""}, () => {
         this.services.writeFile(this.state.id, this.state.content, 5)
-            .then(res => {
-              console.log(res.data)
-              this.setState({output: res.data.globalMessage, testsPassed: res.data.passed, checking:false})
-            })
+            .then(res => this.setState({output: res.data.globalMessage, testsPassed: res.data.passed, checking:false}))
             .catch(err => this.setState({output: err, checking:false}))
       })
 }

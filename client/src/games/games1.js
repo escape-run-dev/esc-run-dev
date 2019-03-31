@@ -1,5 +1,5 @@
-var initialCode = `const suma = (num1,num2) => {
-    return num1 + num2
+var initialCode = `const reduceDuration = (movies) => {
+    // Aquí tu código.
 }`
 
 export default initialCode

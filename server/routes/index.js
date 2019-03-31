@@ -55,37 +55,25 @@ router.get('/', (req, res, next) => {
 
 router.post("/writeFile", (req,res,next) => {
   
-  let {content, id} = req.body
-
+  let {content, id, prueba} = req.body
   // fs.writeFile(`lib/games/${id}.js`, content, function (err) {
   //   if (err) console.log(err)
   //   console.log('Lib is created successfully.')
   // })
 
-  let spec = content + `; describe("A ver si funcionase esto...", () => {
-
-    it("La suma de 2 y 4 es 6", () => {
-      expect(suma(2,4)).toEqual(6)
-    })
-    it("La suma de 3 y 2 no es 4", () => {
-        expect(suma(3,2)).toEqual(4)
-    })
-  })` 
-
   runJasmine = id => {
+
+    var jasmine = new Jasmine()
+    jasmine.loadConfigFile("../server/spec/support/jasmine.json")
+    jasmine.addReporter(myReporter)
+  
     console.log("Ejecutando Jasmine")
 
     // jasmine.onComplete(passed => {
     //   console.log("Mensaje: " + globalMessage)
     //   res.json(globalMessage)
     // })
-
-    var jasmine = new Jasmine()
-    jasmine.loadConfigFile("../server/spec/support/jasmine.json")
-    jasmine.addReporter(myReporter)
-
-
-    jasmine.execute([`./spec/games/${id}Spec.js`])
+    jasmine.execute([`spec/games/${id}${randomizer}Spec.js`])
 
     // while (!finished) {
     //   console.log("Bucle")
@@ -94,16 +82,33 @@ router.post("/writeFile", (req,res,next) => {
     // res.json(globalMessage)
 
     jasmine.onComplete(passed => {
-      console.log(globalMessage)
+      fs.unlink(`spec/games/${id}${randomizer}Spec.js`, (err) => {
+        if (err) throw err;
+        console.log('File deleted')
+      });
       res.json({globalMessage})
+      globalMessage = []
     })
   }
-  
-  fs.writeFile(`spec/games/${id}Spec.js`, spec, () => {
-    console.log("File created")
-    runJasmine(id)
-  },)
 
+
+  function getRandom() {
+    return Math.floor((Math.random() * (897876 - 10) + 10))
+  }
+
+  // writeFirst = (id,content,prueba) => {
+
+    let currentGame = require(`../lib/games/game${prueba}`)
+    let spec = content + currentGame
+    let randomizer = getRandom()
+
+    fs.writeFile(`spec/games/${id}${randomizer}Spec.js`, spec, (err) => {
+      if (err) throw err;
+      console.log("File created")
+      runJasmine(id,randomizer)
+    },)
+ 
+  
 })
 
 // router.post("/runJasmine", (req,res,next) => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TestingService from '../services/testing-service'
-import initialCode from "../games/games1"
+import initialCode from "../games/games4"
 import './Game1.css'
 
 class Game4 extends Component {

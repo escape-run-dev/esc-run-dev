@@ -1,72 +1,59 @@
-var initialCode = `function nbaCup(resultSheet, toFind) {
-  
-    var teamExists = false 
-    var errorMessage = undefined
-  
-    teams.split(",").forEach (function (team) {
-        if (team.trim() === ToFind){
-          teamExists = true
-      })
-  
-      var matches = resultSheet.split(",")
-  
-      var filtered = match.filter(function (matches){
-        return match.includes(toFind)
-      })
-  
-      var teamName = toFind.split(" ")[0]
-      var teamLetters = toFind.split(" ").lenght
-  
-      var currentMatch = []
-      var currentScore = []
-      var wins = 0
-      var loses = 0
-      var draws = 0
-      var points = 0
-      var pointsScored = 0
-      var pointsConceded = 0
-  
-      filtered.forEach (function (match){
-        currentMatch = match.split(" ")
-        if (currentMatch[0] === teamName){
-          currentScore.push(parseFloat(currentMatch[teamLetters]))
-          currentScore.push(parseFloat(currentMatch[currentMatch.length - 1]))
-        } else {
-          currentScore.push(parseFloat(currentMatch[currentMatch.length - 1]))
-          currentScore.push(parseFloat(currentMatch[currentMatch.length - 2 - teamLetters]))
+//SIN ERRATAS:
+
+// function lastDayIsFriday(initialYear, endYear) {
+
+//     function lastDayOfMonth (month,year){
+//         var lastDay = new Date(year, month + 1, 0);
+//         return lastDay.getDay()
+//     }
+      
+//     function lastDaysOfYear (year){
+//       var counter = 0
+//       for (var i = 0; i < 12; i++){
+//         if (lastDayOfMonth(i,year) === 5){
+//         counter += 1
+//         }
+//       }
+//       return counter
+//     }
+      
+//     var fridays = 0
+//     if (endYear === undefined){
+//       fridays += lastDaysOfYear(initialYear)
+//     } else {
+//       for (var i = initialYear; i <= endYear; i++){
+//         fridays += lastDaysOfYear(i)
+//       }
+//     }  
+//     return fridays
+//   }
+
+var initialCode = `function lastDayIsFriday(initialYear, endYear) {
+
+    function lastDayOfMonth (month,year){
+        var lastDay = new Date(year, month + 1, 0);
+        lastDay.getDay()
+    }
+      
+    function lastDaysOfYear (year){
+      var counter = 0
+      for (var i = 0; i < 12; i++){
+        if (lastDayOfMonth(i,year) === 5){
+        counter += 1
         }
-        if ((currentScore[0] % 1 !== 0) || (currentScore[1] % 1 !== 0)){
-          errorMessage = "Error(float number):" + currentMatch.join (" ")
-        }
-        if (currentScore[0] > currentScore[1]){
-          wins++
-          points += 3
-        } else if (currentScore[0] < currentScore[1]){
-          loses++
-        } else {
-          draws++
-          points++
-        }
-        pointsScored += currentScore[0]
-        pointsConceded += currentScore[1]
-  
-        currentMatch = []
-        currentScore = []
-  
-      var ans = toFind + ":W=" + wins + ";D=" + draws + ";L=" + loses + ";Scored=" + pointsScored + ";Conceded=" + pointsConceded + ";Points=" + points
-  
-      if (toFind === ""){
-        return ""
       }
-      else if (errorMessage !== ""){
-          return error
+      return counter
+    }
+      
+    var fridays = 0
+    if (endYear = undefined){
+      Fridays += lastDaysOfYear(initYear)
+    } else {
+      for (var i = initialYear; i <= lastYear; i =+ 1){
+        fridays += lastDaysOfYear(i)
       }
-      else if (teamExists){
-        return ans
-      } else {
-        return toFind + ":This team didn't play!"
-      }
-        
+    }  
+    return fridays
   }`
 
 export default initialCode

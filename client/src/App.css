@@ -100,7 +100,19 @@ h1 {
   overflow-y: scroll;
 }
 
-.movies a {
+.fridays-output{
+  width: 50%;
+  max-height: 100vh;
+  display:flex;
+  flex-direction: column;
+}
+
+.fridays {
+  padding: 20px !important;
+}
+
+
+.fridays a {
   color: #f5f6fa;
   text-decoration: underline;
 }
@@ -113,8 +125,34 @@ h1 {
   color: #4cd137;
 }
 
+.tests_passed {
+  color: #fbc531;
+  margin-top: 10px !important;
+  text-transform: uppercase;
+}
+
 .failed {
   color: #e84118;
+}
+
+.drunk-verylight {
+  filter: blur(.4px);
+}
+
+.drunk-light {
+  filter: blur(0.6px);
+}
+
+.drunk-medium {
+  filter: blur(0.75px);
+}
+
+.drunk-heavy {
+  filter: blur(1px);
+}
+
+.drunk-crazy {
+  filter: blur(1.5px);
 }
 
 /* MENU */

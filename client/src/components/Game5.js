@@ -14,34 +14,39 @@ class Game5 extends Component {
       content: initialCode,
       output: "",
       checking: false,
+      testsPassed: false,
+      drunkLevel: "drunk-verylight"
     }
 
     this.services = new TestingService()
+
+    this.drink = () => {
+      let framesCounter = 0;
+  
+      let drinkify = setInterval( () => {
+        framesCounter++
+          
+        if (framesCounter === 60){
+          this.setState({drunkLevel: "drunk-light"})
+        }
+        if (framesCounter === 200){
+          this.setState({drunkLevel: "drunk-medium"})
+        } 
+        if (framesCounter === 400){
+          this.setState({drunkLevel: "drunk-heavy"})
+        } 
+        if (framesCounter === 600){
+          this.setState({drunkLevel: "drunk-crazy"})
+        }
+        if (framesCounter > 605) clearInterval(drinkify)
+  
+      }, 1000)
+      
+    }
+
+    this.drink()
+
   }
-
-  // drink = () => {
-  //   let framesCounter = 0;
-
-  //   setInterval( () => {
-  //     framesCounter++
-
-  //     if (framesCounter === 60){
-  //       this.setState({drunkLevel: "shake-slow"})
-  //     }
-  //     if (framesCounter === 200){
-  //       this.setState({drunkLevel: "shake"})
-  //     } 
-  //     if (framesCounter === 400){
-  //       this.setState({drunkLevel: "shake-hard"})
-  //     } 
-  //     if (framesCounter === 600){
-  //       this.setState({drunkLevel: "shake-crazy"})
-  //     }
-  //     if (framesCounter > 1000) framesCounter = 0
-
-  //   }, 1000)
-    
-  // }
 
   handleState = e => {
     const { value } = e.target
@@ -56,7 +61,10 @@ class Game5 extends Component {
 
       this.setState({checking: true, output: ""}, () => {
         this.services.writeFile(this.state.id, this.state.content, 5)
-            .then(res => this.setState({output: res.data.globalMessage, checking:false}))
+            .then(res => {
+              console.log(res.data)
+              this.setState({output: res.data.globalMessage, testsPassed: res.data.passed, checking:false})
+            })
             .catch(err => this.setState({output: err, checking:false}))
       })
 }
@@ -67,8 +75,6 @@ componentDidMount() {
 
   render(){
     
-    this.drink()
-
     return(
       <main className={`game1 ${this.state.drunkLevel}`}>
       <header>
@@ -93,11 +99,11 @@ componentDidMount() {
         </div>
       </div>
 
-        <section className="movies-output">
-            <div className="movies">
-      <p><a href="https://www.codewars.com/kata/ranking-nba-teams/train/javascript" target="_blank">Esta es la kata que estás intentando resolver</a></p>
-      <p>(Es aconsejable que tengas la kata abierta mientras corriges los errores. ¡Ah! Y ten en cuenta que las variables team, r1, r2 y r están definidas en las pruebas)</p>
-            </div>
+        <section className="fridays-output">
+            <div className="fridays">
+      <p>La función que has escrito (de aquella manera) está a puntito de funcionar, pero tiene algunas erratas que hace que no pase los tests. Tu misión es corregirlas. ¡Ánimo!</p>
+      <p><a href="https://www.codewars.com/kata/tgi-friday/train/javascript" target="_blank">Por cierto, esta es la kata que estás intentando resolver</a></p>
+      </div>
 
             <div className="tall html-view">
               <div className="input-header">
@@ -115,6 +121,12 @@ componentDidMount() {
                   })
                   :
                   <p>Introduce tu respuesta y pulsa enviar</p>
+                }
+                {
+                this.state.testsPassed ?
+                  <div><p className="tests_passed">Has logrado resolver la kata. Apunta el número de viernes entre 1901 y 2000. Los vas a necesitar 😉</p></div>
+                :
+                null
                 }
                 <div className="markup"></div>
               </div>

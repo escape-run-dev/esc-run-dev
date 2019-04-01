@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TestingService from '../services/testing-service'
-// import initialCode from "../games/games6"
+import initialCode from "../games/games6"
 import {Game} from "./canvas/Game"
 
 
@@ -8,39 +8,41 @@ class Game2 extends Component {
   constructor(props){
     super(props)
     this.state = {
-    //   content: initialCode,
+      content: initialCode,
     }
 
     this.services = new TestingService()
+    this.services.writeCollisions(initialCode)
 
   }
 
   handleState = e => {
-    // const { value } = e.target
+    const { value } = e.target
     
-    // this.setState({
-    //     content: value,
-    // })
+    this.setState({
+        content: value,
+    })
   }
 
   handleSubmit = e => {
     e.preventDefault()
 
-    // this.services.writeCss(this.state.content)
-  }
+    this.services.writeCollisions(this.state.content)
+    if (!this.game){
+        this.game = new Game(document.getElementById("canvas"))
+        this.game.start() 
+        this.setTimeout = ( () => {
+            if (this.game.result === "win") console.log("Hola")
+        },31000)
+    }
 
-  componentDidMount () {
-    this.game = new Game(document.getElementById("canvas"))
-    this.game.start()
   }
 
   render(){ 
 
-
-
     return(
         <main className="game6">
-          {/* <header>
+          <header>
             <h1>Flex Puzzle: saca al maquetador que llevas dentro</h1>
             <p>Los que lo fían todo a Bootstrap no están de enhorabuena. Para resolver el puzzle y seguir adelante tendréis que demostrar vuestros conocimientos de Flexbox, colocando las piezas mediante posicionamiento CSS hasta que todo encaje. ¿Podréis hacerlo?</p>
           </header>
@@ -58,8 +60,8 @@ class Game2 extends Component {
                     <span className="plus">+</span><button type="submit" className="enter-button">enter</button>        
                   </form>
                 </div>
-            </div> */}
-
+            </div>
+        </div>
             <section className="canvas-container">
                 <canvas id="canvas"></canvas>
             </section>

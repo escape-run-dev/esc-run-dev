@@ -21,7 +21,7 @@ class Game2 extends Component {
     }
 
     this.services = new TestingService()
-    this.services.writeCss(initialCode)
+    this.services.writeCss(initialCode, false)
   }
 
   handleState = e => {
@@ -35,7 +35,7 @@ class Game2 extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
-    this.services.writeCss(this.state.content)
+    this.services.writeCss(this.state.content, true)
   }
 
   render(){

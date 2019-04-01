@@ -5,6 +5,9 @@ var Jasmine = require('jasmine');
 
 var fs = require('fs');
 
+var validateCss = require('css-validator');
+var assert = require('assert')
+
 
 var globalMessage = []
 // var finished = false
@@ -124,10 +127,38 @@ router.post("/writeFile", (req,res,next) => {
 
 router.post("/writeCss", (req,res,next) => {
 
+  let {content, validator} = req.body
+  
+  if (validator) {
+    validateCss({text: content}, (err, data) => {
+
+      if (!data.errors.length) {
+        fs.writeFile(`../client/src/components/puzzle-css/user.css`, content, (err) => {
+          if (err) throw err;
+          console.log("File created or updated")
+          res.json({msg: "El CSS está poppy"})
+        },)
+      } else {
+        console.log("No he escrito una mierda")
+        res.status(200).json({msg: "El CSS es tróspido"})
+      }
+    })
+  } else {
+    fs.writeFile(`../client/src/components/puzzle-css/user.css`, content, (err) => {
+      if (err) throw err;
+      console.log("File created or updated")
+      res.json({msg: "Pues como no lo he validado, ¡para dentro!"})
+    },)
+  }
+
+})
+
+router.post("/writeCollisions", (req,res,next) => {
+
   let {content} = req.body
 
-  fs.writeFile(`../client/src/components/puzzle-css/user.css`, content, (err) => {
-    if (err) throw err;
+  fs.writeFile(`../client/src/components/canvas/collisions.js`, content, (err) => {
+    if (err) res.status(200).json({allGood: "Algo ha ido mal"});
     console.log("File created or updated")
     res.json({msg: "ok"})
   },)

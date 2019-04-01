@@ -11,6 +11,7 @@ import Game2 from "./components/Game2"
 import Game3 from "./components/Game3"
 import Game4 from "./components/Game4"
 import Game5 from "./components/Game5"
+import Game6 from "./components/Game6"
 import Video from './components/VideoTest'
 import Qreader from './components/Qreader'
 import Bcrypt from './components/Bcrypt'
@@ -21,7 +22,7 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      loggedInUser: false, //Volver a poner false
+      loggedInUser: false,
     }
     this.service = new Auth()
   }  
@@ -69,6 +70,7 @@ class App extends Component {
               <Route exact path="/game-3" render={() => <Game3 user={this.state.loggedInUser} />} />
               <Route exact path="/game-4" render={() => <Game4 user={this.state.loggedInUser} />} />
               <Route exact path="/game-5" render={() => <Game5 user={this.state.loggedInUser} />} />
+              <Route exact path="/game-6" render={() => <Game6 user={this.state.loggedInUser} />} />
           </Switch>
           <Menu></Menu>
         </main>

@@ -7,4 +7,4 @@
         )
     })
 }
-    module.exports = isCollision
+    export default isCollision;

@@ -158,19 +158,19 @@ router.post("/writeCollisions", (req,res,next) => {
   let {content} = req.body
 
   // console.log(content)
-  content = content.replace(/(export default isCollision;)/g, "module.exports = isCollision")
+  let newContent = content.replace(/(export default isCollision;)/g, "module.exports = isCollision")
   // fs.writeFile(`../client/src/components/canvas/collisions.js`, content, (err) => {
-  fs.writeFile(`./prueba/collisions.js`, content, (err) => {
+  fs.writeFile(`./prueba/collisions.js`, newContent, (err) => {
     if (err) {
       console.log(err)
-      res.status(500).json({allGood: "Algo ha ido mal"});
+      res.status(500).json({msg: "Algo ha ido mal"});
       return
     }
-    console.log("File created or updated")
+    console.log("Prueba created or updated")
     try {
       delete require.cache[require.resolve('../prueba/collisions')]
       let prueba = require(`../prueba/collisions`)
-      console.log(prueba.toString());
+      // console.log(prueba.toString());
       prueba({
         obstacles:[
           {x:10, y:10, h:10, w:10},
@@ -183,9 +183,10 @@ router.post("/writeCollisions", (req,res,next) => {
       fs.writeFile(`../client/src/components/canvas/collisions.js`, content, (err) => {
         if(err) {
           console.log(err)
-          res.status(500).json({allGood: "Algo ha ido mal"});
+          res.status(500).json({msg: "Algo ha ido mal"});
           return
         }
+        console.log("File created or updated")
         res.json({msg: "ok"})
       })
     } catch {

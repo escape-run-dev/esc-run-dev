@@ -72,7 +72,7 @@ componentDidMount() {
   render(){
     
     return(
-      <main className={`game1 ${this.state.drunkLevel}`}>
+      <main className={`game1 ${this.state.drunkLevel} shake`}>
       <header>
         <h1>¡IronBeers! ¿Serás capaz de resolver la kata?</h1>
         <p>Ya has presentado el juego y te sientes eufórico, pero a la vez roto por el estrés. Necesitas desfogarte. ¡Menos mal que ha llegado la hora de las IronBeers! A medianoche, tras unas cuantas cervezas y algún que otro chupito de Jagger, un compañero propone una improvisada guerra de katas. El código resultante es... bueno... está lejos de ser inteligible. ¿Serás capaz de arreglarlo mientras el alcohol te nubla la vista?</p>

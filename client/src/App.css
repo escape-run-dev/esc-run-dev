@@ -137,26 +137,60 @@ h1 {
 
 .drunk-verylight {
   filter: blur(.4px);
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 .drunk-light {
   filter: blur(0.6px);
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 .drunk-medium {
   filter: blur(0.75px);
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 .drunk-heavy {
   filter: blur(1px);
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 .drunk-crazy {
   filter: blur(1.5px);
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
-.puzzle-input {
+@-webkit-keyframes shake {
+  0%, 100% {-webkit-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+}
 
+@keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+
+.shake {
+  -webkit-animation-name: shake;
+  animation-name: shake;
+  animation-iteration-count: infinite;
 }
 
 .puzzle-output {
@@ -196,15 +230,39 @@ h1 {
   width: 100%;
 }
 
+.game6 header {
+  margin: 20px;
+}
+
+.game6 h1 {
+  margin-bottom: 10px;
+}
+
 .canvas-container {
   width: 90%;
   margin: 0 auto;
 }
 
 canvas {
-  margin: 20px;
+  margin: 20px auto;
   width: 100%; 
   height: 500px;
+}
+
+.button-up {
+  position: absolute;
+  width: 50px;
+  bottom: -140px;
+  right: 325px;
+  z-index: 100;
+}
+
+.button-down {
+  position: absolute;
+  width: 50px;
+  bottom: -75px;
+  right: 325px;
+  z-index: 100;
 }
 
 /* CLASES PARA GANAR EN EL GAME 2 */

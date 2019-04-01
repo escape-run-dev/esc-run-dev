@@ -1,8 +1,8 @@
 import gameImg1 from "./img/background.jpg"
 import gameImg2 from "./img/spaceship.png"
 import gameImg3 from "./img/aestroid_dark.png"
-import buttonUp from "./img/button_up.png"
-import buttonDown from "./img/button_down.png"
+// import buttonUp from "./img/button_up.png"
+// import buttonDown from "./img/button_down.png"
 import wasCollision from "./collisions.js"
 
 class Background {
@@ -167,35 +167,35 @@ class Player {
    
 }
 
-class Button {
-    constructor(game,type){
-        this.game = game
-        this.type = type
-        this.img = new Image()
+// class Button {
+//     constructor(game,type){
+//         this.game = game
+//         this.type = type
+//         this.img = new Image()
 
-        this.w = 40
-        this.h = 40
+//         this.w = 40
+//         this.h = 40
 
-        if(this.type === "up"){
-            this.img.src = buttonUp
-            this.x = this.game.canvas.width - 50
-            this.y = this.game.canvas.height - 100
-        } 
+//         if(this.type === "up"){
+//             this.img.src = buttonUp
+//             this.x = this.game.canvas.width - 50
+//             this.y = this.game.canvas.height - 100
+//         } 
 
-        if(this.type === "down"){
-            this.img.src = buttonDown
-            this.x = this.game.canvas.width - 50
-            this.y = this.game.canvas.height - 50
-        }
+//         if(this.type === "down"){
+//             this.img.src = buttonDown
+//             this.x = this.game.canvas.width - 50
+//             this.y = this.game.canvas.height - 50
+//         }
 
 
-    }
+//     }
 
-    draw = () => {
-        this.game.ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
-    }
+//     draw = () => {
+//         this.game.ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
+//     }
 
-}
+// }
 
 
 class Game {
@@ -210,11 +210,13 @@ class Game {
       this.framesCounter = 0
       this.obstacles = []
       this.result = ""
+      this.started = false
     }
 
     start =  () => {
+        this.started = true
         this.reset()
-        this.setListeners()
+        // this.setListeners()
 
         this.interval = setInterval( () => {
 
@@ -242,6 +244,7 @@ class Game {
 
     stop = () => {
         clearInterval(this.interval)
+        this.started = false
     }
 
     gameOver = () => {
@@ -262,8 +265,8 @@ class Game {
     reset = () => {
         this.background = new Background(this)
         this.player = new Player(this)
-        this.buttonUp = new Button(this,"up")
-        this.buttonDown = new Button(this,"down")
+        // this.buttonUp = new Button(this,"up")
+        // this.buttonDown = new Button(this,"down")
         this.framesCounter = 0
         this.obstacles = []
         this.result = ""
@@ -273,12 +276,17 @@ class Game {
     }
     
     
-    setListeners = () => {
-        window.onclick = (e) => {
-            if (e.clientX > 900 && e.clientX < 970 && e.clientY > 425 && e.clientY < 476) this.player.y -= 10
-            if (e.clientX > 900 && e.clientX < 970 && e.clientY > 490 && e.clientY < 540) this.player.y += 10
-        }
-    }
+    // setListeners = () => {
+    //     window.onclick = (e) => {
+    //         console.log(e.clientX,e.clientY)
+    //         if (this.player.y > 0){
+    //             if (e.clientX > 880 && e.clientX < 945 && e.clientY > 340 && e.clientY < 390) this.player.y -= 10
+    //         }
+    //         if (this.player.y < (this.canvas.height - this.player.h)){
+    //             if (e.clientX > 880 && e.clientX < 945 && e.clientY > 490 && e.clientY < 392) this.player.y += 10
+    //         }    
+    //     }
+    // }
 
     isCollision = () => {
         return wasCollision(this)
@@ -307,8 +315,8 @@ class Game {
     drawAll = () => {
         this.background.draw()
         this.player.draw()
-        this.buttonUp.draw()
-        this.buttonDown.draw()
+        // this.buttonUp.draw()
+        // this.buttonDown.draw()
         this.obstacles.forEach(obstacle => obstacle.draw())
     }
 

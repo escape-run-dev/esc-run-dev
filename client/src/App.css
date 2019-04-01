@@ -246,3 +246,23 @@ h1 {
   text-decoration: none;
   color: #f5f6fa;
 }
+
+.imgSize {
+  width: 150px;
+  height: 150px;
+}
+
+.sizeW {
+  width: 100%;
+}
+
+.aligner {
+  position: absolute;
+  display: block;
+  top: 50vh;
+  left: 41vw;
+}
+
+.greenBorder {
+  border-top: 5px solid #4cd137;
+}

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import {Link} from "react-router-dom"
+import React, { Component } from 'react'
 import TestingService from '../services/testing-service'
 import initialCode from "../games/games5"
 import './Game1.css'
@@ -99,7 +98,7 @@ componentDidMount() {
         <section className="fridays-output">
             <div className="fridays">
       <p>La función que has escrito (de aquella manera) está a puntito de funcionar, pero tiene algunas erratas que hace que no pase los tests. Tu misión es corregirlas. ¡Ánimo!</p>
-      <p><a href="https://www.codewars.com/kata/tgi-friday/train/javascript" target="_blank">Por cierto, esta es la kata que estás intentando resolver</a></p>
+      <p><a href="https://www.codewars.com/kata/tgi-friday/train/javascript" target="_blank" rel="noopener noreferrer">Por cierto, esta es la kata que estás intentando resolver</a></p>
       </div>
 
             <div className="tall html-view">

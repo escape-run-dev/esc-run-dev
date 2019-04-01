@@ -14,9 +14,12 @@ class TestingService {
     // .then(res => res)
   } 
 
-  writeCss = (content) => {
-    console.log(content)
-    return this.service.post('/writeCss', {content})
+  writeCss = (content, validator) => {
+    return this.service.post('/writeCss', {content, validator})
+  } 
+
+  writeCollisions = (content) => {
+    return this.service.post('/writeCollisions', {content})
   } 
 
   // runJasmine = (id) => {

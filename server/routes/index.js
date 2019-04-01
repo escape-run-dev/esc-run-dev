@@ -122,6 +122,17 @@ router.post("/writeFile", (req,res,next) => {
   
 })
 
+router.post("/writeCss", (req,res,next) => {
+
+  let {content} = req.body
+
+  fs.writeFile(`../client/src/components/puzzle-css/user.css`, content, (err) => {
+    if (err) throw err;
+    console.log("File created or updated")
+    res.json({msg: "ok"})
+  },)
+})
+
 // router.post("/runJasmine", (req,res,next) => {
 
 //   let {id} = req.body 

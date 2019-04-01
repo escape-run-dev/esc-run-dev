@@ -155,10 +155,83 @@ h1 {
   filter: blur(1.5px);
 }
 
+.puzzle-input {
+
+}
+
+.puzzle-output {
+  width: 450px;
+  height: 300px;
+  margin: 10px;
+  display:flex;
+  flex-direction: column;
+}
+
+.puzzle-row {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.puzzle-block {
+  display:flex;
+}
+
+.puzzle-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.puzzle-piece {
+  width: 150px;
+  height: 100px;
+}
+
+.puzzle-piece img {
+  width: 100%;
+}
+
+/* CLASES PARA GANAR EN EL GAME 2 */
+
+/* .row1 {
+  flex-direction: row-reverse;
+  justify-content: ;
+  align-items: ;
+}
+
+.block{
+  flex-direction: row-reverse;
+  justify-content: ;
+  align-items: ;
+}
+
+.block-col1 {
+  flex-direction: column-reverse;
+  justify-content: ;
+  align-items: ;
+}
+
+.block-col2 {
+  flex-direction: column-reverse;
+  justify-content: ;
+  align-items: ;
+}
+
+.block-row1 {
+  flex-direction: row-reverse;
+  justify-content: ;
+  align-items: ;
+}
+
+.block-row2 {
+  flex-direction: row-reverse;
+  justify-content: ;
+  align-items: ;
+} */
+
 /* MENU */
 
 .menu {
-  width: 15%;
+  width: 20%;
   padding: 25px;
   background-color: #2f3640;
 }

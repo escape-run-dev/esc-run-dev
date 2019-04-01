@@ -5,6 +5,6 @@
             game.player.x < (obstacle.x + obstacle.w) &&
             game.player.y + (game.player.h - 20) >= obstacle.y)
         )
-    })
+    }
 }
     module.exports = isCollision

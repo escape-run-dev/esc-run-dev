@@ -1,11 +1,12 @@
-var initialCode = ` isCollision = () => {
+var initialCode = ` const isCollision = game => {
     return game.obstacles.some(obstacle => {
         return (
-        ((this.player.x + this.player.w) >= obstacle.x &&
-            this.player.x < (obstacle.x + obstacle.w) &&
-            this.player.y + (this.player.h - 20) >= obstacle.y)
+        ((game.player.x + game.player.w) >= obstacle.x &&
+            game.player.x < (obstacle.x + obstacle.w) &&
+            game.player.y + (game.player.h - 20) >= obstacle.y)
         )
     })
-}`
+}
+    `
 
-export default initialCode
+export default initialCode + 'export default isCollision;'

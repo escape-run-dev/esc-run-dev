@@ -28,13 +28,17 @@ class Game2 extends Component {
     e.preventDefault()
 
     this.services.writeCollisions(this.state.content)
-    if (!this.game){
-        this.game = new Game(document.getElementById("canvas"))
-        this.game.start() 
-        this.setTimeout = ( () => {
-            if (this.game.result === "win") console.log("Hola")
-        },31000)
-    }
+    .then(() => {
+        console.log("entra")
+        if (!this.game){
+            this.game = new Game(document.getElementById("canvas"))
+            this.game.start() 
+            this.setTimeout = ( () => {
+                if (this.game.result === "win") console.log("Hola")
+            },31000)
+        }
+    })
+    
 
   }
 

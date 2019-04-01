@@ -157,11 +157,44 @@ router.post("/writeCollisions", (req,res,next) => {
 
   let {content} = req.body
 
-  fs.writeFile(`../client/src/components/canvas/collisions.js`, content, (err) => {
-    if (err) res.status(200).json({allGood: "Algo ha ido mal"});
+  // console.log(content)
+  content = content.replace(/(export default isCollision;)/g, "module.exports = isCollision")
+  // fs.writeFile(`../client/src/components/canvas/collisions.js`, content, (err) => {
+  fs.writeFile(`./prueba/collisions.js`, content, (err) => {
+    if (err) {
+      console.log(err)
+      res.status(500).json({allGood: "Algo ha ido mal"});
+      return
+    }
     console.log("File created or updated")
-    res.json({msg: "ok"})
+    try {
+      delete require.cache[require.resolve('../prueba/collisions')]
+      let prueba = require(`../prueba/collisions`)
+      console.log(prueba.toString());
+      prueba({
+        obstacles:[
+          {x:10, y:10, h:10, w:10},
+          {x:10, y:10, h:10, w:10},
+          {x:10, y:10, h:10, w:10},
+          {x:10, y:10, h:10, w:10},
+        ],
+        player:{x:10,y:10,h:10, w:10}
+      })
+      fs.writeFile(`../client/src/components/canvas/collisions.js`, content, (err) => {
+        if(err) {
+          console.log(err)
+          res.status(500).json({allGood: "Algo ha ido mal"});
+          return
+        }
+        res.json({msg: "ok"})
+      })
+    } catch {
+      console.log("Ha petado")
+      res.status(500).json({msg:"ERROR"})
+    }
   },)
+
+
 })
 
 // router.post("/runJasmine", (req,res,next) => {

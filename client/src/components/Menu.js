@@ -16,6 +16,7 @@ class Menu extends Component {
                 <Link className="menu-link" to="/game-2">Flex Puzzle</Link>
                 <Link className="menu-link" to="/game-3">U Got NCaged</Link>
                 <Link className="menu-link" to="/game-4">La Máquina</Link>
+                <Link className="menu-link" to="/game-6">Fix the Canvas</Link>
                 <Link className="menu-link" to="/game-5">Drunk Kata</Link>
                 <Link className="menu-link" to="/qreader">QR Reader</Link>
                 <Link className="menu-link" to="/bcrypt">BCrypt Tool</Link>

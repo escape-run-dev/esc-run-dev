@@ -129,6 +129,7 @@ router.post("/writeCss", (req,res,next) => {
   fs.writeFile(`../client/src/components/puzzle-css/user.css`, content, (err) => {
     if (err) throw err;
     console.log("File created or updated")
+    res.json({msg: "ok"})
   },)
 })
 

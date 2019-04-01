@@ -43,7 +43,7 @@ class Game2 extends Component {
         <main className="game1">
           <header>
             <h1>Flex Puzzle: saca al maquetador que llevas dentro</h1>
-            <p>Los que lo fían todo a Bootstrap no están de enhorabuena. Para resolver el puzzle y seguir adelante tendrás que demostrar tus conocimientos de Flexbox, colocando las piezas mediante posicionamiento CSS hasta que todo encaje. ¿Podrás hacerlo?</p>
+            <p>Los que lo fían todo a Bootstrap no están de enhorabuena. Para resolver el puzzle y seguir adelante tendréis que demostrar vuestros conocimientos de Flexbox, colocando las piezas mediante posicionamiento CSS hasta que todo encaje. ¿Podréis hacerlo?</p>
           </header>
           <div className="editor">
             <div className="editor-pane">

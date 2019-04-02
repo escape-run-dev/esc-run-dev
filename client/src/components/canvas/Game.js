@@ -31,8 +31,8 @@ class Obstacle {
     constructor (game) {
         this.game = game
   
-        this.w = 30
-        this.h = 40
+        this.w = 25
+        this.h = 25
 
         this.img = new Image()
         this.img.src = gameImg3
@@ -224,7 +224,7 @@ class Game {
             
             this.framesCounter++
             // if (this.framesCounter > 1000) this.framesCounter = 0
-            if (this.framesCounter % 40 === 0) this.generateObstacle()
+            if (this.framesCounter % 100 === 0) this.generateObstacle()
             if (this.framesCounter % 1800 === 0) this.youWin()
           
             // this.player.move()
@@ -311,7 +311,7 @@ class Game {
     generateObstacle = () => {
         this.obstacles.push(new Obstacle(this));
     }
-    
+
     drawAll = () => {
         this.background.draw()
         this.player.draw()

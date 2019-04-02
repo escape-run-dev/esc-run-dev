@@ -67,12 +67,12 @@ class Game2 extends Component {
         <main className="game1">
             <header>
               <h1>Fix the Canvas: arregla las colisiones</h1>
-              <p>Es el momento de hacer click. El juego es el primer gran momento de todo ironhacker, cuando descubre todo lo que ha aprendido en las primeras semanas. ¿Todavía lo recuerdas? Tendrás que arreglar el código de las colisiones para poder pasarte el juego. Si aguantas 30 segundos sin morir, habrás ganado</p>
+              <p>Ha llegado la hora del famoso 'click'. El juego es el primer momento cumbre para todo ironhacker, cuando descubre todo lo que ha aprendido en las primeras semanas. ¿Te acuerdas? Más te vale, porque tendrás que arreglar el código de las colisiones para poder pasarte el juego. Si aguantas 30 segundos sin morir, habrás ganado. ¡Ah! Y no podrás hacer trampa... Tienes que coger la moneda, así que no te vale con trucar las colisiones.</p>
             </header>
             <section className="canvas-container">
                 <canvas id="canvas"></canvas>
-                <img src={buttonUp} className="button-down" alt="Botón para subir" onClick={() => this.move("up")}></img>
-                <img src={buttonDown} className="button-up" alt="Botón para bajar" onClick={() => this.move("down")}></img>
+                <img src={buttonUp} className="button-up" alt="Botón para subir" onClick={() => this.move("up")}></img>
+                <img src={buttonDown} className="button-down" alt="Botón para bajar" onClick={() => this.move("down")}></img>
             </section>
             <div className="editor">
               <div className="editor-canvas">

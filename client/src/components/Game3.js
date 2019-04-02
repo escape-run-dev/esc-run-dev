@@ -66,11 +66,11 @@ class Game3 extends Component {
 
       <main className="game1">
       <header>
-        <h1>Nicolas Cage: el lado troll de los TAs</h1>
-        <p>Los que lo fían todo a Bootstrap no están de enhorabuena. Para resolver el ncage y seguir adelante tendréis que demostrar vuestros conocimientos de Flexbox, colocando las piezas mediante posicionamiento CSS hasta que todo encaje. ¿Podréis hacerlo?</p>
+        <h1>You've got Caged: lo que pasa cuando no cierras tu portátil</h1>
+        <p>Ha vuelto a suceder. Te has tomado un descanso y has dejado la tapa del ordenador abierta, al alcance de cualquiera con ganas de troleo. Al volver de tu descanso, todas las imágenes de tu navegador se han cambiado por fotos de Nicholas Cage. Tendrás que conseguir un par de pistas para volver a la normalidad (y dar con otra clave)</p>
       </header>
-      <div className="editor">
-        <div className="editor-pane">
+      <div className="editor editor-game3">
+        <div className="editor-pane pane-game3">
           <div className="input-header">
             <div className="file-name">ncage.css</div> Code Editor
           </div>
@@ -90,10 +90,11 @@ class Game3 extends Component {
               </form>
             </div>
         </div>
-        <section className="puzzle-output">
-          <div className="aligner">
-            <div className="container">
-
+        <section className="puzzle-output-game3">
+        <div className="input-header">
+                <div className="file-name">Flexbox Puzzle</div>
+                Resultado
+              </div>
                 <div className="puzzle-row block-row1">
                   {this.state.images.map((images, index) => {
 
@@ -117,12 +118,10 @@ class Game3 extends Component {
                     {this.state.images.map((images, index) => {
 
                        if(index > 5) return <article key={index} className="imgSize"><img className={`sizeW ${this.state.classW}`} src={images}/></article>
-                    
+  
                     })}
                   </div>
                 </div>
-            </div>
-          </div>          
         </section>
       </div>
     </main>

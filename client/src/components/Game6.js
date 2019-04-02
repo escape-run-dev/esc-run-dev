@@ -64,7 +64,7 @@ class Game2 extends Component {
   render(){ 
 
     return(
-        <main className="game6">
+        <main className="game1">
             <header>
               <h1>Fix the Canvas: arregla las colisiones</h1>
               <p>Es el momento de hacer click. El juego es el primer gran momento de todo ironhacker, cuando descubre todo lo que ha aprendido en las primeras semanas. ¿Todavía lo recuerdas? Tendrás que arreglar el código de las colisiones para poder pasarte el juego. Si aguantas 30 segundos sin morir, habrás ganado</p>

@@ -32,7 +32,9 @@ class App extends Component {
           round4: false,
           round5: false,
           round6: false
-        }
+        },
+        qrRead: false,
+        gameFinished: false,
       }
     }
     this.service = new Auth()

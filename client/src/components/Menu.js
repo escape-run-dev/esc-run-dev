@@ -11,7 +11,7 @@ class Menu extends Component {
         game3: true,
         game4: true,
         game5: true,
-        game6: true
+        game6: true,
       }
     }
   }

@@ -72,7 +72,7 @@ class Game4 extends Component {
                  </form>
                </div>
       </div>
-
+      
         <section className="movies-output">
             <div className="movies">
             <p>Aquí va el vídeo que explica la prueba</p>

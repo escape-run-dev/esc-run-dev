@@ -23,6 +23,17 @@ class App extends Component {
     super()
     this.state = {
       loggedInUser: false,
+      game: {
+        gameId: undefined,
+        rounds: {
+          round1: false,
+          round2: false,
+          round3: false,
+          round4: false,
+          round5: false,
+          round6: false
+        }
+      }
     }
     this.service = new Auth()
     this.fetchUser()
@@ -39,6 +50,15 @@ class App extends Component {
 
   setTheUser = (userObj) => {
     this.setState({ loggedInUser: userObj })
+  }
+
+  getTheGame = (gameId) => {
+
+    //return game
+  }
+
+  setTheGame = (gameId, round) => {
+    //La round es para que cuando el hijo llame, sepa qué hijo ha llamado
   }
 
   render() {
@@ -67,14 +87,14 @@ class App extends Component {
               <Route exact path="/qreader" component={Qreader}/>
               <Route exact path="/vid" component={Video} />
               <Route exact path="/fakeapi" component={Fakeapi} />
-              <Route exact path="/game-1" render={() => <Game1 user={this.state.loggedInUser} />} />
-              <Route exact path="/game-2" render={() => <Game2 user={this.state.loggedInUser} />} />
-              <Route exact path="/game-3" render={() => <Game3 user={this.state.loggedInUser} />} />
-              <Route exact path="/game-4" render={() => <Game4 user={this.state.loggedInUser} />} />
-              <Route exact path="/game-5" render={() => <Game5 user={this.state.loggedInUser} />} />
-              <Route exact path="/game-6" render={() => <Game6 user={this.state.loggedInUser} />} />
+              <Route exact path="/game-1" render={() => <Game1 user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame}  />} />
+              <Route exact path="/game-2" render={() => <Game2 user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} />} />
+              <Route exact path="/game-3" render={() => <Game3 user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} />} />
+              <Route exact path="/game-4" render={() => <Game4 user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} />} />
+              <Route exact path="/game-5" render={() => <Game5 user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} />} />
+              <Route exact path="/game-6" render={() => <Game6 user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} />} />
           </Switch>
-          <Menu></Menu>
+          <Menu roundsInfo={this.state.game.rounds}></Menu>
         </main>
   
         </div>

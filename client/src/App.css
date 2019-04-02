@@ -1,4 +1,10 @@
 
+/* CODEMIRROR */
+
+.CodeMirror {
+  min-height: 570px;
+}
+
 /* GLOBAL */
 
 body {
@@ -217,6 +223,10 @@ header {
 
 .failed {
   color: #e84118;
+}
+
+.game5 .file-window {
+  min-height: 100vh;
 }
 
 .drunk-verylight {

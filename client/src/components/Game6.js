@@ -4,6 +4,9 @@ import initialCode from "../games/games6"
 import {Game} from "./canvas/Game"
 import buttonUp from "./canvas/img/button_up.png"
 import buttonDown from "./canvas/img/button_down.png"
+import 'codemirror/lib/codemirror.css'
+import {Controlled as CodeMirror} from 'react-codemirror2'
+require('codemirror/mode/javascript/javascript')
 
 class Game2 extends Component {
   constructor(props){
@@ -79,7 +82,37 @@ class Game2 extends Component {
                 <div className="input-header">
                   <div className="file-name">flexbox-puzzle.css</div> Code Editor
                 </div>
-                <div className="file-window css-view">
+
+                {/* <div className="file-window css-view"> */}
+               {/* <div className="line-numbers">
+                 1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20
+               </div> */}
+
+                                  {/* <textarea name="content" value={this.state.content} onChange={(e) => this.handleState(e)} className="input-strobe" placeholder="Siempre ha habido clases..."></textarea> */}
+
+               <div className="editor-container">
+                 <form onSubmit={this.handleSubmit}>
+                   <CodeMirror
+                     value={this.state.content}
+                     options={{
+                       lineNumbers: true
+                     }}
+                     className="form-console"
+                     onBeforeChange={(editor, data, value, next) => {
+                       this.setState({
+                         content: value
+                       })
+                     }}
+                     onChange={(editor, data, value) => {}}
+                   />
+                  <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                 </form>
+               </div>
+
+
+
+
+                {/* <div className="file-window css-view">
                   <div className="line-numbers">
                     1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20
                   </div>
@@ -87,7 +120,7 @@ class Game2 extends Component {
                       <textarea name="content" value={this.state.content} onChange={(e) => this.handleState(e)} className="input-strobe" placeholder="Siempre ha habido clases..."></textarea>
                       <span className="plus">+</span><button type="submit" className="enter-button">enter</button>        
                     </form>
-                  </div>
+                  </div> */}
               </div>
             </div>
         </main>

@@ -11,6 +11,9 @@ import puzzle8 from "./puzzle/image_part_008.jpg"
 import puzzle9 from "./puzzle/image_part_009.jpg"
 import initialCode from "../games/games2"
 import "./puzzle-css/user.css"
+import 'codemirror/lib/codemirror.css'
+import {Controlled as CodeMirror} from 'react-codemirror2'
+require('codemirror/mode/css/css')
 
 
 class Game2 extends Component {
@@ -50,15 +53,24 @@ class Game2 extends Component {
               <div className="input-header">
                 <div className="file-name">flexbox-puzzle.css</div> Code Editor
               </div>
-              <div className="file-window css-view">
-                <div className="line-numbers">
-                  1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20
-                </div>
-                  <form onSubmit={this.handleSubmit}>
-                    <textarea name="content" value={this.state.content} onChange={(e) => this.handleState(e)} className="input-strobe" placeholder="Siempre ha habido clases..."></textarea>
-                    <span className="plus">+</span><button type="submit" className="enter-button">enter</button>        
-                  </form>
-                </div>
+              <div className="editor-container">
+                 <form onSubmit={this.handleSubmit}>
+                   <CodeMirror
+                     value={this.state.content}
+                     options={{
+                       lineNumbers: true,
+                     }}
+                     className="form-console"
+                     onBeforeChange={(editor, data, value, next) => {
+                       this.setState({
+                         content: value
+                       })
+                     }}
+                     onChange={(editor, data, value) => {}}
+                   />
+                  <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                 </form>
+               </div>
             </div>
 
             <section className="puzzle-output">

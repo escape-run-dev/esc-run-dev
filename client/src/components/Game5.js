@@ -4,6 +4,14 @@ import initialCode from "../games/games5"
 import './Game1.css'
 import Prism from 'prismjs';
 import "./prism.css";
+import 'codemirror/lib/codemirror.css'
+import {Controlled as CodeMirror} from 'react-codemirror2'
+require('codemirror/mode/javascript/javascript')
+require("codemirror/theme/3024-night.css")
+require("codemirror/theme/erlang-dark.css")
+require("codemirror/theme/cobalt.css")
+require("codemirror/theme/paraiso-light.css")
+
 
 class Game5 extends Component {
   constructor(props){
@@ -14,7 +22,8 @@ class Game5 extends Component {
       output: "",
       checking: false,
       testsPassed: false,
-      drunkLevel: "drunk-verylight"
+      drunkLevel: "drunk-verylight",
+      themeChanging: "default"
     }
 
     this.services = new TestingService()
@@ -26,16 +35,16 @@ class Game5 extends Component {
         framesCounter++
           
         if (framesCounter === 60){
-          this.setState({drunkLevel: "drunk-light"})
+          this.setState({drunkLevel: "drunk-light", themeChanging: "3024-night"})
         }
         if (framesCounter === 200){
-          this.setState({drunkLevel: "drunk-medium"})
+          this.setState({drunkLevel: "drunk-medium", themeChanging: "erlang-dark"})
         } 
         if (framesCounter === 400){
-          this.setState({drunkLevel: "drunk-heavy"})
+          this.setState({drunkLevel: "drunk-heavy", themeChanging: "cobalt"})
         } 
         if (framesCounter === 600){
-          this.setState({drunkLevel: "drunk-crazy"})
+          this.setState({drunkLevel: "drunk-crazy", themeChanging: "paraiso-light"})
         }
         if (framesCounter > 605) clearInterval(drinkify)
   
@@ -83,16 +92,26 @@ componentDidMount() {
         <div className="input-header">
           <div className="file-name">movies.js</div> Code Editor
         </div>
-        <div className="file-window css-view">
-          <div className="line-numbers">
-            1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20
-          </div>
-            <form onSubmit={this.handleSubmit}>
-              <textarea name="content" value={this.state.content} onChange={(e) => this.handleState(e)} className="input-strobe" placeholder="¿Serás capaz de superar el Jueves Negro?"></textarea>
-              <span className="plus">+</span><button type="submit" className="enter-button">enter</button>        
-            </form>
-            
-        </div>
+
+        <div className="editor-container">
+                 <form onSubmit={this.handleSubmit}>
+                   <CodeMirror
+                     value={this.state.content}
+                     options={{
+                       lineNumbers: true,
+                       theme: this.state.themeChanging
+                     }}
+                     className="form-console"
+                     onBeforeChange={(editor, data, value, next) => {
+                       this.setState({
+                         content: value
+                       })
+                     }}
+                     onChange={(editor, data, value) => {}}
+                   />
+                  <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                 </form>
+               </div>
       </div>
 
         <section className="fridays-output">
@@ -106,7 +125,7 @@ componentDidMount() {
                 <div className="file-name">Jasmine</div>
                 Resultado
               </div>
-              <div className="file-window">
+              <div className="game5 file-window">
               {
                   this.state.checking ?
                   <p>Comprobando...</p>

@@ -157,6 +157,9 @@
   100% {transform: skew(4deg,0deg) scaleX(1); }
 }
 
+.editor-container {
+  position: relative;
+}
 
 .enter-button {
   background: #ddd;
@@ -174,7 +177,7 @@
   cursor: pointer;
   top: 7px;
   right: 7px;
-  z-index: 1;
+  z-index: 10;
 }
 
 .enterhit {

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import TestingService from '../services/testing-service'
 import initialCode from "../games/games4"
 import './Game1.css'
+import 'codemirror/lib/codemirror.css'
+import {Controlled as CodeMirror} from 'react-codemirror2'
+require('codemirror/mode/css/css')
 
 class Game4 extends Component {
   constructor(props){
@@ -42,9 +45,7 @@ class Game4 extends Component {
       <main className="game1">
       <header>
         <h1>La máquina de los cafés y sandwiches gratis</h1>
-        <p>Como sabes, la máquina de guarrerías de Ironhack falla más que una escopeta de feria.
-A todos nos ha alegrado el día alguna vez con un 2x1 o algún producto gratis, pero acertar
-con el que va a caer sin pasar por caja es una lotería. ¿Será el café de Starbucks o el sandwich de chorizo?</p>
+        <p>Como sabes, la máquina de guarrerías de Ironhack falla más que una escopeta de feria. A todos nos ha alegrado el día alguna vez con un 2x1 o algún producto gratis, pero acertar con el que va a caer sin pasar por caja es una lotería. ¿Será el café de Starbucks o el sandwich de chorizo?</p>
       </header>
     <div className="editor">
       
@@ -52,15 +53,24 @@ con el que va a caer sin pasar por caja es una lotería. ¿Será el café de Sta
         <div className="input-header">
           <div className="file-name">movies.js</div> Code Editor
         </div>
-        <div className="file-window css-view">
-          <div className="line-numbers">
-            1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20
-          </div>
-          <form onSubmit={this.handleSubmit}>
-          <textarea name="content" value={this.state.content} onChange={(e) => this.handleState(e)} className="input-strobe" placeholder="¿Serás capaz de superar el Jueves Negro?"></textarea>
-          <span className="plus">+</span><button type="submit" className="enter-button">enter</button>        
-          </form>
-        </div>
+        <div className="editor-container">
+                 <form onSubmit={this.handleSubmit}>
+                   <CodeMirror
+                     value={this.state.content}
+                     options={{
+                       lineNumbers: true,
+                     }}
+                     className="form-console"
+                     onBeforeChange={(editor, data, value, next) => {
+                       this.setState({
+                         content: value
+                       })
+                     }}
+                     onChange={(editor, data, value) => {}}
+                   />
+                  <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                 </form>
+               </div>
       </div>
 
         <section className="movies-output">

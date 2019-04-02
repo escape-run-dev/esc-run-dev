@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import VideoPlayer from 'react-player'
 import TestingService from '../services/testing-service'
 import initialCode from "../games/games4"
 import './Game1.css'
 import 'codemirror/lib/codemirror.css'
 import {Controlled as CodeMirror} from 'react-codemirror2'
 require('codemirror/mode/css/css')
+
 
 class Game4 extends Component {
   constructor(props){
@@ -47,7 +49,7 @@ class Game4 extends Component {
         <h1>La máquina de los cafés y sandwiches gratis</h1>
         <p>Como sabes, la máquina de guarrerías de Ironhack falla más que una escopeta de feria. A todos nos ha alegrado el día alguna vez con un 2x1 o algún producto gratis, pero acertar con el que va a caer sin pasar por caja es una lotería. ¿Será el café de Starbucks o el sandwich de chorizo?</p>
       </header>
-    <div className="editor">
+    <div className="editor game4-editor">
       
       <div className="editor-pane">
         <div className="input-header">
@@ -73,30 +75,11 @@ class Game4 extends Component {
                </div>
       </div>
       
-        <section className="movies-output">
+        <section className="movies-output game4-video">
             <div className="movies">
-            <p>Aquí va el vídeo que explica la prueba</p>
-            <p>Se bebe un café y una Coca-Cola al día</p>
-<p>Los martes no trae tupper y se come un par de sandwiches</p>
-<p>Si los lunes son 0, los días impares se compra una bolsita de frutos secos</p>
-<p>Dos veces por semana, a media mañana le entra hambre y se come un donut (pero no necesariamente lo compra y nunca es un lunes)</p>
-<p>Cuando se pone generoso, que suele ser un par de viernes el mes, saca tres bolsas de snacks para toda la clase</p>
-
-<p>Los productos de la primera fila cuestan 1.20 euros y caen gratis 1 de cada 2 veces</p>
-<p>Los productos de la segunda fila cuestan 0.70 euros y nunca caen gratis</p>
-<p>Los productos de la tercera fila cuestan 0,85 euros y siempre dan 2x1</p>
-<p>Los productos de la cuarta fila cuestan 1 euro y nunca caen gratis</p>
-<p>Los productos de la quinta fila cuestan 1.60 euros y dan 2x0 y de cada 8 veces</p>
-<p>Los productos de la sexta fila cuestan 1.40 euros y caen gratis 1 de cada 4 veces</p>
-
-<p>Las bolsas de snacks están en la primera fila</p>
-<p>Los frutos secos están en la segunda fila</p>
-<p>Los donuts están en la tercera fila</p>
-<p>Los sandwiches están en la quinta fila</p>
-<p>Las bebidas están en la sexta fila</p>
-
-<p>Los lunes arreglan la máquina y no cae nada gratis</p>
-
+              <p>Uno de tus compañeros de bootcamp afirma haber descubierto el patrón que sigue el fallo de la máquina. Y lleva varios días comiendo y bebiendo de gorra, así que parece que no es un farol.</p>
+              <p>Para calcular cuánto se ahorrado en un mes (suponiendo, por simplificar, que el mes tiene cuatro semanas idénticas de cinco días), cuenta con los siguientes datos:</p>
+              <VideoPlayer className="video-game4" url='https://www.youtube.com/watch?v=9CS7j5I6aOc' playing={true}/>
             </div>
 
             <div className="tall html-view">
@@ -104,7 +87,7 @@ class Game4 extends Component {
                 <div className="file-name">Jasmine</div>
                 Resultado
               </div>
-              <div className="file-window">
+              <div className="file-window game4-window">
               {
                   this.state.checking ?
                   <p>Comprobando...</p>

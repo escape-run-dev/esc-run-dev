@@ -15,8 +15,12 @@ class Crypt extends Component {
   
   cryptoMethod = (e) => {
     e.preventDefault()
-    const cripted = Bcrypt.hashSync(this.state.input, this.salt).split("").filter(elm => elm !== "/" && elm !== ".").join("")
-    this.setState({output: cripted})
+    if (this.state.input) {
+      const cripted = Bcrypt.hashSync(this.state.input, this.salt).split("").filter(elm => elm !== "/" && elm !== ".").join("")
+      this.setState({output: cripted})
+    } else {
+      this.setState({output: ""})
+    }
   }
 
   handlerChange = (e) => {
@@ -26,10 +30,10 @@ class Crypt extends Component {
 
   render(){
     return(
-      <form onSubmit={(e) => this.cryptoMethod(e)}>
-        <label>Encripta un valor</label><br/><br/>
+      <form className="bcrypt" onSubmit={(e) => this.cryptoMethod(e)}>
+        <label>Introduce la clave que deseas cifrar:</label><br/><br/>
         <input type="text" name="input"value={this.state.input} onChange={e => this.handlerChange(e)}/><br/><br/>
-        <button type="submit">Encriptar</button><br/><br/><br/>
+        <button type="submit">Cifrar</button><br/><br/><br/>
 
         {this.state.output ? <p>{this.state.output}</p>: null}
       

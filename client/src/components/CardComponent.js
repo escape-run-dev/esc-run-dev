@@ -5,7 +5,7 @@ const CardComponent = (props) => {
   let containerCard = props.containerCard
 
   return (
-    <div>
+    <section className="card">
       
       {containerCard.imageUrl ? <div><p>imageUrl</p><img src={containerCard.imageUrl}/></div> : null}
       {containerCard.img = <img src={containerCard.img}/>}
@@ -32,7 +32,7 @@ const CardComponent = (props) => {
       {containerCard.Description ? <p>Description: {containerCard.Description}</p> : null}
       {containerCard.Name ? <p>Name: {containerCard.Name}</p> : null}
 
-    </div>
+    </section>
   )
 }
 

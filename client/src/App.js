@@ -88,7 +88,7 @@ class App extends Component {
               <Route exact path="/bcrypt" component={Bcrypt}/>
               <Route exact path="/qreader" component={Qreader}/>
               <Route exact path="/vid" component={Video} />
-              <Route exact path="/fakeapi" component={Fakeapi} />
+              <Route exact path="/api" component={Fakeapi} />
               <Route exact path="/game-1" render={() => <Game1 user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame}  />} />
               <Route exact path="/game-2" render={() => <Game2 user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} />} />
               <Route exact path="/game-3" render={() => <Game3 user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} />} />

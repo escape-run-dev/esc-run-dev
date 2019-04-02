@@ -38,26 +38,21 @@ class Signup extends Component {
       
   render(){
     return(
-      <div>
+      <main class="signup-container">
         {this.state.redirect ? <Redirect to="/vid"/> : null}
-        <form onSubmit={e => this.handleFormSubmit(e)}>
+        <form className="signup-form" onSubmit={e => this.handleFormSubmit(e)}>
           <label>Nombre del grupo:</label>
           <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
-          <br/><br/>
           <label>Contraseña:</label>
           <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
-          <br/><br/>
           <label>Email:</label>
           <input type="email" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
-          <br/><br/>
           <input type="submit" value="Signup" />
         </form>
   
-        <p>¿Ya tienes una cuenta? Entra
-            <Link to={"/login"}> Login</Link>
-        </p>
+        <p>¿Ya habéis jugado alguna vez? <Link to={"/login"}>Acceder</Link></p>
   
-      </div>
+      </main>
     )
   }  
 }

@@ -40,23 +40,19 @@ class Login extends Component {
       
   render(){
     return(
-      <div>
+      <main className="login-container">
         {this.state.redirect ? <Redirect to="/vid"/> : null}
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Nombre del grupo:</label>
+        <form className="login-form" onSubmit={this.handleFormSubmit}>
+          <label>Nombre del grupo: </label>
           <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
-          <br/><br/>
-          <label>Contraseña:</label>
+          <label>Contraseña: </label>
           <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
-          <br/><br/>
           <input type="submit" value="Login" />
         </form>
   
-        <p>¿No tienes una cuenta? 
-            <Link to={"/signup"}> Signup</Link>
-        </p>
+        <p>¿No tenéis una cuenta? <Link to={"/signup"}>Registraos</Link></p>
   
-      </div>
+      </main>
     )
   }  
 }

@@ -22,14 +22,26 @@ class QreaderC extends Component {
 
   render() {
     return (
-      <div>
-        <Qreader
-          delay={300}
-          onError={this.handleError}
-          onScan={this.handleScan}
-          style={{ width: '400px', height: '400px' }}
-        />
-        <p>{this.state.result}</p>
+
+      <div className="editor editor-qr">
+      <section>
+          <Qreader
+            delay={300}
+            onError={this.handleError}
+            onScan={this.handleScan}
+            style={{ width: "400px", height: "400px" }}
+          />
+        </section>
+        
+        <div className="editor-pane pane-qr">
+          <div className="input-header">
+            <div className="file-name">Scan your code</div> QR Reader
+          </div>
+          <div className="file-window css-view">
+              <p clasName="input-strobe">Resultado: {this.state.result}</p>
+          </div>
+        </div>
+        
       </div>
     )
   }

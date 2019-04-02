@@ -880,3 +880,35 @@ canvas {
 .card img {
   width: 100%;
 }
+
+/* HEADER BACKGROUND PICS */
+
+.game1-header {
+  background: url("./components/game_img/movies.jpg") no-repeat right;
+  background-size: 40%;
+}
+
+.game2-header {
+  background: url("./components/game_img/puzzle.jpg") no-repeat right;
+  background-size: 40%;
+}
+
+.game3-header {
+  background: url("./components/game_img/cage.jpg") no-repeat right;
+  background-size: 40%;
+}
+
+.game4-header {
+  background: url("./components/game_img/coffee.jpg") no-repeat right;
+  background-size: 40%;
+}
+
+.game5-header {
+  background: url("./components/game_img/drink.jpg") no-repeat right;
+  background-size: 40%;
+}
+
+.game6-header {
+  background: url("./components/game_img/canvas_game.jpg") no-repeat right;
+  background-size: 40%;
+}

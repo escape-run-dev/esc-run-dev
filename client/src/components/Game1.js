@@ -43,7 +43,7 @@ class Game1 extends Component {
 
     return(
       <main className="game1">
-      <header>
+      <header class="game1-header">
         <h1>¿Sobreviviréis a un segundo Jueves Negro?</h1>
         <p>Las horas pasan lentamente, una tras otra, hasta que perdéis la cuenta. ¿Cuánto tiempo habrá pasado? Mientras se acumulan los minutos del interminable array de movies, solo podéis pensar en reducir la agonía. ¡Por el amor de Dios! ¿Cuánto duran estas movies? ¡Deberían durar diez veces menos!</p>
       </header>

@@ -65,7 +65,7 @@ class Game3 extends Component {
     return (
 
       <main className="game1">
-      <header>
+      <header className="game3-header">
         <h1>You've got Caged: lo que pasa cuando no cierras tu portátil</h1>
         <p>Ha vuelto a suceder. Te has tomado un descanso y has dejado la tapa del ordenador abierta, al alcance de cualquiera con ganas de troleo. Al volver de tu descanso, todas las imágenes de tu navegador se han cambiado por fotos de Nicholas Cage. Tendrás que conseguir un par de pistas para volver a la normalidad (y dar con otra clave)</p>
       </header>

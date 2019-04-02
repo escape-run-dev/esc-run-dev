@@ -45,7 +45,7 @@ class Game4 extends Component {
 
     return(
       <main className="game1">
-      <header>
+      <header className="game4-header">
         <h1>La máquina de los cafés y sandwiches gratis</h1>
         <p>Como sabes, la máquina de guarrerías de Ironhack falla más que una escopeta de feria. A todos nos ha alegrado el día alguna vez con un 2x1 o algún producto gratis, pero acertar con el que va a caer sin pasar por caja es una lotería. ¿Será el café de Starbucks o el sandwich de chorizo?</p>
       </header>

@@ -25,13 +25,15 @@ class App extends Component {
       loggedInUser: false,
     }
     this.service = new Auth()
+    this.fetchUser()
   }  
 
   fetchUser() {
-    if (this.state.loggedInUser === null) {
+    if (this.state.loggedInUser === false) {
       this.service.loggedIn()
-        .then(response => this.setState({ loggedInUser: response }))
-        .catch(x => this.setState({ loggedInUser: false }))
+        .then(response => {
+          console.log(response)
+          this.setState({ loggedInUser: response })})
     }
   }
 
@@ -41,7 +43,7 @@ class App extends Component {
 
   render() {
 
-    this.fetchUser()
+    
 
     if (!this.state.loggedInUser){
       return (

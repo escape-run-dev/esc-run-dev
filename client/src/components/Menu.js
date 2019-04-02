@@ -10,18 +10,24 @@ class Menu extends Component {
 
   render(){
     return(
-        <nav className="menu">
-            <ul>
-                <Link className="menu-link" to="/game-1">Jueves Negro</Link>
-                <Link className="menu-link" to="/game-2">Flex Puzzle</Link>
-                <Link className="menu-link" to="/game-3">U Got NCaged</Link>
-                <Link className="menu-link" to="/game-4">La Máquina</Link>
-                <Link className="menu-link" to="/game-6">Fix the Canvas</Link>
-                <Link className="menu-link" to="/game-5">Drunk Kata</Link>
-                <Link className="menu-link" to="/qreader">QR Reader</Link>
-                <Link className="menu-link" to="/bcrypt">BCrypt Tool</Link>
-                <Link className="menu-link" to="/fakeapi">Call the API</Link>
+        <nav className="menu" role="navigation">
+          <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <Link to="/game-1"><li>Jueves Negro</li></Link>
+                <Link to="/game-2"><li>Flex Puzzle</li></Link>
+                <Link to="/game-3"><li>U Got NCaged</li></Link>
+                <Link to="/game-4"><li>La Máquina</li></Link>
+                <Link to="/game-6"><li>Fix the Canvas</li></Link>
+                <Link to="/game-5"><li>Drunk Kata</li></Link>
+                <Link to="/qreader"><li>QR Reader</li></Link>
+                <Link to="/bcrypt"><li>BCrypt Tool</li></Link>
+                <Link to="/fakeapi"><li>Call the API</li></Link>
             </ul>
+          </div>
         </nav>
     )
   }

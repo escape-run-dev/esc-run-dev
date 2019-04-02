@@ -13,7 +13,7 @@ const Stopwatch = () => (
     onCallback={() => alert('GAME OVER')}
     render={({ formatted, hours, minutes, seconds }) => {
       return (
-        <section>
+        <section className="timer">
           <p>{ formatted }</p>
           {/* <p>
             Hours: { hours }

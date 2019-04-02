@@ -156,7 +156,7 @@ router.post("/writeCss", (req,res,next) => {
 router.post("/writeCollisions", (req,res,next) => {
 
   let {content} = req.body
-
+  console.log(req.user)
   // console.log(content)
   let newContent = content.replace(/(export default isCollision;)/g, "module.exports = isCollision")
   // fs.writeFile(`../client/src/components/canvas/collisions.js`, content, (err) => {
@@ -187,7 +187,7 @@ router.post("/writeCollisions", (req,res,next) => {
           return
         }
         console.log("File created or updated")
-        res.json({msg: "ok"})
+        res.status(200).json({msg: "ok"})
       })
     } catch {
       console.log("Ha petado")

@@ -8,6 +8,7 @@ const logger       = require('morgan');
 const path         = require('path');
 
 const session      = require('express-session');
+const MongoStore   = require('connect-mongo')(session);
 const passport     = require('passport');
 const cors         = require('cors');
 
@@ -43,14 +44,15 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(session({
   secret:"some secret goes here",
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // Middleware Setup

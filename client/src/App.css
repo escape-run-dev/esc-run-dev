@@ -6,6 +6,7 @@ body {
   color: #f5f6fa;
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -25,16 +26,30 @@ header {
 
 .timer {
   color: #8c7ae6;
+  font-size: 1.5em;
+}
+
+.timer-text {
+  font-size: 1.5em;
+}
+
+.percentage {
+  color: #8c7ae6;
+  font-size: 1.5em;
+}
+
+.percentage-text {
+  font-size: 1.5em;
 }
 
 .main-header {
-  width: 80%;
+  width: 60%;
   padding: 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  -webkit-box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.33); 
-  box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.33);
+  -webkit-box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.2); 
+  box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.2);
 }
 
 .main-header {
@@ -159,40 +174,40 @@ header {
 
 .drunk-verylight {
   filter: blur(.4px);
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 40s;
+  animation-duration: 40s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
 .drunk-light {
   filter: blur(0.6px);
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 25s;
+  animation-duration: 25s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
 .drunk-medium {
   filter: blur(0.75px);
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 15s;
+  animation-duration: 15s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
 .drunk-heavy {
   filter: blur(1px);
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 8s;
+  animation-duration: 8s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
 .drunk-crazy {
   filter: blur(1.5px);
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -328,7 +343,7 @@ canvas {
 }
 
 .menu a:hover {
-  color: #487eb0 !important;
+  color: #8c7ae6 !important;
 }
 
 /* .menu ul {
@@ -362,7 +377,7 @@ canvas {
   cursor: pointer;
   
   opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  z-index: 11; /* and place it over the hamburger */
   
   -webkit-touch-callout: none;
 }
@@ -378,7 +393,7 @@ canvas {
   margin-bottom: 5px;
   position: relative;
   
-  background: #487eb0;
+  background: #8c7ae6;
   border-radius: 3px;
   
   z-index: 1;
@@ -408,7 +423,8 @@ canvas {
 {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #487eb0;
+  background: #8c7ae6;
+  z-index: 99
 }
 
 /*
@@ -435,7 +451,7 @@ canvas {
  */
 #menu
 {
-  position: absolute;
+  position: fixed;
   width: 300px;
   height: 100%;
   margin: -100px 0 0 0;
@@ -452,6 +468,7 @@ canvas {
   transform: translate(100%, 0);
   
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  z-index: 10;
 }
 
 #menu li
@@ -467,6 +484,15 @@ canvas {
 {
   transform: scale(1.0, 1.0);
   opacity: 1;
+}
+
+#menuToggle input:checked ~ .menuBackground {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0,0,0,0.33);
+  top: 0; left: 0;
+  z-index: 9;
 }
 
 .imgSize {

@@ -13,8 +13,8 @@ const Stopwatch = () => (
     onCallback={() => alert('GAME OVER')}
     render={({ formatted, hours, minutes, seconds }) => {
       return (
-        <section className="timer">
-          <p>{ formatted }</p>
+        <section>
+          <i className="fas fa-stopwatch timer"></i> <span className="timer-text">{ formatted }</span>
           {/* <p>
             Hours: { hours }
           </p>

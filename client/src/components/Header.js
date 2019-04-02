@@ -12,7 +12,7 @@ class Header extends Component {
         <header className="main-header">
             <h1>/Escape && Run Dev</h1>
             <Stopwatch></Stopwatch>
-            <p>Completed: 60%</p>
+            <section><i className="fas fa-percentage percentage"></i> <span className="percentage-text">60%</span></section>
         </header>
     )
   }

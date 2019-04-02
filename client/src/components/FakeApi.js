@@ -117,7 +117,7 @@ class CallingDB extends Component {
       <main className="game1 api">
         <header>
           <h1>En busca de la llamada modélica</h1>
-          <p>Has hecho cientos de llamadas a APIs, incluidas las de tu back, pero esta vez no lo tendrás tan fácil. No conoces las rutas ni sabes del todo lo que estás buscando. Tendrás que seguir las pistas que vayas encontrando en otras pruebas para hacer llamadas GET hasta dar con el modelo de Mongoose correcto. Si lo encuentras, solo tendrás que postear una receta nueva para dar por terminada esta aventura. ¡Mucha suerte!</p>
+          <p>Habéis hecho cientos de llamadas a APIs, incluidas las de vuestro back, pero esta vez no lo tendréis tan fácil. No conocéis las rutas ni sabéis del todo lo que estáis buscando. Tendréis que seguir las pistas que vayáis encontrando en otras pruebas para hacer llamadas GET hasta dar con el modelo de Mongoose correcto. Si lo encontráis, solo tendréis que postear una receta nueva para dar por terminada esta aventura. ¡Mucha suerte!</p>
         </header>
         <div className="editor editor-game3">
         <div className="editor-pane pane-game3">
@@ -125,12 +125,6 @@ class CallingDB extends Component {
             <div className="file-name">ncage.css</div> Code Editor
             </div>
           <div className="file-window css-view">
-            {/* <div className="line-numbers">
-              1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20
-            </div> */}
-
-
-
 
                 <form className="get-call" onSubmit={this.handleSubmitCode}>
                   <p>Podéis hacer una llamada de tipo GET, pero tendréis que aceptar con la ruta:</p>

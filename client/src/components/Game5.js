@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import TestingService from '../services/testing-service'
 import initialCode from "../games/games5"
 import './Game1.css'
-import Prism from 'prismjs';
-import "./prism.css";
 import 'codemirror/lib/codemirror.css'
 import {Controlled as CodeMirror} from 'react-codemirror2'
 require('codemirror/mode/javascript/javascript')
@@ -74,10 +72,6 @@ class Game5 extends Component {
       })
 }
 
-componentDidMount() {
-  Prism.highlightAll();
-}
-
   render(){
     
     return(
@@ -90,7 +84,7 @@ componentDidMount() {
       
       <div className="editor-pane">
         <div className="input-header">
-          <div className="file-name">movies.js</div> Code Editor
+          <div className="file-name">drunk-kata.js</div> Code Editor
         </div>
 
         <div className="editor-container">

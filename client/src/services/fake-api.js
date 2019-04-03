@@ -4,7 +4,7 @@ class FakeApi {
 
   constructor() {
     let service = axios.create({
-      baseURL: 'http://localhost:5002/fakeapi/',
+      baseURL: `${process.env.REACT_APP_URL}fakeapi/`,
       withCredentials: true
     });
     this.service = service

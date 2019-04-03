@@ -77,7 +77,7 @@ class App extends Component {
             <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/bcrypt" component={Bcrypt} />
             <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/qreader" component={Qreader} />
             <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/vid" component={VideoTest} />
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/api" component={Fakeapi} />
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-api" component={Fakeapi} />
             <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-1" component={Game1} />
             <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-2" component={Game2} />
             <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-3" component={Game3} />

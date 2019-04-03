@@ -21,6 +21,7 @@ class Game2 extends Component {
     super(props)
     this.state = {
       content: initialCode,
+      errMsg: ""
     }
 
     this.services = new TestingService()
@@ -39,6 +40,9 @@ class Game2 extends Component {
     e.preventDefault()
 
     this.services.writeCss(this.state.content, true)
+    .then(res => {
+      this.setState ({errMsg: res})
+    })
   }
 
   render(){
@@ -78,6 +82,10 @@ class Game2 extends Component {
                 <div className="file-name">Flexbox Puzzle</div>
                 Resultado
               </div>
+              {console.log(this.state.errMsg)}
+              {this.state.errMsg === "El CSS que has introducido no pasa la validación" &&
+                <div className="error-msg">El CSS que has introducido no pasa la validación</div>
+              }
               <div className="puzzle-row row1">
                 <article className="puzzle-piece"><img src={puzzle3}/></article>
                 <article className="puzzle-piece"><img src={puzzle2}/></article>

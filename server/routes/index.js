@@ -81,7 +81,7 @@ router.post("/writeFile", (req,res,next) => {
     }
     catch (err) {
       fs.unlink(`spec/games/${id}${randomizer}Spec.js`, (err) => {
-        if (err) throw err;
+        if (err) console.log(err)
         console.log('File deleted')
       });
       globalMessage.push({description: "Hay algún error gordo en tu código que hace que ni siquiera podamos testearlo (mira a ver esos paréntesis, llaves, etc.)", status: "failed"})
@@ -97,7 +97,7 @@ router.post("/writeFile", (req,res,next) => {
 
     jasmine.onComplete(passed => {
       fs.unlink(`spec/games/${id}${randomizer}Spec.js`, (err) => {
-        if (err) throw err;
+        if (err) console.log(err)
         console.log('File deleted')
       });
       res.json({globalMessage, passed})
@@ -117,7 +117,7 @@ router.post("/writeFile", (req,res,next) => {
     let randomizer = getRandom()
 
     fs.writeFile(`spec/games/${id}${randomizer}Spec.js`, spec, (err) => {
-      if (err) throw err;
+      if (err) console.log(err)
       console.log("File created")
       runJasmine(id,randomizer)
     },)
@@ -134,18 +134,18 @@ router.post("/writeCss", (req,res,next) => {
 
       if (!data.errors.length) {
         fs.writeFile(`../client/src/components/puzzle-css/user.css`, content, (err) => {
-          if (err) throw err;
+          if (err) console.log(err)
           console.log("File created or updated")
           res.json({msg: "El CSS está poppy"})
         },)
       } else {
         console.log("No he escrito una mierda")
-        res.status(200).json({msg: "El CSS es tróspido"})
+        res.status(200).json({errorMsg: "El CSS que has introducido no pasa la validación"})
       }
     })
   } else {
     fs.writeFile(`../client/src/components/puzzle-css/user.css`, content, (err) => {
-      if (err) throw err;
+      if (err) console.log(err)
       console.log("File created or updated")
       res.json({msg: "Pues como no lo he validado, ¡para dentro!"})
     },)

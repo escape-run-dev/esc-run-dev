@@ -122,7 +122,7 @@ class CallingDB extends Component {
         <div className="editor editor-game3">
         <div className="editor-pane pane-game3">
           <div className="input-header">
-            <div className="file-name">ncage.css</div> Code Editor
+            <div className="file-name">Cocina ironhacker</div> Code Editor
             </div>
           <div className="file-window css-view">
 
@@ -163,7 +163,7 @@ class CallingDB extends Component {
 
             <section className="puzzle-output api-output">
               <div className="input-header">
-                <div className="file-name">Cocina ironhacker</div>
+                <div className="file-name">http://thegame/api...</div>
                 Respuesta de la API
               </div>
               <div clasName="input-strobe">{cardComponent}</div>

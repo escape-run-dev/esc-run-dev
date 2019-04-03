@@ -33,7 +33,7 @@ class Game2 extends Component {
 
     if (!this.game.started){
       this.game.start()
-      this.game.checkCollision = eval(this.state.content)
+      this.game.checkCollision = this.state.content
       console.log("En handleSubmit", this.game.checkCollision, typeof this.game.checkCollision)
       this.checkResult()
       // if (this.game.result === "win") alert("You win")
@@ -83,7 +83,7 @@ class Game2 extends Component {
   componentDidMount () {
     if (!this.game) this.game = new Game(document.getElementById("canvas"))
     this.game.start() 
-    this.game.checkCollision = eval(initialCode)
+    this.game.checkCollision = initialCode
     console.log("En componentDidMount", this.game.checkCollision, typeof this.game.checkCollision)
     this.checkResult()
   }

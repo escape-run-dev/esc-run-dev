@@ -1,4 +1,4 @@
-var initialCode = ` const isCollision = game => {
+var initialCode = `checkCollision = game => {
     return game.obstacles.some(obstacle => {
         return (
         ((game.player.x + game.player.w) >= obstacle.x &&

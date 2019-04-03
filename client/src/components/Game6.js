@@ -31,14 +31,29 @@ class Game2 extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
-    this.services.writeCollisions(this.state.content)
-    .then(() => {
-        if (!this.game.started){
-          this.game.start()
-          this.checkResult()
-          if (this.game.result === "win") alert("You win")
-        }
-    })
+    if (!document.getElementById("collisionscript")) {
+      const script = document.createElement("script");
+      script.innerHTML = this.state.content
+      script.async = true;
+      script.id = "collisionscript"
+      document.body.appendChild(script);
+    } else {
+      const script = document.getElementById("collisionscript")
+      script.innerHTML = this.state.content
+    }
+
+    // this.services.writeCollisions(this.state.content)
+    // .then(() => {
+      
+    //   // ESTARÍA MEJOR AQUÍ EL CÓDIGO QUE CREA EL SCRIPT
+
+    //   if (!this.game.started){
+    //     this.game.start()
+    //     this.checkResult()
+    //     if (this.game.result === "win") alert("You win")
+    //   }
+        
+    // })
   }
 
   move = direction => {

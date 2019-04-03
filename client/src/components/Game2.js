@@ -10,7 +10,7 @@ import puzzle7 from "./puzzle/image_part_007.jpg"
 import puzzle8 from "./puzzle/image_part_008.jpg"
 import puzzle9 from "./puzzle/image_part_009.jpg"
 import initialCode from "../games/games2"
-import "./puzzle-css/user.css"
+// import '%PUBLIC_URL%/puzzle-css/user.css'
 import 'codemirror/lib/codemirror.css'
 import {Controlled as CodeMirror} from 'react-codemirror2'
 require('codemirror/mode/css/css')
@@ -45,7 +45,22 @@ class Game2 extends Component {
     })
   }
 
+  loadStyles () {
+
+    if (document.getElementById("userstyles")) document.getElementById("userstyles").remove();
+
+    const style = document.createElement('link');
+    style.href = "/puzzle-css/user.css"
+    style.rel = "stylesheet"
+    style.id = "userstyles"
+
+    document.body.appendChild(style);
+
+  }
+  
+
   render(){
+    this.loadStyles()
     return(
         <main className="game1">
           <header className="game2-header">

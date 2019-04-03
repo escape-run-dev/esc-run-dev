@@ -516,7 +516,7 @@ canvas {
 }
 
 /* CLASES PARA GANAR EN EL GAME 2 */
-
+/* 
 .row1 {
   flex-direction: row-reverse;
 }
@@ -539,7 +539,7 @@ canvas {
 
 .block-row2 {
   flex-direction: row-reverse;
-}
+} */
 
 /* MENU */
 

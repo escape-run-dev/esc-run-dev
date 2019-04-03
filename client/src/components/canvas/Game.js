@@ -3,7 +3,7 @@ import gameImg2 from "./img/spaceship.png"
 import gameImg3 from "./img/aestroid_dark.png"
 // import buttonUp from "./img/button_up.png"
 // import buttonDown from "./img/button_down.png"
-import wasCollision from "./collisions.js"
+// import wasCollision from '%PUBLIC_URL%/canvas/collisions.js'
 
 class Background {
 
@@ -115,16 +115,16 @@ class Player {
 
     //COSAS SOBRE LAS QUE PODRÍAMOS MANIPULAR: 
 
-    controlPlayer = () => {
-        // document.onkeydown = event => {
-        //   if (event.keyCode === this.game.keys.TOP_KEY && this.y === this.y0) {
-        //     this.y -= 5
-        //     this.vy -= 10
-        //   } else if (event.keyCode === this.game.keys.SPACE) {
-        //     this.shoot()
-        //   }
-        // }
-    }
+    // controlPlayer = () => {
+    //     // document.onkeydown = event => {
+    //     //   if (event.keyCode === this.game.keys.TOP_KEY && this.y === this.y0) {
+    //     //     this.y -= 5
+    //     //     this.vy -= 10
+    //     //   } else if (event.keyCode === this.game.keys.SPACE) {
+    //     //     this.shoot()
+    //     //   }
+    //     // }
+    // }
 
     jump = () => {
         // Aumenta la velocidad en el eje y.
@@ -289,7 +289,8 @@ class Game {
     // }
 
     isCollision = () => {
-        return wasCollision(this)
+        console.log(window.isCollision)
+        return window.isCollision(this)
     }
 
     // isCollision = () => {

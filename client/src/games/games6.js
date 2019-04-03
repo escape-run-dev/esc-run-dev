@@ -9,4 +9,6 @@ var initialCode = ` const isCollision = game => {
 }
     `
 
-export default initialCode + 'export default isCollision;'
+export default initialCode 
+
+// + 'export default isCollision;'

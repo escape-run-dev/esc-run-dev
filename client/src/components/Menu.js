@@ -16,13 +16,6 @@ class Menu extends Component {
       }
     }
 
-    this.auth = new AuthService()
-
-    this.logout = () => {
-      this.auth.logOut()
-      .then(res => this.props.setTheUser(res))
-        // .then(response => window.location.assign("/login"))
-        }
   }
 
   
@@ -46,7 +39,7 @@ class Menu extends Component {
                   <Link to="/qreader"><li><i className="fas fa-tools tool"></i> QR Reader</li></Link>
                   <Link to="/bcrypt"><li><i className="fas fa-tools tool"></i> BCrypt Tool</li></Link>
                   <Link to="/api"><li><i className="fas fa-tools tool"></i> Call the API</li></Link>
-                  <Link to="/login" onClick={this.logout}><li><i className="fas fa-sign-out-alt"></i> Dejar la partida</li></Link>
+                  <Link to="/logout"><li><i className="fas fa-sign-out-alt"></i> Dejar la partida</li></Link>
               </ul>
             </div>
           </nav>

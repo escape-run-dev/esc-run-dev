@@ -53,7 +53,7 @@ class Game4 extends Component {
       
       <div className="editor-pane">
         <div className="input-header">
-          <div className="file-name">movies.js</div> Code Editor
+          <div className="file-name">machine-kata.js</div> Code Editor
         </div>
         <div className="editor-container">
                  <form onSubmit={this.handleSubmit}>
@@ -77,9 +77,9 @@ class Game4 extends Component {
       
         <section className="movies-output game4-video">
             <div className="movies">
-              <p>Uno de tus compañeros de bootcamp afirma haber descubierto el patrón que sigue el fallo de la máquina. Y lleva varios días comiendo y bebiendo de gorra, así que parece que no es un farol.</p>
-              <p>Para calcular cuánto se ahorrado en un mes (suponiendo, por simplificar, que el mes tiene cuatro semanas idénticas de cinco días), cuenta con los siguientes datos:</p>
-              <VideoPlayer className="video-game4" url='https://www.youtube.com/watch?v=9CS7j5I6aOc' playing={true}/>
+              {/* <p>Uno de tus compañeros de bootcamp afirma haber descubierto el patrón que sigue el fallo de la máquina. Y lleva varios días comiendo y bebiendo de gorra, así que parece que no es un farol.</p>
+              <p>Para calcular cuánto se ahorrado en un mes (suponiendo, por simplificar, que el mes tiene cuatro semanas idénticas de cinco días), cuenta con los siguientes datos:</p> */}
+              <VideoPlayer className="video-game4" url='https://www.youtube.com/watch?v=U4ukYqqhoq4' playing={true}/>
             </div>
 
             <div className="tall html-view">

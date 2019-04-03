@@ -140,7 +140,7 @@ router.post("/writeCss", (req,res,next) => {
         },)
       } else {
         console.log("No he escrito una mierda")
-        res.status(200).json({msg: "El CSS es tróspido"})
+        res.status(200).json({errorMsg: "El CSS que has introducido no pasa la validación"})
       }
     })
   } else {

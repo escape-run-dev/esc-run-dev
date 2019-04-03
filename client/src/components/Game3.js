@@ -8,15 +8,15 @@ import ncage6 from "./ncage/ncage6.jpg"
 import ncage7 from "./ncage/ncage7.jpg"
 import ncage8 from "./ncage/ncage8.jpg"
 import ncage9 from "./ncage/ncage9.jpg"
-import bundaba1 from "./bundaba/bundaba1.jpg"
-import bundaba2 from "./bundaba/bundaba2.jpg"
-import bundaba3 from "./bundaba/bundaba3.jpg"
-import bundaba4 from "./bundaba/bundaba4.jpg"
-import bundaba5 from "./bundaba/bundaba5.jpg"
-import bundaba6 from "./bundaba/bundaba6.jpg"
-import bundaba7 from "./bundaba/bundaba7.jpg"
-import bundaba8 from "./bundaba/bundaba8.jpg"
-import bundaba9 from "./bundaba/bundaba9.jpg"
+import bundaba1 from "./cage_img/cage_back1.png"
+import bundaba2 from "./cage_img/cage_back2.png"
+import bundaba3 from "./cage_img/cage_back3.png"
+import bundaba4 from "./cage_img/cage_back4.png"
+import bundaba5 from "./cage_img/cage_back5.png"
+import bundaba6 from "./cage_img/cage_back6.png"
+import bundaba7 from "./cage_img/cage_back7.png"
+import bundaba8 from "./cage_img/cage_back8.png"
+import bundaba9 from "./cage_img/cage_back9.png"
 
 
 class Game3 extends Component {
@@ -92,7 +92,7 @@ class Game3 extends Component {
         </div>
         <section className="puzzle-output-game3">
         <div className="input-header">
-                <div className="file-name">Flexbox Puzzle</div>
+                <div className="file-name">You've got Caged</div>
                 Resultado
               </div>
                 <div className="puzzle-row block-row1">

@@ -80,7 +80,7 @@ class Game2 extends Component {
             <div className="editor">
               <div className="editor-canvas">
                 <div className="input-header">
-                  <div className="file-name">flexbox-puzzle.css</div> Code Editor
+                  <div className="file-name">fix-the-canvas.js</div> Code Editor
                 </div>
 
                 {/* <div className="file-window css-view"> */}

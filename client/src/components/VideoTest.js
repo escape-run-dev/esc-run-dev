@@ -22,7 +22,7 @@ class Video extends Component {
     return (
       <main className="intro-video">
         {this.state.redirect ? <Redirect to="/game-1"/> : null}        
-        <VideoPlayer className="video" url='https://www.youtube.com/watch?v=9CS7j5I6aOc' playing={true} onEnded={() => this.endVideo()}/>
+        <VideoPlayer className="video" url='https://www.youtube.com/watch?v=Y2foG4eGrq8' playing={true} onEnded={() => this.endVideo()}/>
       </main>
     )}
 }

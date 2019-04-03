@@ -39,7 +39,7 @@ header {
   width: 30%;
   text-align: center;
   margin: 0 auto; 
-  top: 20vh;
+  top: 15vh;
 }
 
 .login-form{
@@ -79,7 +79,7 @@ header {
   width: 30%;
   text-align: center;
   margin: 0 auto; 
-  top: 20vh;
+  top: 10vh;
 }
 
 .signup-form{
@@ -429,6 +429,12 @@ header {
   height: 100%;
 }
 
+.game4-video .movies {
+  text-align: center;
+  padding: 0 !important;
+  margin: 0 auto;
+}
+
 .puzzle-output {
   width: 450px;
   height: 300px;
@@ -774,6 +780,10 @@ canvas {
   color: #8c7ae6;
 }
 
+.logout-icon {
+  color: #e84118;
+}
+
 /* QR READER */
 
 .editor-qr {
@@ -879,6 +889,15 @@ canvas {
 
 .card img {
   width: 100%;
+}
+
+/* ERROR MESSAGE FOR CSS VALIDATION */
+
+.error-msg {
+  padding: 10px !important;
+  text-align: center;
+  background-color: #e84118;
+  color: #f5f6fa;
 }
 
 /* HEADER BACKGROUND PICS */

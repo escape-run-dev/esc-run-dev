@@ -90,7 +90,7 @@ componentDidMount() {
       
       <div className="editor-pane">
         <div className="input-header">
-          <div className="file-name">movies.js</div> Code Editor
+          <div className="file-name">drunk-kata.js</div> Code Editor
         </div>
 
         <div className="editor-container">

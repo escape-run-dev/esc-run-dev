@@ -293,7 +293,7 @@ class Game {
     // }
 
     isCollision = () => {
-        console.log("En componentDidMount", this.checkCollision)
+        console.log("En componentDidMount", this.checkCollision, typeof this.checkCollision)
         console.log("What is this", this)
         return this.checkCollision(this)
     }

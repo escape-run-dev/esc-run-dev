@@ -31,6 +31,12 @@ class Game2 extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
+    if (!this.game.started){
+      this.game.start()
+      this.checkResult()
+      // if (this.game.result === "win") alert("You win")
+    }
+
     if (!document.getElementById("collisionscript")) {
       const script = document.createElement("script");
       script.innerHTML = this.state.content

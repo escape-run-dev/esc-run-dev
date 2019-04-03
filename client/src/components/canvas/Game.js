@@ -290,7 +290,7 @@ class Game {
     // }
 
     isCollision = () => {
-        return checkCollision(this)
+        if (typeof checkCollision === "function") return checkCollision(this)
     }
 
     // isCollision = () => {

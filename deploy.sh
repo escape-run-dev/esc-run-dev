@@ -1,5 +1,6 @@
 #!/bin/bash
 rm -rf server/public/*
+y
 rm -rf client/build
 cd client 
 npm run build-prod

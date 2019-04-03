@@ -3,7 +3,7 @@ import gameImg2 from "./img/spaceship.png"
 import gameImg3 from "./img/aestroid_dark.png"
 // import buttonUp from "./img/button_up.png"
 // import buttonDown from "./img/button_down.png"
-import wasCollision from "./collisions.js"
+import wasCollision from "%PUBLIC_URL%/canvas/collisions.js"
 
 class Background {
 

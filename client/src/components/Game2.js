@@ -10,7 +10,7 @@ import puzzle7 from "./puzzle/image_part_007.jpg"
 import puzzle8 from "./puzzle/image_part_008.jpg"
 import puzzle9 from "./puzzle/image_part_009.jpg"
 import initialCode from "../games/games2"
-// import "./puzzle-css/user.css"
+import "%PUBLIC_URL%/puzzle-css/user.css"
 import 'codemirror/lib/codemirror.css'
 import {Controlled as CodeMirror} from 'react-codemirror2'
 require('codemirror/mode/css/css')
@@ -23,7 +23,7 @@ class Game2 extends Component {
       content: initialCode,
       errMsg: ""
     }
-
+    console.log(__filename);
     this.services = new TestingService()
     this.services.writeCss(initialCode, false)
   }

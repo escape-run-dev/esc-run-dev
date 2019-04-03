@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import TestingService from '../services/testing-service'
 import initialCode from "../games/games5"
 import './Game1.css'
-import Prism from 'prismjs';
-import "./prism.css";
 import 'codemirror/lib/codemirror.css'
 import {Controlled as CodeMirror} from 'react-codemirror2'
 require('codemirror/mode/javascript/javascript')
@@ -72,10 +70,6 @@ class Game5 extends Component {
             .then(res => this.setState({output: res.data.globalMessage, testsPassed: res.data.passed, checking:false}))
             .catch(err => this.setState({output: err, checking:false}))
       })
-}
-
-componentDidMount() {
-  Prism.highlightAll();
 }
 
   render(){

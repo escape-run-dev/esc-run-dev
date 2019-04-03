@@ -133,7 +133,7 @@ router.post("/writeCss", (req,res,next) => {
     validateCss({text: content}, (err, data) => {
 
       if (!data.errors.length) {
-        fs.writeFile(`./files/puzzle-css/user.css`, content, (err) => {
+        fs.writeFile(`./public/puzzle-css/user.css`, content, (err) => {
           if (err) console.log(err);
           console.log("File created or updated" ,__dirname, __filename)
           res.json({msg: "El CSS está poppy"})
@@ -144,7 +144,7 @@ router.post("/writeCss", (req,res,next) => {
       }
     })
   } else {
-    fs.writeFile(`./files/puzzle-css/user.css`, content, (err) => {
+    fs.writeFile(`./public/puzzle-css/user.css`, content, (err) => {
       if (err) console.log(err);
       console.log("File created or updated")
       res.json({msg: "Pues como no lo he validado, ¡para dentro!"})
@@ -180,7 +180,7 @@ router.post("/writeCollisions", (req,res,next) => {
         ],
         player:{x:10,y:10,h:10, w:10}
       })
-      fs.writeFile(`./files/canvas/collisions.js`, content, (err) => {
+      fs.writeFile(`./public/canvas/collisions.js`, content, (err) => {
         if(err) {
           console.log(err)
           res.status(500).json({msg: "Algo ha ido mal"});

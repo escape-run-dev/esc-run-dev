@@ -19,13 +19,13 @@ class Signup extends Component {
       
     this.service.signup(username, password, email)
     .then( response => {
-        this.setState({
-            username: "", 
-            password: "", 
-            email: "",
-            redirect: true
-        });
-        this.props.setUser(response)
+      this.props.setUser(response)
+      this.setState({
+          username: "", 
+          password: "", 
+          email: "",
+          redirect: true
+      });
         
     })
     .catch( error => console.log(error) )

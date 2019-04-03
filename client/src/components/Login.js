@@ -7,7 +7,7 @@ class Login extends Component {
     super(props);
     this.state = {  username: "", 
                     password: "",
-                    redirect: false
+                    redirect: false,
                 }
     this.service = new AuthService()
   }
@@ -19,15 +19,12 @@ class Login extends Component {
       
     this.service.login(username, password)
     .then( response => {
-        this.setState({
-            username: "", 
-            password: "",
-            redirect: true
-            
-        })
-        this.props.setUser(response)
-        
-    
+      this.props.setUser(response)
+      this.setState({
+          username: "", 
+          password: "",
+          redirect: true
+      })    
     })
     .catch( error => console.log(error) )
   }
@@ -41,7 +38,7 @@ class Login extends Component {
   render(){
     return(
       <main className="login-container">
-        {this.state.redirect ? <Redirect to="/vid"/> : null}
+        {this.state.redirect ? <Redirect to="/vid"></Redirect> : null}
         <form className="login-form" onSubmit={this.handleFormSubmit}>
           <label>Nombre del grupo: </label>
           <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>

@@ -7,6 +7,7 @@ class AuthService {
       withCredentials: true
     });
     this.service = service
+    this.loggedInWay = false
   }
 
   signup = (username, password, email) => {
@@ -22,8 +23,17 @@ class AuthService {
   loggedIn = () => {
     return this.service.get('/loggedin')
         .then(response => response.data)
-}
+  }
+
+  logOut = () => {
+    return this.service.post('/logout')
+      .then(response => {
+        this.loggedInWay = false
+      return response.data
+      })
+  }
 
 }
+
 
 export default AuthService

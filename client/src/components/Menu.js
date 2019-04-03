@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import AuthService from '../services/auth-service'
 
 class Menu extends Component {
   constructor(props){
@@ -14,7 +15,17 @@ class Menu extends Component {
         game6: true,
       }
     }
+
+    this.auth = new AuthService()
+
+    this.logout = () => {
+      this.auth.logOut()
+      .then(res => this.props.setTheUser(res))
+        // .then(response => window.location.assign("/login"))
+        }
   }
+
+  
 
   render(){
     return(
@@ -35,6 +46,7 @@ class Menu extends Component {
                   <Link to="/qreader"><li><i className="fas fa-tools tool"></i> QR Reader</li></Link>
                   <Link to="/bcrypt"><li><i className="fas fa-tools tool"></i> BCrypt Tool</li></Link>
                   <Link to="/api"><li><i className="fas fa-tools tool"></i> Call the API</li></Link>
+                  <Link to="/login" onClick={this.logout}><li><i className="fas fa-sign-out-alt"></i> Dejar la partida</li></Link>
               </ul>
             </div>
           </nav>

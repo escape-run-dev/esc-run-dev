@@ -46,10 +46,10 @@ class Game3 extends Component {
     e.preventDefault()
     
     let image
-    let classW
-    if(this.state.image !==  "bundaba") image = [ncage1, ncage2, ncage3, ncage4, ncage5, ncage6, ncage7, ncage8, ncage9];
+    let classW = ""
+    if(this.state.image !==  "loveyisus" && this.state.image !== "LOVEYISUS") image = [ncage1, ncage2, ncage3, ncage4, ncage5, ncage6, ncage7, ncage8, ncage9];
     else image = [bundaba1, bundaba2, bundaba3, bundaba4, bundaba5, bundaba6, bundaba7, bundaba8, bundaba9]
-    if(this.state.validPosition === "[2,1,4]" || this.state.validPosition === "[ 2, 1, 4]" || this.state.validPosition === "[ 2 , 1 , 4 ]" || this.state.validPosition === "2,1,4" || this.state.validPosition === "21,4" || this.state.validPosition === "214") {
+    if(this.state.validPosition === "[2,1,4]" || this.state.validPosition === "[ 2, 1, 4]" || this.state.validPosition === "[ 2 , 1 , 4 ]" || this.state.validPosition === "2,1,4" || this.state.validPosition === "21,4" || this.state.validPosition === "21.4" || this.state.validPosition === "214") {
       classW = "greenBorder"   
     } else classW = ""
 

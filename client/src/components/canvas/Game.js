@@ -4,7 +4,6 @@ import gameImg3 from "./img/aestroid_dark.png"
 // import buttonUp from "./img/button_up.png"
 // import buttonDown from "./img/button_down.png"
 // import wasCollision from '%PUBLIC_URL%/canvas/collisions.js'
-var checkCollision
 
 class Background {
 
@@ -214,6 +213,10 @@ class Game {
       this.started = false
     }
 
+    checkCollision = () => {
+
+    }
+
     start =  () => {
         this.started = true
         this.reset()
@@ -290,7 +293,7 @@ class Game {
     // }
 
     isCollision = () => {
-        if (typeof checkCollision === "function") return checkCollision(this)
+        return this.checkCollision(this)
     }
 
     // isCollision = () => {

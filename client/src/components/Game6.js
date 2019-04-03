@@ -33,6 +33,7 @@ class Game2 extends Component {
 
     if (!this.game.started){
       this.game.start()
+      this.game.checkCollision = this.state.content
       this.checkResult()
       // if (this.game.result === "win") alert("You win")
     }
@@ -71,7 +72,6 @@ class Game2 extends Component {
 
   checkResult = () => {
     const myInterval = setInterval (() => {
-      console.log("voy")
       if (this.game.result === "win") {
         alert("You win") // Esto mejor que sea un modal o similar
         clearInterval(myInterval)
@@ -82,6 +82,7 @@ class Game2 extends Component {
   componentDidMount () {
     if (!this.game) this.game = new Game(document.getElementById("canvas"))
     this.game.start() 
+    this.game.checkCollision = this.state.content
     this.checkResult()
   }
 

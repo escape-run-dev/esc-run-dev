@@ -82,7 +82,7 @@ app.locals.title = 'Express';
 
 
 const index = require('./routes/index')
-app.use('/', index)
+app.use('/utils', index)
 const authRoutes = require('./routes/auth-routes')
 app.use('/api', authRoutes)
 const fakeapi = require('./routes/fakeapiRoute')

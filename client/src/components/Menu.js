@@ -45,7 +45,7 @@ class Menu extends Component {
                   <Link to="/game-5"><li><i className={`far fa-dot-circle ${this.state.active ? "active" : "inactive"}`}></i> Drunk Kata</li></Link>
                   <Link to="/qreader"><li><i className="fas fa-tools tool"></i> QR Reader</li></Link>
                   <Link to="/bcrypt"><li><i className="fas fa-tools tool"></i> BCrypt Tool</li></Link>
-                  <Link to="/api"><li><i className="fas fa-tools tool"></i> Call the API</li></Link>
+                  <Link to="/game-api"><li><i className="fas fa-tools tool"></i> Call the API</li></Link>
                   <Link to="#" onClick={this.logout}><li><i className="fas fa-sign-out-alt logout-icon"></i> Dejar la partida</li></Link>
               </ul>
             </div>

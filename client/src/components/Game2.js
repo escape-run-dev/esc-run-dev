@@ -10,7 +10,7 @@ import puzzle7 from "./puzzle/image_part_007.jpg"
 import puzzle8 from "./puzzle/image_part_008.jpg"
 import puzzle9 from "./puzzle/image_part_009.jpg"
 import initialCode from "../games/games2"
-import "../puzzle-css/user.css"
+import "./puzzle-css/user.css"
 import 'codemirror/lib/codemirror.css'
 import {Controlled as CodeMirror} from 'react-codemirror2'
 require('codemirror/mode/css/css')
@@ -82,7 +82,8 @@ class Game2 extends Component {
                 <div className="file-name">Flexbox Puzzle</div>
                 Resultado
               </div>
-              {this.state.errMsg &&
+              {console.log(this.state.errMsg)}
+              {this.state.errMsg === "El CSS que has introducido no pasa la validación" &&
                 <div className="error-msg">El CSS que has introducido no pasa la validación</div>
               }
               <div className="puzzle-row row1">

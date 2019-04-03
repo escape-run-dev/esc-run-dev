@@ -1,10 +1,9 @@
 #!/bin/bash
-
 rm -rf server/public/*
 rm -rf client/build
 cd client 
 npm run build-prod
-cd ../
+cd ..
 mv client/build/* server/public
 git add .
 git commit -m "Deploying"

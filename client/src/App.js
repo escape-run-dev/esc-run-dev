@@ -6,7 +6,6 @@ import {Switch, Route} from "react-router-dom"
 import Header from "./components/Header"
 import Auth from './services/auth-service'
 import Menu from "./components/Menu"
-import Validator from "./components/Validator"
 import Game1 from "./components/Game1"
 import Game2 from "./components/Game2"
 import Game3 from "./components/Game3"

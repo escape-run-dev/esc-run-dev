@@ -4,6 +4,7 @@ const router     = express.Router();
 const passport   = require('passport');
 const bcrypt     = require('bcryptjs')
 
+const Game       = require('../models/Game')
 const Team       = require('../models/Team')
 
 router.post('/signup', (req, res, next) => {
@@ -49,17 +50,32 @@ router.post('/signup', (req, res, next) => {
                 res.status(400).json({ message: 'No hemos podido guardar el usuario en la base de datos' })
                 return
             }
-            
-            req.login(aNewTeam, (err) => {
 
-                if (err) {
-                    res.status(500).json({ message: 'No hemos podido iniciar sesión después del registro' })
-                    return
-                }
-            
-                // Send the user's information to the frontend
-                // We can use also: res.status(200).json(req.user);
-                res.status(200).json(aNewTeam)
+            const newGame = new Game({
+                team: aNewTeam._id
+            })
+
+            newGame.save(err => {
+                if (err){
+                    res.status(400).json({message: 'Juas! no puedes jugar porque ha fallado guardar la partia'})
+                } 
+
+                Team.findByIdAndUpdate(aNewTeam._id, {$addToSet: {games: newGame._id}},{new:true})
+                    .then(response => {
+                        
+                            req.login(aNewTeam, (err) => {
+                                if (err) {
+                                    res.status(500).json({ message: 'Jibbo ha muerto' });
+                                    return;
+                                }
+                                
+
+                                res.json(aNewTeam)
+                                return   
+                        })})
+                    .catch(err => console.log(`Algo ${err}`))
+                    
+                
             })
         })
     })
@@ -73,8 +89,6 @@ router.post('/login', (req, res, next) => {
         }
     
         if (!theUser) {
-            // "failureDetails" contains the error messages
-            // from our logic in "LocalStrategy" { message: '...' }.
             res.status(401).json(failureDetails);
             return;
         }
@@ -85,8 +99,18 @@ router.post('/login', (req, res, next) => {
                 res.status(500).json({ message: 'No hemos podido guardar sesión' });
                 return;
             }
-            // We are now logged in (that's why we can also send req.user)
-            res.status(200).json(theUser);
+            const newGame = new Game ({
+                team: theUser._id
+            })
+            newGame.save()
+                .then(gameid => {
+                    console.log(gameid)
+                    Team.findByIdAndUpdate(theUser._id, {$addToSet: {games: gameid._id}},{new:true})
+                        .then(() => res.status(200).json(theUser))
+                        .catch((error) => console.log(error))
+                })
+                .catch(error => console.log(error))
+            
         });
     })(req, res, next);
 });
@@ -99,7 +123,6 @@ router.post('/logout', (req, res, next) => {
 
 router.get('/loggedin', (req, res, next) => {
     // req.isAuthenticated() is defined by passport
-    console.log(req.user);
     if (req.isAuthenticated()) {
         res.status(200).json(req.user);
         return;

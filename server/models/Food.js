@@ -8,17 +8,12 @@ const FoodApi = new Schema({
     foodOwner: String, 
     foodQuality: Number, 
     foodDescription: String, 
-    foodDrink: String,
     foodCover: String,
     foodTaste: String,
-    foodState: String,
-    foodComponent: String,
-    foodColor: String,
-    foodVegetables: Boolean,
-    isVeggie: Boolean, 
-    foodFromOutside: Boolean
+    foodColor: String, 
+    foodFromOutside: String
   
 })
 
-const Food = mongoose.model('Game', FoodApi)
+const Food = mongoose.model('Food', FoodApi)
 module.exports = Food

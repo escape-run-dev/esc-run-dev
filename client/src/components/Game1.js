@@ -47,7 +47,7 @@ class Game1 extends Component {
         <h1>¿Sobreviviréis a un segundo Jueves Negro?</h1>
         <p>Las horas pasan lentamente, una tras otra, hasta que perdéis la cuenta. ¿Cuánto tiempo habrá pasado? Mientras se acumulan los minutos del interminable array de movies, solo podéis pensar en reducir la agonía. ¡Por el amor de Dios! ¿Cuánto duran estas movies? ¡Deberían durar diez veces menos!</p>
       </header>
-    <div className="editor">
+    <div className="editor game4-editor">
       
       <div className="editor-pane">
         <div className="input-header">

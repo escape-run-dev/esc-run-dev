@@ -70,7 +70,8 @@ class Game3 extends Component {
         <p>Ha vuelto a suceder. Te has tomado un descanso y has dejado la tapa del ordenador abierta, al alcance de cualquiera con ganas de troleo. Al volver de tu descanso, todas las imágenes de tu navegador se han cambiado por fotos de Nicholas Cage. Tendrás que conseguir un par de pistas para volver a la normalidad (y dar con otra clave)</p>
       </header>
       <div className="editor editor-game3">
-        <div className="editor-pane pane-game3">
+        <div className="editor-pane">
+        {/* <div className="editor-pane pane-game3"> */}
           <div className="input-header">
             <div className="file-name">ncage.css</div> Code Editor
           </div>

@@ -8,6 +8,7 @@ class Login extends Component {
     this.state = {  username: "", 
                     password: "",
                     redirect: false,
+                    errorMessage: ""
                 }
     this.service = new AuthService()
   }
@@ -19,6 +20,12 @@ class Login extends Component {
       
     this.service.login(username, password)
     .then( response => {
+      if(response.message){
+        this.setState({
+          errorMessage: response.message
+        })
+        return
+      }
       this.props.setUser(response)
       this.setState({
           username: "", 
@@ -45,6 +52,7 @@ class Login extends Component {
           <label>Contraseña: </label>
           <input type="password" name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
           <input type="submit" value="Login" />
+          {this.state.errorMessage && <div className="error-msg">{this.state.errorMessage}</div>}
         </form>
   
         <p>¿No tenéis una cuenta? <Link to={"/signup"}>Registraos</Link></p>

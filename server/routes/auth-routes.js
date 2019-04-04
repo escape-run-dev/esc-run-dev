@@ -47,7 +47,7 @@ router.post('/signup', (req, res, next) => {
   
         aNewTeam.save(err => {
             if (err) {
-                res.status(400).json({ message: 'No hemos podido guardar el usuario en la base de datos' })
+                res.json({ message: 'No hemos podido guardar el equipo en la base de datos' })
                 return
             }
 
@@ -57,7 +57,7 @@ router.post('/signup', (req, res, next) => {
 
             newGame.save(err => {
                 if (err){
-                    res.status(400).json({message: 'Juas! no puedes jugar porque ha fallado guardar la partia'})
+                    res.json({message: 'Ha fallado guardar la partia'})
                 } 
 
                 Team.findByIdAndUpdate(aNewTeam._id, {$addToSet: {games: newGame._id}},{new:true})
@@ -65,7 +65,7 @@ router.post('/signup', (req, res, next) => {
                         
                             req.login(aNewTeam, (err) => {
                                 if (err) {
-                                    res.status(500).json({ message: 'Jibbo ha muerto' });
+                                    res.status(500).json({ message:'Ups! Hemos fallado al logearte'});
                                     return;
                                 }
                                 
@@ -84,12 +84,12 @@ router.post('/signup', (req, res, next) => {
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, theUser, failureDetails) => {
         if (err) {
-            res.status(500).json({ message: 'Algo ha ido mal en la autenticación' });
+            res.json({message: 'Ups! Hemos fallado al logearte' }).status(500)
             return;
         }
     
         if (!theUser) {
-            res.status(401).json(failureDetails);
+            res.status(401).json({message: 'Oye, ese user no existe!'})
             return;
         }
 
@@ -104,7 +104,6 @@ router.post('/login', (req, res, next) => {
             })
             newGame.save()
                 .then(gameid => {
-                    console.log(gameid)
                     Team.findByIdAndUpdate(theUser._id, {$addToSet: {games: gameid._id}},{new:true})
                         .then(() => res.status(200).json(theUser))
                         .catch((error) => console.log(error))
@@ -129,6 +128,17 @@ router.get('/loggedin', (req, res, next) => {
     }
     res.status(403).json({ message: '¡No puedes pasar!' });
 });
+
+
+router.post('/setGame'), (req,res,next) => {
+    const {data} = req.body
+    console.log(data.game)
+
+    Game.findById(data.game.gameId)
+        .then(response => console.log(response))
+        .catch(err => console.log(err))
+
+}
 
 
 module.exports = router

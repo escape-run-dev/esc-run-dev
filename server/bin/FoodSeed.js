@@ -28,7 +28,7 @@ const seed = [{
     foodOwner: "David",
     foodDescription: "Comida medianamente sana",
     foodQuality: 10,
-    imageUrl: "https://i.ibb.co/vxFc6cb/Whats-App-Image-2019-04-03-at-18-40-06-9.jpg"
+    imageUrl: "https://i.ibb.co/Myd2njV/acelgasconsalchichas.jpg"
     
   },
   {
@@ -41,54 +41,62 @@ const seed = [{
   foodName: "Esparragos con atún"
 },
 {
-  imageUrl: "https://i.ibb.co/YTW0L7h/Whats-App-Image-2019-04-03-at-18-40-07-2.jpg"
+  imageUrl: "https://i.ibb.co/bvKq8JM/champinonesconjamon.jpg"
 },
 {
-  imageUrl: "https://i.ibb.co/ZVJdVDs/Whats-App-Image-2019-04-03-at-18-40-07-1.jpg",
-  foodName: "Filete Ruso",
+  imageUrl: "https://i.ibb.co/7pT4GgK/filetesrusos.jpg",
+  foodName: "Filetes Rusos",
   description: "Hechos a la plancha"
 },
 {
-  imageUrl: "https://i.ibb.co/mzqMTSv/Whats-App-Image-2019-04-03-at-18-40-07.jpg",
+
+  imageUrl: "https://i.ibb.co/H4dgMrJ/arroztresdelicias.jpg",
   foodQuality: 7,
   foodColor: "Blanco",
   foodFromOutside: "Nope"
 
 },
 {
-  imageUrl: "https://i.ibb.co/R0xM1m8/Whats-App-Image-2019-04-03-at-18-40-06-7.jpg",
+  imageUrl: "https://i.ibb.co/ZgrBfjt/guisantesconhuevoybacon.jpg",
   foodName: "Guisantes con huevo y bacon",
   foodColor: "Verde"
 },
 {
-  imageUrl: "https://i.ibb.co/gd6kZQ7/Whats-App-Image-2019-04-03-at-18-40-06-6.jpg",
+  imageUrl: "https://i.ibb.co/8Y02c62/nuggets.jpg",
   foodColor: "Marrón y amarillo",
   foodCover: "Ninguno"
 },
 {
-  imageUrl: "https://i.ibb.co/w0mZSkN/Whats-App-Image-2019-04-03-at-18-40-06-5.jpg",
+  imageUrl: "https://i.ibb.co/YNp7bbw/burrito.jpg",
   foodName: "Burrito",
   foodFromOutside: "Sí"
 },
 {
-  imageUrl: "https://i.ibb.co/bNHmws6/Whats-App-Image-2019-04-03-at-18-40-06-4.jpg",
+  imageUrl: "https://i.ibb.co/drjLbQ6/pisto.jpg",
   foodName: "Pisto",
   foodColor: "Rojo",
   foodQuality: 6
 },
 {
-  imageUrl: "https://i.ibb.co/qBNMd2b/Whats-App-Image-2019-04-03-at-18-40-06-2.jpg",
+
+  imageUrl: "https://i.ibb.co/BKs9gW9/arrozconpolloyverduras.jpg",
   foodName: "Arroz con pollo y verduras",
   foodQuality: 8
 },
 {
-  imageUrl: "https://i.ibb.co/5vPvgvH/Whats-App-Image-2019-04-03-at-18-40-06-1.jpg",
+  imageUrl: "https://i.ibb.co/XpFKdhK/tallarinescontomate.jpg",
   foodOwner: "Javi"
 },
 {
-  imageUrl: "https://i.ibb.co/Tr9q48J/Whats-App-Image-2019-04-03-at-18-40-06.jpg",
-  foodQuality: 10
+  imageUrl: "https://i.ibb.co/k8yWnDk/tortillasolitaria.jpg",
+  foodQuality: 9
 },
+{
+  imageUrl: "https://i.ibb.co/kxYZCZ3/tortillaconmostazaypan.jpg",
+  foodQuality: 10,
+  foodDescription: "Una tortilla con mostaza y pan esta OP"
+
+}
 
 
 ]

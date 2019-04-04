@@ -19,7 +19,7 @@ class Menu extends Component {
 
     this.logout = () => {
       this.auth.logOut()
-      .then(res => this.props.setTheUser(res))
+      .then(response => this.props.setTheUser(response))
         .then(response => window.location.assign("/login"))
         }
     }

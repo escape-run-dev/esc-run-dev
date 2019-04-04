@@ -58,7 +58,10 @@ class Game2 extends Component {
     document.body.appendChild(style);
 
   }
-  
+
+  reset = () => {
+    this.setState({content: initialCode})
+  }
 
   render(){
     this.loadStyles()
@@ -89,6 +92,7 @@ class Game2 extends Component {
                      onChange={(editor, data, value) => {}}
                    />
                   <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus">+</span><button onClick={this.reset} type="button" className="reset-button">reset</button>
                  </form>
                </div>
             </div>

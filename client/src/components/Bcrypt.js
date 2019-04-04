@@ -8,6 +8,7 @@ class Crypt extends Component {
     this.state = {
       input: "",
       output: "",
+      toCopy: undefined,
       copied: false
     }
   }
@@ -27,27 +28,38 @@ class Crypt extends Component {
   handlerChange = (e) => {
     const {name, value} = e.target;
     this.setState({[name]: value});
+  } 
+
+  componentDidMount = () => {
+    this.setState({toCopy : document.getElementById("input")})
   }
 
   copy = () => {
-    var toCopy = document.getElementById("input").select()
-    document.execCommand('copy')
-    this.setState({copied : true})
-    setTimeout = (() => {
-      this.setState({copied : false})
-    },3000)
+    if (this.state.toCopy) {
+      this.state.toCopy.select()
+
+      document.execCommand('copy')
+      this.setState({copied : true})
+
+      // eslint-disable-next-line no-native-reassign
+      setTimeout ( function () {
+        console.log("Timeout")
+        this.setState({output: "", copied : false})
+      }.bind(this),1500)
+    }
   }
 
   render(){
     return(
       <form className="bcrypt" onSubmit={(e) => this.cryptoMethod(e)}>
-        <label>Introduce la clave que deseas cifrar:</label><br/><br/>
+        <label>Introduce la clave que deseas cifrar:</label>
         <input type="text" name="input" id="input" value={this.state.input} onChange={e => this.handlerChange(e)}/><br/><br/>
-        <button type="submit">Cifrar</button><br/><br/><br/>
-        <button type="button" onClick={this.copy()}>Copiar al portapeles</button><br/><br/><br/>
-
-        {this.state.output ? <p>{this.state.output}</p>: null}
-        {this.state.copied ? <p>Clave copiada al portapapeles</p>: null}
+        <div className="bcrypt-buttons">
+          <button type="submit">Cifrar</button>
+          <button type="button" onClick={this.copy}>Copiar al portapeles</button>
+        </div>
+        {this.state.output ? <p>{this.state.output}</p>: <p></p>}
+        {this.state.copied ? <p class="passed">Clave copiada al portapapeles</p>: <p></p>}
       
       </form>
     )

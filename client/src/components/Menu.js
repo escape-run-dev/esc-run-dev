@@ -40,7 +40,7 @@ class Menu extends Component {
                   <Link to="/game-1"><li><i className={`far fa-dot-circle ${this.state.active ? "active" : "inactive"}`}></i> Jueves Negro</li></Link>
                   <Link to="/game-2"><li><i className={`far fa-dot-circle ${this.state.active ? "active" : "inactive"}`}></i> Flex Puzzle</li></Link>
                   <Link to="/game-4"><li><i className={`far fa-dot-circle ${this.state.active ? "active" : "inactive"}`}></i> La Máquina</li></Link>
-                  <Link to="/game-3"><li><i className={`far fa-dot-circle ${this.state.active ? "active" : "inactive"}`}></i> You've got Caged</li></Link>
+                  <Link to="/game-3"><li><i className={`far fa-dot-circle ${this.state.active ? "active" : "inactive"}`}></i> U've got Caged</li></Link>
                   <Link to="/game-6"><li><i className={`far fa-dot-circle ${this.state.active ? "active" : "inactive"}`}></i> Fix the Canvas</li></Link>
                   <Link to="/game-5"><li><i className={`far fa-dot-circle ${this.state.active ? "active" : "inactive"}`}></i> Drunk Kata</li></Link>
                   <Link to="/qreader"><li><i className="fas fa-tools tool"></i> QR Reader</li></Link>

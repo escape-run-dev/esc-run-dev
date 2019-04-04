@@ -70,7 +70,11 @@ class Game5 extends Component {
             .then(res => this.setState({output: res.data.globalMessage, testsPassed: res.data.passed, checking:false}))
             .catch(err => this.setState({output: err, checking:false}))
       })
-}
+  }
+
+  reset = () => {
+    this.setState({content: initialCode})
+  }
 
   render(){
     
@@ -104,6 +108,7 @@ class Game5 extends Component {
                      onChange={(editor, data, value) => {}}
                    />
                   <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus">+</span><button onClick={this.reset} type="button" className="reset-button">reset</button>
                  </form>
                </div>
       </div>

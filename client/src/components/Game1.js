@@ -19,8 +19,7 @@ class Game1 extends Component {
 
     this.services = new TestingService()
   }
-
-
+  
   handleState = e => {
     const { value } = e.target
     
@@ -37,6 +36,11 @@ class Game1 extends Component {
             .then(res => this.setState({output: res.data.globalMessage, checking:false}))
             .catch(err => this.setState({output: err, checking:false}))
       })
+  }
+
+
+reset = () => {
+  this.setState({content: initialCode})
 }
 
   render(){
@@ -69,6 +73,7 @@ class Game1 extends Component {
                      onChange={(editor, data, value) => {}}
                    />
                   <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus">+</span><button onClick={this.reset} type="button" className="reset-button">reset</button>
                  </form>
                </div>
         {/* <div className="file-window css-view">

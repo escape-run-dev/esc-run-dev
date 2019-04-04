@@ -116,6 +116,10 @@ class Game2 extends Component {
     }, 1000 / 60)
   }
 
+  reset = () => {
+    this.setState({content: initialCode})
+  }
+
   componentDidMount () {
     if (!this.game) this.game = new Game(document.getElementById("canvas"))
     this.game.start() 
@@ -178,6 +182,7 @@ class Game2 extends Component {
                      onChange={(editor, data, value) => {}}
                    />
                   <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus">+</span><button onClick={this.reset} type="button" className="reset-button">reset</button>
                  </form>
                </div>
 

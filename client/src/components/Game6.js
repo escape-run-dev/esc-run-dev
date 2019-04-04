@@ -6,7 +6,6 @@ import buttonUp from "./canvas/img/button_up.png"
 import buttonDown from "./canvas/img/button_down.png"
 import 'codemirror/lib/codemirror.css'
 import {Controlled as CodeMirror} from 'react-codemirror2'
-import preventDoubleTap from "./preventDoubleTap"
 require('codemirror/mode/javascript/javascript')
 
 class Game2 extends Component {
@@ -65,6 +64,42 @@ class Game2 extends Component {
     // })
   }
 
+  preventDoubleTap = (event) => {
+
+    // Ensure touches occur rapidly
+    const delay = 500
+    // Sequential touches must be in close vicinity
+    const minZoomTouchDelta = 10
+  
+    // Track state of the last touch
+    let lastTapAt = 0
+    let lastClientX = 0
+    let lastClientY = 0
+    // Exit early if this involves more than one finger (e.g. pinch to zoom)
+    if (event.touches.length > 1) {
+      return
+    }
+  
+    const tapAt = new Date().getTime()
+    const timeDiff = tapAt - lastTapAt
+    const { clientX, clientY } = event.touches[0]
+    const xDiff = Math.abs(lastClientX - clientX)
+    const yDiff = Math.abs(lastClientY - clientY)
+    if (
+      xDiff < minZoomTouchDelta &&
+      yDiff < minZoomTouchDelta &&
+      event.touches.length === 1 &&
+      timeDiff < delay
+    ) {
+      event.preventDefault()
+      // Trigger a fake click for the tap we just prevented
+      event.target.click()
+    }
+    lastClientX = clientX
+    lastClientY = clientY
+    lastTapAt = tapAt
+  }
+
   move = direction => {
     if (this.game){  
       if (this.game.player.y > 0) if (direction === "up") this.game.player.y -= 10
@@ -111,8 +146,8 @@ class Game2 extends Component {
             </header>
             <section className="canvas-container">
                 <canvas id="canvas"></canvas>
-                <img src={buttonUp} className="button-up" alt="Botón para subir" onTouchStart={(e) => preventDoubleTap(e)} onClick={() => this.move("up")}></img>
-                <img src={buttonDown} className="button-down" alt="Botón para bajar" onTouchStart={(e) => preventDoubleTap(e)} onClick={() => this.move("down")}></img>
+                <img src={buttonUp} className="button-up" alt="Botón para subir" onTouchStart={(e) => this.preventDoubleTap(e)} onClick={() => this.move("up")}></img>
+                <img src={buttonDown} className="button-down" alt="Botón para bajar" onTouchStart={(e) => this.preventDoubleTap(e)} onClick={() => this.move("down")}></img>
             </section>
             <div className="editor">
               <div className="editor-canvas">

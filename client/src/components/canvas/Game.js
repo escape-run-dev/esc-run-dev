@@ -293,13 +293,14 @@ class Game {
     // }
 
     isCollision = () => {
-        console.log("En el juego", this.checkCollision, typeof this.checkCollision)
-        console.log("What is this", this)
-        // var fun = new Function("game", "return" + this.checkCollision)
-        // return fun(this)
+        // console.log("En el juego", this.checkCollision, typeof this.checkCollision)
+        // console.log("What is this", this)
+        let fun = new Function("game", "return" + this.checkCollision)
+        console.log(fun)
+        return fun(this)
 
-        let collision = eval(this.checkCollision())
-        return collision(this)
+        // let collision = eval(this.checkCollision())
+        // return collision(this)
     }
 
     // isCollision = () => {

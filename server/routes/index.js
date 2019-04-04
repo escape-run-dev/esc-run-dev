@@ -67,7 +67,7 @@ router.post("/writeFile", (req,res,next) => {
   runJasmine = id => {
 
     var jasmine = new Jasmine()
-    jasmine.loadConfigFile("../server/spec/support/jasmine.json")
+    jasmine.loadConfigFile("./spec/support/jasmine.json")
     jasmine.addReporter(myReporter)
   
     console.log("Ejecutando Jasmine")
@@ -77,7 +77,7 @@ router.post("/writeFile", (req,res,next) => {
     //   res.json(globalMessage)
     // })
     try {
-      jasmine.execute([`spec/games/${id}${randomizer}Spec.js`])
+      jasmine.execute([`./spec/games/${id}${randomizer}Spec.js`])
     }
     catch (err) {
       fs.unlink(`spec/games/${id}${randomizer}Spec.js`, (err) => {
@@ -85,7 +85,7 @@ router.post("/writeFile", (req,res,next) => {
         console.log('File deleted')
       });
       globalMessage.push({description: "Hay algún error gordo en tu código que hace que ni siquiera podamos testearlo (mira a ver esos paréntesis, llaves, etc.)", status: "failed"})
-      res.status(200).json({globalMessage, passed})
+      res.status(200).json({globalMessage, passed: false})
       globalMessage = []
     }
 
@@ -96,7 +96,7 @@ router.post("/writeFile", (req,res,next) => {
     // res.json(globalMessage)
 
     jasmine.onComplete(passed => {
-      fs.unlink(`spec/games/${id}${randomizer}Spec.js`, (err) => {
+      fs.unlink(`./spec/games/${id}${randomizer}Spec.js`, (err) => {
         if (err) console.log(err)
         console.log('File deleted')
       });
@@ -116,7 +116,7 @@ router.post("/writeFile", (req,res,next) => {
     let spec = content + currentGame
     let randomizer = getRandom()
 
-    fs.writeFile(`spec/games/${id}${randomizer}Spec.js`, spec, (err) => {
+    fs.writeFile(`./spec/games/${id}${randomizer}Spec.js`, spec, (err) => {
       if (err) console.log(err)
       console.log("File created")
       runJasmine(id,randomizer)
@@ -133,7 +133,7 @@ router.post("/writeCss", (req,res,next) => {
     validateCss({text: content}, (err, data) => {
 
       if (!data.errors.length) {
-        fs.writeFile(`../client/src/components/puzzle-css/user.css`, content, (err) => {
+        fs.writeFile(`./public/puzzle-css/user.css`, content, (err) => {
           if (err) console.log(err)
           console.log("File created or updated")
           res.json({msg: "El CSS está poppy"})
@@ -144,7 +144,7 @@ router.post("/writeCss", (req,res,next) => {
       }
     })
   } else {
-    fs.writeFile(`../client/src/components/puzzle-css/user.css`, content, (err) => {
+    fs.writeFile(`./public/puzzle-css/user.css`, content, (err) => {
       if (err) console.log(err)
       console.log("File created or updated")
       res.json({msg: "Pues como no lo he validado, ¡para dentro!"})
@@ -168,8 +168,8 @@ router.post("/writeCollisions", (req,res,next) => {
     }
     console.log("Prueba created or updated")
     try {
-      delete require.cache[require.resolve('../prueba/collisions')]
-      let prueba = require(`../prueba/collisions`)
+      delete require.cache[require.resolve('./prueba/collisions')]
+      let prueba = require(`./prueba/collisions`)
       // console.log(prueba.toString());
       prueba({
         obstacles:[
@@ -180,7 +180,7 @@ router.post("/writeCollisions", (req,res,next) => {
         ],
         player:{x:10,y:10,h:10, w:10}
       })
-      fs.writeFile(`../client/src/components/canvas/collisions.js`, content, (err) => {
+      fs.writeFile(`./public/canvas/collisions.js`, content, (err) => {
         if(err) {
           console.log(err)
           res.status(500).json({msg: "Algo ha ido mal"});

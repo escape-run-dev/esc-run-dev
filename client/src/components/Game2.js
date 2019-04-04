@@ -10,7 +10,7 @@ import puzzle7 from "./puzzle/image_part_007.jpg"
 import puzzle8 from "./puzzle/image_part_008.jpg"
 import puzzle9 from "./puzzle/image_part_009.jpg"
 import initialCode from "../games/games2"
-import "./puzzle-css/user.css"
+// import '%PUBLIC_URL%/puzzle-css/user.css'
 import 'codemirror/lib/codemirror.css'
 import {Controlled as CodeMirror} from 'react-codemirror2'
 require('codemirror/mode/css/css')
@@ -21,7 +21,7 @@ class Game2 extends Component {
     super(props)
     this.state = {
       content: initialCode,
-      errMsg: ""
+      errorMsg: ""
     }
 
     this.services = new TestingService()
@@ -41,11 +41,30 @@ class Game2 extends Component {
 
     this.services.writeCss(this.state.content, true)
     .then(res => {
-      this.setState ({errMsg: res})
+      console.log(res)
+      this.setState ({errorMsg: res.data.errorMsg})
     })
   }
 
+  loadStyles () {
+
+    if (document.getElementById("userstyles")) document.getElementById("userstyles").remove();
+
+    const style = document.createElement('link');
+    style.href = "/puzzle-css/user.css"
+    style.rel = "stylesheet"
+    style.id = "userstyles"
+
+    document.body.appendChild(style);
+
+  }
+
+  reset = () => {
+    this.setState({content: initialCode})
+  }
+
   render(){
+    this.loadStyles()
     return(
         <main className="game1">
           <header className="game2-header">
@@ -53,7 +72,7 @@ class Game2 extends Component {
             <p>Los que lo fían todo a Bootstrap no están de enhorabuena. Para resolver el puzzle y seguir adelante tendréis que demostrar vuestros conocimientos de Flexbox, colocando las piezas mediante posicionamiento CSS hasta que todo encaje. ¿Podréis hacerlo?</p>
           </header>
           <div className="editor editor-game2">
-            <div className="editor-pane pane-game2">
+        <div className="editor-pane pane-game2">
               <div className="input-header">
                 <div className="file-name">flexbox-puzzle.css</div> Code Editor
               </div>
@@ -72,7 +91,8 @@ class Game2 extends Component {
                      }}
                      onChange={(editor, data, value) => {}}
                    />
-                  <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus-enter">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus-reset">+</span><button onClick={this.reset} type="button" className="reset-button">reset</button>
                  </form>
                </div>
             </div>
@@ -82,8 +102,8 @@ class Game2 extends Component {
                 <div className="file-name">Flexbox Puzzle</div>
                 Resultado
               </div>
-              {console.log(this.state.errMsg)}
-              {this.state.errMsg === "El CSS que has introducido no pasa la validación" &&
+              {console.log(this.state.errorMsg)}
+              {this.state.errorMsg &&
                 <div className="error-msg">El CSS que has introducido no pasa la validación</div>
               }
               <div className="puzzle-row row1">

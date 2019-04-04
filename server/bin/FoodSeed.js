@@ -7,7 +7,7 @@ const seed = [{
     code: "$2a$10$c08W6UGwPGzdd6huNviHKNqGR3b84L6sww4QTwGJmVrPBfuTxy",
     foodName: "Salmón con garbanzos",
     foodOwner: "Sofía",
-    foodDescription: "Riquísimo pero no es veggie",
+    foodDescription: "Riquísimo, pero no es vegano",
     foodQuality: 7,
     imageUrl: "https://i.ibb.co/QXTLCf1/Whats-App-Image-2019-04-03-at-18-41-25-3.jpg"
 
@@ -15,7 +15,7 @@ const seed = [{
   {
 
     foodName: "Ensalada",
-    foodDescription: "No conquistas nada, con una ensalada",
+    foodDescription: "No conquistas nada con una ensalada",
     imageUrl: "https://i.ibb.co/5k4vmdv/Whats-App-Image-2019-04-03-at-18-41-25-2.jpg"
   
 },
@@ -26,7 +26,7 @@ const seed = [{
     code: "",
     foodName: "Acelgas con salchicas",
     foodOwner: "David",
-    foodDescription: "Comida medianamente sana",
+    foodDescription: "Comida medianamente sana que extraña a la mayoría",
     foodQuality: 10,
     imageUrl: "https://i.ibb.co/Myd2njV/acelgasconsalchichas.jpg"
     

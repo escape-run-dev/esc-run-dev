@@ -1,4 +1,4 @@
-var initialCode = ` const isCollision = game => {
+var initialCode = `checkCollision = game => {
     return game.obstacles.some(obstacle => {
         return (
         ((game.player.x + game.player.w) >= obstacle.x &&
@@ -9,4 +9,6 @@ var initialCode = ` const isCollision = game => {
 }
     `
 
-export default initialCode + 'export default isCollision;'
+export default initialCode 
+
+// + 'export default isCollision;'

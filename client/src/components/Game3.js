@@ -70,7 +70,8 @@ class Game3 extends Component {
         <p>Ha vuelto a suceder. Te has tomado un descanso y has dejado la tapa del ordenador abierta, al alcance de cualquiera con ganas de troleo. Al volver de tu descanso, todas las imágenes de tu navegador se han cambiado por fotos de Nicholas Cage. Tendrás que conseguir un par de pistas para volver a la normalidad (y dar con otra clave)</p>
       </header>
       <div className="editor editor-game3">
-        <div className="editor-pane pane-game3">
+        {/* <div className="editor-pane pane-game3"> */}
+        <div className="editor-pane">
           <div className="input-header">
             <div className="file-name">ncage.css</div> Code Editor
           </div>
@@ -95,7 +96,7 @@ class Game3 extends Component {
                 <div className="file-name">You've got Caged</div>
                 Resultado
               </div>
-                <div className="puzzle-row block-row1">
+                <div className="puzzle-row">
                   {this.state.images.map((images, index) => {
 
                       if (index === 0 || index === 1) return <article key={index} className="imgSize"><img className={`sizeW ${this.state.classWord}`} src={images}/></article>
@@ -104,7 +105,7 @@ class Game3 extends Component {
                   })}
                 </div>
                 <div className="puzzle-col">
-                  <div className="puzzle-row block-row2">
+                  <div className="puzzle-row">
                     {this.state.images.map((images, index) => {
 
                       if(index === 3) return <article  key={index} className="imgSize"><img className={`sizeW ${this.state.classWord}`} src={images}/></article>
@@ -114,7 +115,7 @@ class Game3 extends Component {
                   </div>
                 </div>
                 <div className="puzzle-col">
-                  <div className="puzzle-row block-row1">
+                  <div className="puzzle-row">
                     {this.state.images.map((images, index) => {
 
                        if(index > 5) return <article key={index} className="imgSize"><img className={`sizeW ${this.state.classW}`} src={images}/></article>

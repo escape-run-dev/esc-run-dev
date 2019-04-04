@@ -31,15 +31,74 @@ class Game2 extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
-    this.services.writeCollisions(this.state.content)
-    .then(() => {
-        if (!this.game.started){
-          this.game.start()
-          this.checkResult()
-          if (this.game.result === "win") alert("You win")
-        }
-    })
+    if (!this.game.started){
+      this.game.start()
+      this.game.checkCollision = this.state.content
+      console.log("En handleSubmit", this.game.checkCollision, typeof this.game.checkCollision)
+      this.checkResult()
+      // if (this.game.result === "win") alert("You win")
+    }
+
+    if (!document.getElementById("collisionscript")) {
+      const script = document.createElement("script");
+      script.innerHTML = this.state.content
+      script.async = true;
+      script.id = "collisionscript"
+      document.body.appendChild(script);
+    } else {
+      const script = document.getElementById("collisionscript")
+      script.innerHTML = this.state.content
+    }
+
+    // this.services.writeCollisions(this.state.content)
+    // .then(() => {
+      
+    //   // ESTARÍA MEJOR AQUÍ EL CÓDIGO QUE CREA EL SCRIPT
+
+    //   if (!this.game.started){
+    //     this.game.start()
+    //     this.checkResult()
+    //     if (this.game.result === "win") alert("You win")
+    //   }
+        
+    // })
   }
+
+  // preventDoubleTap = (event) => {
+
+  //   // Ensure touches occur rapidly
+  //   const delay = 500
+  //   // Sequential touches must be in close vicinity
+  //   const minZoomTouchDelta = 10
+  
+  //   // Track state of the last touch
+  //   let lastTapAt = 0
+  //   let lastClientX = 0
+  //   let lastClientY = 0
+  //   // Exit early if this involves more than one finger (e.g. pinch to zoom)
+  //   if (event.touches.length > 1) {
+  //     return
+  //   }
+  
+  //   const tapAt = new Date().getTime()
+  //   const timeDiff = tapAt - lastTapAt
+  //   const { clientX, clientY } = event.touches[0]
+  //   const xDiff = Math.abs(lastClientX - clientX)
+  //   const yDiff = Math.abs(lastClientY - clientY)
+  //   if (
+  //     xDiff < minZoomTouchDelta &&
+  //     yDiff < minZoomTouchDelta &&
+  //     event.touches.length === 1 &&
+  //     timeDiff < delay
+  //   ) {
+  //     event.preventDefault()
+  //     // Trigger a fake click for the tap we just prevented
+  //     event.target.click()
+  //   }
+  //   lastClientX = clientX
+  //   lastClientY = clientY
+  //   lastTapAt = tapAt
+  // }
 
   move = direction => {
     if (this.game){  
@@ -50,7 +109,6 @@ class Game2 extends Component {
 
   checkResult = () => {
     const myInterval = setInterval (() => {
-      console.log("voy")
       if (this.game.result === "win") {
         alert("You win") // Esto mejor que sea un modal o similar
         clearInterval(myInterval)
@@ -58,10 +116,28 @@ class Game2 extends Component {
     }, 1000 / 60)
   }
 
+  reset = () => {
+    this.setState({content: initialCode})
+  }
+
   componentDidMount () {
     if (!this.game) this.game = new Game(document.getElementById("canvas"))
     this.game.start() 
+    this.game.checkCollision = initialCode
+    console.log("En componentDidMount", this.game.checkCollision, typeof this.game.checkCollision)
     this.checkResult()
+
+    
+    if (!document.getElementById("collisionscript")) {
+      const script = document.createElement("script");
+      script.innerHTML = this.state.content
+      script.async = true;
+      script.id = "collisionscript"
+      document.body.appendChild(script);
+    } else {
+      const script = document.getElementById("collisionscript")
+      script.innerHTML = this.state.content
+    }
   }
 
   render(){ 
@@ -70,7 +146,7 @@ class Game2 extends Component {
         <main className="game1">
             <header className="game6-header">
               <h1>Fix the Canvas: arregla las colisiones</h1>
-              <p>Ha llegado la hora del famoso 'click'. El juego es el primer momento cumbre para todo ironhacker, cuando descubre todo lo que ha aprendido en las primeras semanas. ¿Te acuerdas? Más te vale, porque tendrás que arreglar el código de las colisiones para poder pasarte el juego. Si aguantas 30 segundos sin morir, habrás ganado. ¡Ah! Y no podrás hacer trampa... Tienes que coger la moneda, así que no te vale con trucar las colisiones.</p>
+              <p>Ha llegado la hora del famoso 'click'. El juego es el primer momento cumbre para todo ironhacker, cuando descubre todo lo que ha aprendido en las primeras semanas. ¿Te acuerdas? Más te vale, porque tendrás que arreglar el código de las colisiones para poder pasarte el juego. Si aguantas 30 segundos sin morir, habrás ganado.</p>
             </header>
             <section className="canvas-container">
                 <canvas id="canvas"></canvas>
@@ -105,7 +181,8 @@ class Game2 extends Component {
                      }}
                      onChange={(editor, data, value) => {}}
                    />
-                  <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus-enter">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus-reset">+</span><button onClick={this.reset} type="button" className="reset-button">reset</button>
                  </form>
                </div>
 

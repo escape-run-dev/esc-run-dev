@@ -19,8 +19,7 @@ class Game1 extends Component {
 
     this.services = new TestingService()
   }
-
-
+  
   handleState = e => {
     const { value } = e.target
     
@@ -37,6 +36,11 @@ class Game1 extends Component {
             .then(res => this.setState({output: res.data.globalMessage, checking:false}))
             .catch(err => this.setState({output: err, checking:false}))
       })
+  }
+
+
+reset = () => {
+  this.setState({content: initialCode})
 }
 
   render(){
@@ -47,7 +51,7 @@ class Game1 extends Component {
         <h1>¿Sobreviviréis a un segundo Jueves Negro?</h1>
         <p>Las horas pasan lentamente, una tras otra, hasta que perdéis la cuenta. ¿Cuánto tiempo habrá pasado? Mientras se acumulan los minutos del interminable array de movies, solo podéis pensar en reducir la agonía. ¡Por el amor de Dios! ¿Cuánto duran estas movies? ¡Deberían durar diez veces menos!</p>
       </header>
-    <div className="editor">
+    <div className="editor game4-editor">
       
       <div className="editor-pane">
         <div className="input-header">
@@ -68,7 +72,8 @@ class Game1 extends Component {
                      }}
                      onChange={(editor, data, value) => {}}
                    />
-                  <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus-enter">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus-reset">+</span><button onClick={this.reset} type="button" className="reset-button">reset</button>
                  </form>
                </div>
         {/* <div className="file-window css-view">

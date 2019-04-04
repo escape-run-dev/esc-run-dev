@@ -7,7 +7,8 @@ class Signup extends Component {
     this.state = {  username: "", 
                     password: "",
                     email: "",
-                    redirect: false 
+                    redirect: false,
+                    errorMessage: ""
                   }         
     this.service = new AuthService();
   }
@@ -19,6 +20,12 @@ class Signup extends Component {
       
     this.service.signup(username, password, email)
     .then( response => {
+      if(response.message){
+        this.setState({
+          errorMessage: response.message
+        })
+        return
+      }
       this.props.setUser(response)
       this.setState({
           username: "", 
@@ -48,6 +55,7 @@ class Signup extends Component {
           <label>Email:</label>
           <input type="email" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
           <input type="submit" value="Signup" />
+          {this.state.errorMessage && <div className="error-msg">{this.state.errorMessage}</div>}
         </form>
   
         <p>¿Ya habéis jugado alguna vez? <Link to={"/login"}>Acceder</Link></p>

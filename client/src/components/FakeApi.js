@@ -40,6 +40,7 @@ class CallingDB extends Component {
 
     handleChangeSendingModel = (e) => {
       const {name, value} = e.target
+      
       this.setState({
         ...this.state,
         sendingModel: {
@@ -48,6 +49,7 @@ class CallingDB extends Component {
         }
       })
     }
+  
 
     handleSubmitRandom = (e) => {
       e.preventDefault()
@@ -64,7 +66,7 @@ class CallingDB extends Component {
 
     handleSubmitCode = (e) => {
       e.preventDefault()
-
+      if(this.state.sendingCode){  
       this.fakeApi.getModel(this.state.sendingCode)
         .then( data => {
         this.setState({          
@@ -72,8 +74,9 @@ class CallingDB extends Component {
           receivedModel: data
         })
     })
-    .catch( error => console.log(error) )
-    }
+    .catch( error => console.log(error))}
+    else return
+  }
 
     handleSubmitModel = (e) => {
       e.preventDefault()
@@ -105,7 +108,6 @@ class CallingDB extends Component {
           }
         })
         .catch(error => console.log(error))
-
     }
 
     render() {

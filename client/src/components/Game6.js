@@ -6,8 +6,7 @@ import buttonUp from "./canvas/img/button_up.png"
 import buttonDown from "./canvas/img/button_down.png"
 import 'codemirror/lib/codemirror.css'
 import {Controlled as CodeMirror} from 'react-codemirror2'
-import preventDoubleTapZoom from "preventDoubleTap"
-
+import preventDoubleTap from "./preventDoubleTap"
 require('codemirror/mode/javascript/javascript')
 
 class Game2 extends Component {
@@ -112,8 +111,8 @@ class Game2 extends Component {
             </header>
             <section className="canvas-container">
                 <canvas id="canvas"></canvas>
-                <img src={buttonUp} className="button-up" alt="Botón para subir" onTouchStart={preventDoubleTapZoom} onClick={() => this.move("up")}></img>
-                <img src={buttonDown} className="button-down" alt="Botón para bajar" onTouchStart={preventDoubleTapZoom} onClick={() => this.move("down")}></img>
+                <img src={buttonUp} className="button-up" alt="Botón para subir" onTouchStart={(e) => preventDoubleTap(e)} onClick={() => this.move("up")}></img>
+                <img src={buttonDown} className="button-down" alt="Botón para bajar" onTouchStart={(e) => preventDoubleTap(e)} onClick={() => this.move("down")}></img>
             </section>
             <div className="editor">
               <div className="editor-canvas">

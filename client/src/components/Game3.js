@@ -96,7 +96,7 @@ class Game3 extends Component {
                 <div className="file-name">You've got Caged</div>
                 Resultado
               </div>
-                <div className="puzzle-row block-row1">
+                <div className="puzzle-row">
                   {this.state.images.map((images, index) => {
 
                       if (index === 0 || index === 1) return <article key={index} className="imgSize"><img className={`sizeW ${this.state.classWord}`} src={images}/></article>
@@ -105,7 +105,7 @@ class Game3 extends Component {
                   })}
                 </div>
                 <div className="puzzle-col">
-                  <div className="puzzle-row block-row2">
+                  <div className="puzzle-row">
                     {this.state.images.map((images, index) => {
 
                       if(index === 3) return <article  key={index} className="imgSize"><img className={`sizeW ${this.state.classWord}`} src={images}/></article>
@@ -115,7 +115,7 @@ class Game3 extends Component {
                   </div>
                 </div>
                 <div className="puzzle-col">
-                  <div className="puzzle-row block-row1">
+                  <div className="puzzle-row">
                     {this.state.images.map((images, index) => {
 
                        if(index > 5) return <article key={index} className="imgSize"><img className={`sizeW ${this.state.classW}`} src={images}/></article>

@@ -1,14 +1,16 @@
-// Ensure touches occur rapidly
-const delay = 500
-// Sequential touches must be in close vicinity
-const minZoomTouchDelta = 10
 
-// Track state of the last touch
-let lastTapAt = 0
-let lastClientX = 0
-let lastClientY = 0
 
-const preventDoubleTap = (event) => {
+preventDoubleTap = (event) => {
+
+  // Ensure touches occur rapidly
+  const delay = 500
+  // Sequential touches must be in close vicinity
+  const minZoomTouchDelta = 10
+
+  // Track state of the last touch
+  let lastTapAt = 0
+  let lastClientX = 0
+  let lastClientY = 0
   // Exit early if this involves more than one finger (e.g. pinch to zoom)
   if (event.touches.length > 1) {
     return

@@ -155,7 +155,7 @@
   -webkit-border-radius: 2px;
   border-radius: 2px;
   padding: 2px 7px 2px 7px;
-  color: #009688;
+  color: #666;
   border: solid 3px #999;
   border-width: 1px 1px 6px 1px;
   position: absolute;
@@ -174,7 +174,7 @@
   -webkit-border-radius: 2px;
   border-radius: 2px;
   padding: 2px 7px 2px 7px;
-  color: #00BCD4;
+  color: #666;
   border: solid 3px #999;
   border-width: 1px 1px 6px 1px;
   position: absolute;
@@ -205,8 +205,15 @@
   }
 }
 
-.plus {
-  color: #666;
+.plus-enter {
+  color: #009688;
+  padding: 0px 4px;
+  font-size: 40px;
+  display: none;
+}
+
+.plus-reset {
+  color: #00BCD4;
   padding: 0px 4px;
   font-size: 40px;
   display: none;

@@ -74,8 +74,8 @@ class Game4 extends Component {
                      }}
                      onChange={(editor, data, value) => {}}
                    />
-                  <span className="plus">+</span><button type="submit" className="enter-button">enter</button>
-                  <span className="plus">+</span><button onClick={this.reset} type="button" className="reset-button">reset</button>
+                  <span className="plus-enter">+</span><button type="submit" className="enter-button">enter</button>
+                  <span className="plus-reset">+</span><button onClick={this.reset} type="button" className="reset-button">reset</button>
                  </form>
                </div>
       </div>

@@ -823,6 +823,8 @@ canvas {
 
 .bcrypt button {
   padding: 5px 40px;  
+  background-color: #8c7ae6;
+  color: #f5f6fa;
   border: 1px solid #192a56;
   border-radius: 5px;
 }

@@ -263,7 +263,7 @@ header {
 }
 
 .editor-game2 {
-  /* width: 1000px !important; */
+  min-width: 800px !important;
   box-sizing: border-box;
 }
 

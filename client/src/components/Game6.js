@@ -146,7 +146,7 @@ class Game2 extends Component {
         <main className="game1">
             <header className="game6-header">
               <h1>Fix the Canvas: arregla las colisiones</h1>
-              <p>Ha llegado la hora del famoso 'click'. El juego es el primer momento cumbre para todo ironhacker, cuando descubre todo lo que ha aprendido en las primeras semanas. ¿Te acuerdas? Más te vale, porque tendrás que arreglar el código de las colisiones para poder pasarte el juego. Si aguantas 30 segundos sin morir, habrás ganado. ¡Ah! Y no podrás hacer trampa... Tienes que coger la moneda, así que no te vale con trucar las colisiones.</p>
+              <p>Ha llegado la hora del famoso 'click'. El juego es el primer momento cumbre para todo ironhacker, cuando descubre todo lo que ha aprendido en las primeras semanas. ¿Te acuerdas? Más te vale, porque tendrás que arreglar el código de las colisiones para poder pasarte el juego. Si aguantas 30 segundos sin morir, habrás ganado.</p>
             </header>
             <section className="canvas-container">
                 <canvas id="canvas"></canvas>

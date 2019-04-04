@@ -338,46 +338,46 @@ header {
 }
 
 .drunk-verylight {
-  -webkit-filter: blur(.4px);
-          filter: blur(.4px);
-  -webkit-animation-duration: 40s;
-  animation-duration: 40s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-.drunk-light {
-  -webkit-filter: blur(0.6px);
-          filter: blur(0.6px);
+  -webkit-filter: blur(0.8px);
+          filter: blur(0.8px);
   -webkit-animation-duration: 25s;
   animation-duration: 25s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
+.drunk-light {
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+  -webkit-animation-duration: 18s;
+  animation-duration: 18s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
 .drunk-medium {
-  -webkit-filter: blur(0.75px);
-          filter: blur(0.75px);
-  -webkit-animation-duration: 15s;
-  animation-duration: 15s;
+  -webkit-filter: blur(1.25px);
+          filter: blur(1.25px);
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
 .drunk-heavy {
-  -webkit-filter: blur(1px);
-          filter: blur(1px);
-  -webkit-animation-duration: 8s;
-  animation-duration: 8s;
+  -webkit-filter: blur(1.5px);
+          filter: blur(1.5px);
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
 .drunk-crazy {
-  -webkit-filter: blur(1.5px);
-          filter: blur(1.5px);
-  -webkit-animation-duration: 4s;
-  animation-duration: 4s;
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }

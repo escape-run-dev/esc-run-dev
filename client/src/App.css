@@ -269,7 +269,8 @@ header {
 }
 
 .pane-game2 {
-  width: 530px !important;
+  flex-shrink: 2; 
+  /* width: 530px !important; */
 }
 
 .editor-game3 {
@@ -282,8 +283,8 @@ header {
 }
 
 .puzzle-output {
-  min-width: 300px;
-  min-height: 300px;
+  min-width: 450px;
+  min-height: 450px;
 }
 
 .puzzle-output-game3 {

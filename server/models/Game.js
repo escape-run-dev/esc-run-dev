@@ -8,6 +8,7 @@ const gameSchema = new Schema({
     round3: { type: Boolean, default: false },
     round4: { type: Boolean, default: false },
     round5: { type: Boolean, default: false },
+    round6: { type: Boolean, default: false },
     ended: { type: Boolean, default: false },
 },
 {

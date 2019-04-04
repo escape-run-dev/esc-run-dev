@@ -106,7 +106,7 @@ router.post('/login', (req, res, next) => {
                 .then(gameid => {
                     console.log(gameid)
                     Team.findByIdAndUpdate(theUser._id, {$addToSet: {games: gameid._id}},{new:true})
-                        .then(() => res.status(200).json(theUser))
+                        .then(() => res.status(200).json({theUser,gameid}))
                         .catch((error) => console.log(error))
                 })
                 .catch(error => console.log(error))

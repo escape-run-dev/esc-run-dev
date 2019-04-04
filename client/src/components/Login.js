@@ -25,6 +25,7 @@ class Login extends Component {
           password: "",
           redirect: true
       })    
+      this.props.setTheGame({gameId: response.data.gameid, rounds: {round1: false, round2: false, round3: false, round4: false, round5: false, round6: false}})
     })
     .catch( error => console.log(error) )
   }

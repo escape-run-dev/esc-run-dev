@@ -39,7 +39,7 @@ class Game3 extends Component {
     this.setState({
       ...this.state,
       [name]: value
-    });
+    })
   }
 
   handleSubmit = (e) => {

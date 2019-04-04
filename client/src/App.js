@@ -55,14 +55,23 @@ class App extends Component {
     this.setState({ loggedInUser: userObj })
   }
 
-  getTheGame = (gameId) => {
-
-    //return game
+  getTheGame = () => {
+    return this.state.game
   }
 
-  setTheGame = (gameId, round) => {
-    //La round es para que cuando el hijo llame, sepa qué hijo ha llamado
-  }
+  setTheGame = (gameObj) => {
+    this.service.setTheGame(gameObj)
+    .then(response => {
+        this.setState({
+          ...this.state,
+          game : {
+            ...this.state.game,
+            rounds: gameObj.rounds
+          }
+        })
+      })
+      .catch(err => console.log(err))
+    }
 
   render() {
       return (
@@ -73,17 +82,17 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={() => <Signup user={this.state.loggedInUser} setUser={this.setTheUser} />} />            
             <Route exact path='/signup' render={() => <Signup user={this.state.loggedInUser} setUser={this.setTheUser} />} />
-            <Route exact path='/login' render={() => <Login user={this.state.loggedInUser}setUser={this.setTheUser} />} /> 
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/bcrypt" component={Bcrypt} />
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/qreader" component={Qreader} />
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/vid" component={VideoTest} />
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-api" component={Fakeapi} />
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-1" component={Game1} />
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-2" component={Game2} />
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-3" component={Game3} />
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-4" component={Game4} />
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-5" component={Game5} />
-            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.getTheGame} exact path="/game-6" component={Game6} />
+            <Route exact path='/login' render={() => <Login setTheGame={this.setTheGame} user={this.state.loggedInUser} setUser={this.setTheUser} />} /> 
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.setTheGame} exact path="/bcrypt" component={Bcrypt} />
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.setTheGame} exact path="/qreader" component={Qreader} />
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.setTheGame} exact path="/vid" component={VideoTest} />
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.setTheGame} exact path="/game-api" component={Fakeapi} />
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.setTheGame} exact path="/game-1" component={Game1} />
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.setTheGame} exact path="/game-2" component={Game2} />
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.setTheGame} exact path="/game-3" component={Game3} />
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.setTheGame} exact path="/game-4" component={Game4} />
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.setTheGame} exact path="/game-5" component={Game5} />
+            <ProtectedRoutes user={this.state.loggedInUser} getTheGame={this.getTheGame} setTheGame={this.setTheGame} exact path="/game-6" component={Game6} />
 
           </Switch>
           <Menu roundsInfo={this.state.game.rounds} setTheUser={this.setTheUser}></Menu>

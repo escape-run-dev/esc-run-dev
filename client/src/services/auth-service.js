@@ -33,6 +33,19 @@ class AuthService {
       })
   }
 
+  getTheGame = () => {
+    return this.service.get()
+    .then(response => {
+      return response.data
+    })
+  }
+
+  setTheGame = (game) => {
+    return this.service.post('/setGame', {data: game})
+    .then(response => {
+      return response.data
+    })
+  }
 }
 
 

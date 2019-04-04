@@ -270,6 +270,7 @@ header {
 
 .pane-game2 {
   width: 530px !important;
+  min-height: 100%;
 }
 
 .editor-game3 {

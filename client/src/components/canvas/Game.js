@@ -293,9 +293,13 @@ class Game {
     // }
 
     isCollision = () => {
-        console.log("En componentDidMount", this.checkCollision, typeof this.checkCollision)
+        console.log("En el juego", this.checkCollision, typeof this.checkCollision)
         console.log("What is this", this)
-        return eval(this.checkCollision(this))
+        // var fun = new Function("game", "return" + this.checkCollision)
+        // return fun(this)
+
+        let collision = eval(this.checkCollision())
+        return collision(this)
     }
 
     // isCollision = () => {

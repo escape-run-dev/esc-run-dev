@@ -476,6 +476,36 @@ header {
   width: 100%;
 }
 
+/* NCAGE */ 
+
+.puzzle-output-game3 .puzzle-row {
+  display:-webkit-flex;
+  display:flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.puzzle-output-game3 .puzzle-block {
+  display:-webkit-flex;
+  display:flex;
+}
+
+.puzzle-output-game3 .puzzle-col {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+
+.puzzle-output-game3 .puzzle-piece {
+  width: 150px;
+  height: 100px;
+}
+
+.puzzle-output-game3 .puzzle-piece img {
+  width: 100%;
+}
+
 /* CANVAS */
 
 .game6 {

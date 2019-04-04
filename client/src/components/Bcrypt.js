@@ -42,7 +42,7 @@ class Crypt extends Component {
     return(
       <form className="bcrypt" onSubmit={(e) => this.cryptoMethod(e)}>
         <label>Introduce la clave que deseas cifrar:</label><br/><br/>
-        <input type="text" name="input" id="input" <value={this.state.input} onChange={e => this.handlerChange(e)}/><br/><br/>
+        <input type="text" name="input" id="input" value={this.state.input} onChange={e => this.handlerChange(e)}/><br/><br/>
         <button type="submit">Cifrar</button><br/><br/><br/>
         <button type="button" onClick={this.copy()}>Copiar al portapeles</button><br/><br/><br/>
 

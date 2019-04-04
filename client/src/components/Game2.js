@@ -41,7 +41,7 @@ class Game2 extends Component {
 
     this.services.writeCss(this.state.content, true)
     .then(res => {
-      this.setState ({errMsg: res})
+      this.setState ({errMsg: res.errorMsg})
     })
   }
 

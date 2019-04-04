@@ -294,6 +294,8 @@ class Game {
 
     isCollision = () => {
         
+        // let fn = new Function("game", "return " + this.checkCollision);
+        // return fn(this)
 
         return eval(this.checkCollision)(this);
 

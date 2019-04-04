@@ -86,6 +86,18 @@ class Game2 extends Component {
     this.game.checkCollision = initialCode
     console.log("En componentDidMount", this.game.checkCollision, typeof this.game.checkCollision)
     this.checkResult()
+
+    
+    if (!document.getElementById("collisionscript")) {
+      const script = document.createElement("script");
+      script.innerHTML = this.state.content
+      script.async = true;
+      script.id = "collisionscript"
+      document.body.appendChild(script);
+    } else {
+      const script = document.getElementById("collisionscript")
+      script.innerHTML = this.state.content
+    }
   }
 
   render(){ 

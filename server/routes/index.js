@@ -85,7 +85,7 @@ router.post("/writeFile", (req,res,next) => {
         console.log('File deleted')
       });
       globalMessage.push({description: "Hay algún error gordo en tu código que hace que ni siquiera podamos testearlo (mira a ver esos paréntesis, llaves, etc.)", status: "failed"})
-      res.status(200).json({globalMessage, passed})
+      res.status(200).json({globalMessage, passed: false})
       globalMessage = []
     }
 

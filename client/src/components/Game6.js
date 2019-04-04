@@ -31,15 +31,10 @@ class Game2 extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
-    let checkCollision = new Function("game", "return " + this.state.content)
-
-
     if (!this.game.started){
       this.game.start()
-      this.game.isCollision = () => {
-        return checkCollision(this.game)
-      }
-      // console.log("En handleSubmit", this.game.checkCollision, typeof this.game.checkCollision)
+      this.game.checkCollision = this.state.content
+      console.log("En handleSubmit", this.game.checkCollision, typeof this.game.checkCollision)
       this.checkResult()
       // if (this.game.result === "win") alert("You win")
     }
@@ -86,15 +81,10 @@ class Game2 extends Component {
   }
 
   componentDidMount () {
-
-    let checkCollision = new Function("game", "return " + initialCode)
-
     if (!this.game) this.game = new Game(document.getElementById("canvas"))
     this.game.start() 
-    this.game.isCollision = () => {
-      return checkCollision(this.game)
-    }
-    // console.log("En componentDidMount", this.game.checkCollision, typeof this.game.checkCollision)
+    this.game.checkCollision = initialCode
+    console.log("En componentDidMount", this.game.checkCollision, typeof this.game.checkCollision)
     this.checkResult()
   }
 

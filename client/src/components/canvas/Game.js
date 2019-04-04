@@ -213,6 +213,10 @@ class Game {
       this.started = false
     }
 
+    checkCollision = () => {
+
+    }
+
     start =  () => {
         this.started = true
         this.reset()
@@ -289,12 +293,9 @@ class Game {
     // }
 
     isCollision = () => {
-        // console.log("En el juego", this.checkCollision, typeof this.checkCollision)
-        // console.log("What is this", this)
-     
-
-        // let collision = eval(this.checkCollision())
-        // return collision(this)
+        console.log("En componentDidMount", this.checkCollision, typeof this.checkCollision)
+        console.log("What is this", this)
+        return this.checkCollision(this)
     }
 
     // isCollision = () => {

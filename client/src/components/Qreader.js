@@ -3,8 +3,8 @@ import Qreader from 'react-qr-reader'
 
 class QreaderC extends Component {
   
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {result:"none"}
 
   }
@@ -14,6 +14,10 @@ class QreaderC extends Component {
       this.setState({
         result: data
       })
+    }
+    console.log(this.state.result)
+    if (this.state.result === "Has desbloqueado el FlexBox Puzzle") {
+      this.props.checkQr()
     }
   }
   handleError = err => {

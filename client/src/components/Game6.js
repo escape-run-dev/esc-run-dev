@@ -13,6 +13,7 @@ class Game2 extends Component {
     super(props)
     this.state = {
       content: initialCode,
+      youWin: false
     }
 
     this.services = new TestingService()
@@ -110,7 +111,8 @@ class Game2 extends Component {
   checkResult = () => {
     const myInterval = setInterval (() => {
       if (this.game.result === "win") {
-        alert("You win") // Esto mejor que sea un modal o similar
+        this.props.roundCompleted("round6",true)
+        this.setState({youWin: true})
         clearInterval(myInterval)
       }
     }, 1000 / 60)
@@ -124,7 +126,6 @@ class Game2 extends Component {
     if (!this.game) this.game = new Game(document.getElementById("canvas"))
     this.game.start() 
     this.game.checkCollision = initialCode
-    console.log("En componentDidMount", this.game.checkCollision, typeof this.game.checkCollision)
     this.checkResult()
 
     
@@ -149,6 +150,9 @@ class Game2 extends Component {
               <p>Ha llegado la hora del famoso 'click'. El juego es el primer momento cumbre para todo ironhacker, cuando descubre todo lo que ha aprendido en las primeras semanas. ¿Te acuerdas? Más te vale, porque tendrás que arreglar el código de las colisiones para poder pasarte el juego. Si aguantas 30 segundos sin morir, habrás ganado.</p>
             </header>
             <section className="canvas-container">
+            {this.state.youWin &&
+                <div><p className="passed">¡Enhorabuena! ¡Lo has conseguido! Ahora a por lo siguiente</p></div>
+            }
                 <canvas id="canvas"></canvas>
                 <img src={buttonUp} className="button-up" alt="Botón para subir" onClick={() => this.move("up")}></img>
                 <img src={buttonDown} className="button-down" alt="Botón para bajar" onClick={() => this.move("down")}></img>

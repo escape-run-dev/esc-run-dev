@@ -96,13 +96,12 @@ class Game2 extends Component {
                  </form>
                </div>
             </div>
-
-            <section className="puzzle-output">
+            {console.log(this.props.qrRead)}
+            <section className={`${this.props.qrRead ? "puzzle-output" : "puzzle-output blurred"}`}>
               <div className="input-header">
                 <div className="file-name">Flexbox Puzzle</div>
                 Resultado
               </div>
-              {console.log(this.state.errorMsg)}
               {this.state.errorMsg &&
                 <div className="error-msg">El CSS que has introducido no pasa la validación</div>
               }

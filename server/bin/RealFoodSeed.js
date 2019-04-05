@@ -8,7 +8,7 @@ const seed = [{
     foodName : "Palomitas", 
     imageUrl: "https://google.com/images/",
     foodOwner: "Ger", 
-    foodQuality: 10, 
+    foodQuality: "10", 
     foodDescription: "Palomitas resurrection"  
 
   }

@@ -50,17 +50,25 @@ class Crypt extends Component {
   } 
 
   componentDidMount = () => {
-    this.setState({toCopy : document.getElementById("input")})
+    
+    this.setState({toCopy : document.getElementById("theHiddenOne")})
+  
   }
 
   copy = () => {
+    console.log(this.state.output)
+    
     if (this.state.toCopy) {
-      this.state.toCopy.select()
+      
+        const el = document.createElement('textarea');
+        el.value = this.state.output
+        document.body.appendChild(el)
+        el.select()
+        document.execCommand('copy')
+        document.body.removeChild(el)
+        
+        this.setState({copied : true})
 
-      document.execCommand('copy')
-      this.setState({copied : true})
-
-      // eslint-disable-next-line no-native-reassign
       setTimeout ( function () {
         console.log("Timeout")
         this.setState({output: "", copied : false})
@@ -76,10 +84,10 @@ class Crypt extends Component {
         <div className="bcrypt-buttons">
           <button type="submit">Cifrar</button>
           <button type="button" onClick={this.copy}>Copiar al portapeles</button>
+          <input type="text" id="theHiddenOne" name="theHiddenOne" value={this.state.output} onChange={e => this.handlerChange(e)}/>
         </div>
         {this.state.output ? <p>{this.state.output}</p>: <p></p>}
         {this.state.copied ? <p class="passed">Clave copiada al portapapeles</p>: <p></p>}
-      
       </form>
     )
   }

@@ -92,13 +92,16 @@ class CallingDB extends Component {
           }
           else {
             let route = {
-              img: "Inserta imagen de las gradas",
+              img: "https://i.ibb.co/7WcfY37/Whats-App-Image-2019-04-03-at-18-40-06-3.jpg",
               Start: "RFLFL",
-              r1: "Ruta 1",
-              r2: "Ruta 2",
-              r3: "Ruta 3",
-              r4: "Ruta 4",
-              msg: "Mensaje de ayuda"
+              r1: "[1,1]",
+              r2: "[2,0]",
+              r3: "[1,0]",
+              r4: "[0,1]",
+              msg: "En el prework encontrarás el camino",
+              img2: "https://i.ibb.co/sQ9BK9X/IMG-20190404-221356-Convert-Image.jpg",
+              msg2: "Y hay clases que son matrices"
+            
             }
             this.setState({
               ...this.state,
@@ -116,6 +119,7 @@ class CallingDB extends Component {
             else if(this.state.failModel) cardComponent = <CardComponent containerCard={this.state.failModel}/>
             else cardComponent = <p className="card-placeholder">Tendréis que hacer una llamada para obtener algún resultado</p>
     return (
+
       <main className="game1 api">
         <header>
           <h1>En busca de la llamada modélica</h1>

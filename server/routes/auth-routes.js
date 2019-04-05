@@ -135,7 +135,7 @@ router.post('/setGame'), (req,res,next) => {
     console.log(data.game)
 
     Game.findById(data.game.gameId)
-        .then(response => console.log(response))
+        .then(response => console.log())
         .catch(err => console.log(err))
 
 }

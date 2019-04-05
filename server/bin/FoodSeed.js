@@ -51,7 +51,7 @@ const seed = [{
 {
 
   imageUrl: "https://i.ibb.co/H4dgMrJ/arroztresdelicias.jpg",
-  foodQuality: 7,
+  foodQuality: "7",
   foodColor: "Blanco",
   foodFromOutside: "Nope"
 
@@ -75,13 +75,13 @@ const seed = [{
   imageUrl: "https://i.ibb.co/drjLbQ6/pisto.jpg",
   foodName: "Pisto",
   foodColor: "Rojo",
-  foodQuality: 6
+  foodQuality: "6"
 },
 {
 
   imageUrl: "https://i.ibb.co/BKs9gW9/arrozconpolloyverduras.jpg",
   foodName: "Arroz con pollo y verduras",
-  foodQuality: 8
+  foodQuality: "8"
 },
 {
   imageUrl: "https://i.ibb.co/XpFKdhK/tallarinescontomate.jpg",
@@ -89,11 +89,11 @@ const seed = [{
 },
 {
   imageUrl: "https://i.ibb.co/k8yWnDk/tortillasolitaria.jpg",
-  foodQuality: 9
+  foodQuality: "9"
 },
 {
   imageUrl: "https://i.ibb.co/kxYZCZ3/tortillaconmostazaypan.jpg",
-  foodQuality: 10,
+  foodQuality: "10",
   foodDescription: "Una tortilla con mostaza y pan esta OP"
 
 }

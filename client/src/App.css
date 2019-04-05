@@ -928,6 +928,25 @@ canvas {
   color: #f5f6fa;
 }
 
+.error-msg-logSign {
+  font-size: 0,9em;
+  border-radius: 6px;
+  padding: 10px !important;
+  text-align: center;
+  background-color: #e84118;
+  color: #f5f6fa;
+}
+
+#theHiddenOne {
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+}
+
+.imgJson {
+  height: 235px;
+}
+
 /* HEADER BACKGROUND PICS */
 /* 
 .game1-header {

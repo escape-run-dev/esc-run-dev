@@ -16,9 +16,8 @@ router.post('/addModel', (req,res, next) => {
     [code.input5] : code.input5value
   })
   NewRealFood.save()
-
     .then(response => res.json({response}))
-    .catch(err => res.json({Img: "https://cdnb.20m.es/cronicaverde/files/2012/02/basura.jpg", Description: "Posiblemente, es lo que no estás buscando...", Name: "Comida en la basura"}))
+    .catch(err => res.json({Img: "https://cdnb.20m.es/cronicaverde/files/2012/02/basura.jpg", Description: "Posiblemente, esto no es lo que estás buscando...", Name: "Comida en la basura"}))
 
   })
 

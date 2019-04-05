@@ -6,7 +6,7 @@ const FoodApi = new Schema({
     foodName : String, 
     imageUrl: String,
     foodOwner: String, 
-    foodQuality: Number, 
+    foodQuality: String, 
     foodDescription: String, 
     foodCover: String,
     foodTaste: String,

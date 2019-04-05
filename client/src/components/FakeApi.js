@@ -74,8 +74,9 @@ class CallingDB extends Component {
           receivedModel: data
         })
     })
-    .catch( error => console.log(error))}
-    else return
+  
+      .catch( error => console.log(error))
+    }else return
   }
 
     handleSubmitModel = (e) => {

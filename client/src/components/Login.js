@@ -26,13 +26,13 @@ class Login extends Component {
         })
         return
       }
-      this.props.setUser(response)
+      this.props.setUser(response.theUser)
       this.setState({
           username: "", 
           password: "",
           redirect: true
       })    
-      this.props.setTheGame({gameId: response.data.gameid, rounds: {round1: false, round2: false, round3: false, round4: false, round5: false, round6: false}})
+      this.props.setTheGame({gameId: response.gameid._id, rounds: {round1: false, round2: false, round3: false, round4: false, round5: false, round6: false}})
     })
     .catch( error => console.log(error) )
   }

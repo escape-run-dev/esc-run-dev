@@ -337,6 +337,16 @@ header {
   min-height: 100vh;
 }
 
+.hidden {
+  width: 80%;
+  font-size: 22px;
+  color: white;
+}
+.blurred {
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+}
+
 .drunk-verylight {
   -webkit-filter: blur(0.8px);
           filter: blur(0.8px);
@@ -978,3 +988,13 @@ canvas {
   background: url("./components/game_img/canvas_game.jpg") no-repeat right;
   background-size: 40%;
 } */
+
+/* DISABLING LINKS */
+
+.isDisabled {
+  color: lightgrey;
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+

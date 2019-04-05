@@ -19,7 +19,7 @@ class Game1 extends Component {
 
     this.services = new TestingService()
   }
-  
+    
   handleState = e => {
     const { value } = e.target
     
@@ -33,7 +33,14 @@ class Game1 extends Component {
 
       this.setState({checking: true, output: ""}, () => {
         this.services.writeFile(this.state.id, this.state.content, 1)
-            .then(res => this.setState({output: res.data.globalMessage, checking:false}))
+            .then(res => {
+              this.setState({output: res.data.globalMessage, checking:false})
+              if (this.state.output.every((spec) => {
+                return spec.status === "passed"
+              })) {
+                this.props.roundCompleted("round1",true)
+              }
+            })
             .catch(err => this.setState({output: err, checking:false}))
       })
   }

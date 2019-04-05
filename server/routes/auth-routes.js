@@ -130,15 +130,28 @@ router.get('/loggedin', (req, res, next) => {
 });
 
 
-router.post('/setGame'), (req,res,next) => {
-    const {data} = req.body
-    console.log(data.game)
+router.post('/setGame', (req,res,next) => {
+    const {game} = req.body
 
-    Game.findById(data.game.gameId)
-        .then(response => console.log())
+    const{rounds,gameFinished,gameId} = game
+
+    Game.findByIdAndUpdate(gameId,{round1: rounds.round1, round2: rounds.round2, round3: rounds.round3, round4: rounds.round4, round5: rounds.round5, round6: rounds.round6,ended:gameFinished})
+        .then(response => {
+            res.status(200).json(response)
+        })
         .catch(err => console.log(err))
 
-}
+})
 
 
 module.exports = router
+
+
+// team : {type:Schema.Types.ObjectId, ref:"Team"},
+//     round1: { type: Boolean, default: false },
+//     round2: { type: Boolean, default: false },
+//     round3: { type: Boolean, default: false },
+//     round4: { type: Boolean, default: false },
+//     round5: { type: Boolean, default: false },
+//     round6: { type: Boolean, default: false },
+//     ended: { type: Boolean, default: false },

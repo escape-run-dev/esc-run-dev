@@ -45,13 +45,26 @@ class Game3 extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     
+    let firstCon = false
+    let secondCon = false
+
     let image
     let classW = ""
-    if(this.state.image !==  "loveyisus" && this.state.image !== "LOVEYISUS") image = [ncage1, ncage2, ncage3, ncage4, ncage5, ncage6, ncage7, ncage8, ncage9];
-    else image = [bundaba1, bundaba2, bundaba3, bundaba4, bundaba5, bundaba6, bundaba7, bundaba8, bundaba9]
-    if(this.state.validPosition === "[2,1,4]" || this.state.validPosition === "[ 2, 1, 4]" || this.state.validPosition === "[ 2 , 1 , 4 ]" || this.state.validPosition === "2,1,4" || this.state.validPosition === "21,4" || this.state.validPosition === "21.4" || this.state.validPosition === "214") {
-      classW = "greenBorder"   
-    } else classW = ""
+    if(this.state.image !==  "loveyisus" && this.state.image !== "LOVEYISUS"){
+    image = [ncage1, ncage2, ncage3, ncage4, ncage5, ncage6, ncage7, ncage8, ncage9];
+    }
+    else {
+      image = [bundaba1, bundaba2, bundaba3, bundaba4, bundaba5, bundaba6, bundaba7, bundaba8, bundaba9]
+      firstCon = true
+    }
+    if (this.state.validPosition === "[2,1,4]" || this.state.validPosition === "[ 2, 1, 4]" || this.state.validPosition === "[ 2 , 1 , 4 ]" || this.state.validPosition === "2,1,4" || this.state.validPosition === "21,4" || this.state.validPosition === "21.4" || this.state.validPosition === "214") {
+      classW = "greenBorder"
+      secondCon = true  
+    } else {
+      classW = ""
+    }
+
+    if (firstCon && secondCon) this.props.roundCompleted("round3",true)
 
     this.setState({
       ...this.state,
